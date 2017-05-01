@@ -2,7 +2,7 @@
   "name": "paypal-checkout-demo",
   "version": "1.0.0",
   "description": "Demo application for paypal checkout",
-  "main": "dist/index.js",
+  "main": "src/app/server/index.js",
   "files": [
     "src/"
   ],
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trainerbill/paypal-checkout-demo.git"
+    "url": "git+https://github.com/paypal/paypal-checkout-demo.git"
   },
   "keywords": [
     "paypal",
@@ -23,9 +23,9 @@
   "author": "Andrew Throener",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/trainerbill/paypal-checkout-demo/issues"
+    "url": "https://github.com/paypal/paypal-checkout-demo/issues"
   },
-  "homepage": "https://github.com/trainerbill/paypal-checkout-demo#readme",
+  "homepage": "https://github.com/paypal/paypal-checkout-demo#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",

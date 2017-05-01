@@ -38,4 +38,4 @@ $ npm install
 
 If you have any questions about contributing, please feel free to contact us by posting your questions using a [GitHub issue](https://github.com/paypal/paypal-checkout-demo/issues).
 
-Copyright 2017, PayPal under [the ISC license](LICENSE.txt).
+Copyright 2017, PayPal under [the Apache 2.0 license](LICENSE.txt).

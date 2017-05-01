@@ -21,7 +21,7 @@
     "demo"
   ],
   "author": "Andrew Throener",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/paypal/paypal-checkout-demo/issues"
   },

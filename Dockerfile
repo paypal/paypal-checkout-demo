@@ -14,5 +14,5 @@ RUN npm install
 # build the app
 COPY .babelrc $APP_HOME
 COPY webpack.conf.js $APP_HOME
-COPY demo $APP_HOME/demo
+COPY src $APP_HOME/src
 RUN npm run build

@@ -27,6 +27,10 @@ paypal.Button.render = function(props = {}) {
         return buttonRender.apply(this, arguments);
     }
 
+    if (props.client && props.client.production === '<insert production client id>') {
+        props.client.production = 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ';
+    }
+
     let onAuthorize = props.onAuthorize;
     props.onAuthorize = function(data, actions) {
 

@@ -68,7 +68,7 @@ export let experience = {
                     // Execute the payment
 
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 

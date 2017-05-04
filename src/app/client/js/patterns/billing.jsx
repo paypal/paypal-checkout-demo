@@ -52,7 +52,7 @@ export let billing = {
                     // Make a call to the merchant server to execute the agreement
 
                     return paypal.request.post('${ctx.baseURL}/api/paypal/agreement/execute/', { payToken: data.paymentToken }) .then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 

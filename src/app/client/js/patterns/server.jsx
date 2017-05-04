@@ -56,7 +56,7 @@ export let server = {
                         payerId: data.payerID
                     }).then(function (res) {
 
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 

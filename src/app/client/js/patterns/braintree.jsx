@@ -76,7 +76,7 @@ export let braintree = {
 
                                 }).then(function (res) {
 
-                                    document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                                    window.alert('Payment Complete!');
                                 });
                             }
 

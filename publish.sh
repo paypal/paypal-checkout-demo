@@ -15,7 +15,7 @@ if ! git diff-index --quiet --cached HEAD; then
     exit 1;
 fi;
 
-npm build;
+npm run build;
 
 git add src/app/build --all;
 

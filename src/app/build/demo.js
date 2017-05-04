@@ -28325,7 +28325,7 @@ let client = {
                     // Execute the payment
 
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 
@@ -28654,7 +28654,7 @@ let credit = {
 
                 onAuthorize: function(data, actions) {
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 
@@ -28846,7 +28846,7 @@ let mark = {
 
                 onAuthorize: function(data, actions) {
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 
@@ -28972,7 +28972,7 @@ let server = {
                         payerId: data.payerID
                     }).then(function (res) {
 
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 
@@ -29107,7 +29107,7 @@ let styles = {
 
                 onAuthorize: function(data, actions) {
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 
@@ -29276,7 +29276,7 @@ let validation = {
                     // Execute the payment
 
                     return actions.payment.execute().then(function() {
-                        document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+                        window.alert('Payment Complete!');
                     });
                 }
 

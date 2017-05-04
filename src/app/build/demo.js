@@ -15208,10 +15208,12 @@ function parserForArrayFormat(opts) {
 		case 'bracket':
 			return function (key, value, accumulator) {
 				result = /(\[\])$/.exec(key);
-
 				key = key.replace(/\[\]$/, '');
 
-				if (!result || accumulator[key] === undefined) {
+				if (!result) {
+					accumulator[key] = value;
+					return;
+				} else if (accumulator[key] === undefined) {
 					accumulator[key] = [value];
 					return;
 				}
@@ -28129,6 +28131,10 @@ paypal.Button.render = function (props = {}) {
         return buttonRender.apply(this, arguments);
     }
 
+    if (props.client && props.client.production === '<insert production client id>') {
+        props.client.production = 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ';
+    }
+
     let onAuthorize = props.onAuthorize;
     props.onAuthorize = function (data, actions) {
 
@@ -28290,7 +28296,7 @@ let client = {
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 // Set to 'Pay Now'
@@ -28451,7 +28457,7 @@ let confirm = {
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 // Wait for the PayPal button to be clicked
@@ -28623,7 +28629,7 @@ let credit = {
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 // Wait for the PayPal button to be clicked
@@ -28825,7 +28831,7 @@ let mark = {
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 payment: function() {
@@ -29079,7 +29085,7 @@ let styles = {
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 // Wait for the PayPal button to be clicked
@@ -29233,7 +29239,7 @@ let validation = {
                 client: {
                     local:      'alc_client1',
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ'
+                    production: '<insert production client id>'
                 },
 
                 validate: function(actions) {

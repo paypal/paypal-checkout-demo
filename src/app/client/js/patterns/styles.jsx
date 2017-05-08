@@ -36,7 +36,7 @@ export let styles = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'checkout', // checkout || credit
+                    label: 'checkout', // checkout || credit || pay
                     size:  'small',    // tiny | small | medium
                     shape: 'pill',     // pill | rect
                     color: 'blue'      // gold | blue | silver

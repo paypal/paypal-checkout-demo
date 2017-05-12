@@ -18,18 +18,19 @@ function nameToPattern(name) {
     }
 }
 
-export let App = React.createClass({
+export class App extends React.Component {
 
-    getInitialState() {
-        return {
+    constructor() {
+        super();
+        this.state = {
             env: 'sandbox',
             errors: []
         };
-    },
+    }
 
     onChangeCode(code) {
         this.setState({ code, errors: [] });
-    },
+    }
 
     componentWillMount() {
         if (window.location.hash === '#/') {
@@ -37,21 +38,21 @@ export let App = React.createClass({
         }
 
         paypal.onPossiblyUnhandledException(err => {
-            this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
+            // this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
         });
-    },
+    }
 
     onChangeEnv(env) {
         this.setState({ env });
-    },
+    }
 
     onCodeRun(code) {
         this.setState({ errors: [] });
-    },
+    }
 
     onCodeError(err) {
         this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
-    },
+    }
 
     render() {
 
@@ -68,9 +69,9 @@ export let App = React.createClass({
                 <div className="main">
                     <div className="column-left">
                         {
-                            patterns.map(group =>
-                                <div>
-                                <h3>{group.name}</h3>
+                            patterns.map((group, i) =>
+                                <div key={i}>
+                                    <h3>{group.name}</h3>
                                     <ul>
                                         {
                                             group.patterns.map(pattern =>
@@ -92,7 +93,7 @@ export let App = React.createClass({
 
                         <div className="intro">
                             <h3>{activePattern.fullName}</h3>
-                            <p>{activePattern.intro}</p>
+                            <div className="introp">{activePattern.intro}</div>
                         </div>
 
                         <div className="demo">
@@ -129,4 +130,4 @@ export let App = React.createClass({
             </div>
         );
     }
-});
+}

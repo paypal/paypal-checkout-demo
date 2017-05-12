@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Toggle } from './toggle';
 
-export let Header = React.createClass({
+export class Header extends React.Component {
     render() {
         return (
             <header>
@@ -16,4 +16,4 @@ export let Header = React.createClass({
             </header>
         );
     }
-});
+}

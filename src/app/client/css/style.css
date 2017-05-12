@@ -218,7 +218,7 @@ a.active .bullet {
     color: #333;
 }
 
-.app .main .column-middle .intro p {
+.app .main .column-middle .intro .introp {
     color: #666;
 }
 
@@ -349,4 +349,46 @@ a.active .bullet {
     bottom: -22px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+@media screen and (max-width: 650px) {
+    html, body {
+        min-width: 100%;
+        height: 100%;
+    }
+
+    .app header {
+        display: none;
+    }
+
+    .app .main {
+
+    }
+
+    .app .main .column-left {
+        display: none;
+    }
+
+    .app .main .column-middle {
+        min-height: 0px;
+        height: auto;
+    }
+
+    .app .main .column-right {
+        height: 100%;
+    }
+
+    .app .main .column-middle .intro {
+        display: none;
+    }
+
+    .app .main .column-middle .steps .step {
+        display: none;
+    }
+
+    .app .main .column-middle, .app .main .column-right {
+        width: 100%;
+        display: block;
+        min-width: 100%;
+    }
 }

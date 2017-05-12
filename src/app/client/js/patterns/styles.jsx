@@ -37,6 +37,11 @@ export let styles = {
                     color: 'blue'      // gold | blue | silver
                 },
 
+                client: {
+                    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                    production: '<insert production client id>'
+                },
+
                 payment: function(actions) {
                     return actions.payment.create({
                         transactions: [

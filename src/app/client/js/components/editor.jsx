@@ -3,21 +3,24 @@ import React from 'react';
 
 import { stripIndent, debounce } from '../lib';
 
-export let Editor = React.createClass({
+export class Editor extends React.Component {
 
-    render: () => (
-        <div id="editor" className="editor"></div>
-    ),
+    render() {
+        return (
+            <div id="editor" className="editor"></div>
+        );
+    }
 
-    getInitialState() {
-        return {
-            code: stripIndent(this.props.code)
+    constructor(props) {
+        super(props);
+        this.state = {
+            code: stripIndent(props.code)
         };
-    },
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         return this.props.code !== nextProps.code;
-    },
+    }
 
     componentDidMount() {
 
@@ -38,10 +41,10 @@ export let Editor = React.createClass({
         this.props.onChange(this.props.code);
 
         this.setState({ editor: editor });
-    },
+    }
 
-    componentWillUpdate: function(nextProps, nextState){
+    componentWillUpdate(nextProps, nextState){
         nextState.editor.setValue(stripIndent(nextProps.code), -1);
         this.props.onChange(nextProps.code);
     }
-});
+}

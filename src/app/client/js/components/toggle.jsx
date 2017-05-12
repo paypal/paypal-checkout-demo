@@ -1,18 +1,19 @@
 
 import React from 'react';
 
-export let Toggle = React.createClass({
+export class Toggle extends React.Component {
 
-    getInitialState() {
-        return {
+    constructor() {
+        super();
+        this.state = {
             toggle: 'left'
         };
-    },
+    }
 
 
     didRecieveProps() {
         this.setState({ toggle: this.props.default || 'left' });
-    },
+    }
 
     onToggle(event) {
 
@@ -26,7 +27,7 @@ export let Toggle = React.createClass({
         if (this.props.onChange) {
             this.props.onChange(this.props[toggle]);
         }
-    },
+    }
 
     render() {
         return (
@@ -39,4 +40,4 @@ export let Toggle = React.createClass({
             </div>
         );
     }
-});
+}

@@ -12869,6 +12869,12 @@ var _patterns = __webpack_require__(252);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function nameToPattern(name) {
     for (var _iterator = _patterns.patterns, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref;
@@ -12905,38 +12911,48 @@ function nameToPattern(name) {
     }
 }
 
-var App = exports.App = _react2.default.createClass({
-    displayName: 'App',
-    getInitialState: function getInitialState() {
-        return {
+var App = exports.App = function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App() {
+        _classCallCheck(this, App);
+
+        var _this = _possibleConstructorReturn(this, _React$Component.call(this));
+
+        _this.state = {
             env: 'sandbox',
             errors: []
         };
-    },
-    onChangeCode: function onChangeCode(code) {
-        this.setState({ code: code, errors: [] });
-    },
-    componentWillMount: function componentWillMount() {
-        var _this = this;
+        return _this;
+    }
 
+    App.prototype.onChangeCode = function onChangeCode(code) {
+        this.setState({ code: code, errors: [] });
+    };
+
+    App.prototype.componentWillMount = function componentWillMount() {
         if (window.location.hash === '#/') {
             window.location.hash = '#/pattern/client';
         }
 
         paypal.onPossiblyUnhandledException(function (err) {
-            _this.setState({ errors: _this.state.errors.concat(err.stack || err.toString()) });
+            // this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
         });
-    },
-    onChangeEnv: function onChangeEnv(env) {
+    };
+
+    App.prototype.onChangeEnv = function onChangeEnv(env) {
         this.setState({ env: env });
-    },
-    onCodeRun: function onCodeRun(code) {
+    };
+
+    App.prototype.onCodeRun = function onCodeRun(code) {
         this.setState({ errors: [] });
-    },
-    onCodeError: function onCodeError(err) {
+    };
+
+    App.prototype.onCodeError = function onCodeError(err) {
         this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
-    },
-    render: function render() {
+    };
+
+    App.prototype.render = function render() {
         var _this2 = this;
 
         var patternName = this.props.params.pattern || 'client';
@@ -12957,10 +12973,10 @@ var App = exports.App = _react2.default.createClass({
                 _react2.default.createElement(
                     'div',
                     { className: 'column-left' },
-                    _patterns.patterns.map(function (group) {
+                    _patterns.patterns.map(function (group, i) {
                         return _react2.default.createElement(
                             'div',
-                            null,
+                            { key: i },
                             _react2.default.createElement(
                                 'h3',
                                 null,
@@ -13001,8 +13017,8 @@ var App = exports.App = _react2.default.createClass({
                             activePattern.fullName
                         ),
                         _react2.default.createElement(
-                            'p',
-                            null,
+                            'div',
+                            { className: 'introp' },
                             activePattern.intro
                         )
                     ),
@@ -13055,8 +13071,10 @@ var App = exports.App = _react2.default.createClass({
                 )
             )
         );
-    }
-});
+    };
+
+    return App;
+}(_react2.default.Component);
 
 /***/ }),
 /* 116 */
@@ -28295,24 +28313,39 @@ var _reactDom = __webpack_require__(71);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Code = exports.Code = _react2.default.createClass({
-    displayName: 'Code',
-    render: function render() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Code = exports.Code = function (_React$Component) {
+    _inherits(Code, _React$Component);
+
+    function Code() {
+        _classCallCheck(this, Code);
+
+        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    }
+
+    Code.prototype.render = function render() {
         return _react2.default.createElement('div', { id: 'code', className: ['code', this.props.pattern].join(' '), dangerouslySetInnerHTML: { __html: this.props.code } });
-    },
-    shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
+    };
+
+    Code.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
         return this.props.code !== nextProps.code;
-    },
-    runScripts: function runScripts() {
-        var _this = this;
+    };
+
+    Code.prototype.runScripts = function runScripts() {
+        var _this2 = this;
 
         Array.prototype.slice.call((0, _reactDom.findDOMNode)(this).querySelectorAll('script')).forEach(function (script) {
             try {
                 eval(script.innerHTML);
             } catch (err) {
 
-                if (_this.props.onError) {
-                    _this.props.onError(err);
+                if (_this2.props.onError) {
+                    _this2.props.onError(err);
                 }
 
                 setTimeout(function () {
@@ -28320,14 +28353,18 @@ var Code = exports.Code = _react2.default.createClass({
                 });
             }
         });
-    },
-    componentDidMount: function componentDidMount() {
+    };
+
+    Code.prototype.componentDidMount = function componentDidMount() {
         this.runScripts();
-    },
-    componentDidUpdate: function componentDidUpdate() {
+    };
+
+    Code.prototype.componentDidUpdate = function componentDidUpdate() {
         this.runScripts();
-    }
-});
+    };
+
+    return Code;
+}(_react2.default.Component);
 
 /***/ }),
 /* 242 */
@@ -28347,24 +28384,36 @@ var _lib = __webpack_require__(246);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Editor = exports.Editor = _react2.default.createClass({
-    displayName: 'Editor',
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    render: function render() {
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Editor = exports.Editor = function (_React$Component) {
+    _inherits(Editor, _React$Component);
+
+    Editor.prototype.render = function render() {
         return _react2.default.createElement('div', { id: 'editor', className: 'editor' });
-    },
+    };
 
-    getInitialState: function getInitialState() {
-        return {
-            code: (0, _lib.stripIndent)(this.props.code)
+    function Editor(props) {
+        _classCallCheck(this, Editor);
+
+        var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+
+        _this.state = {
+            code: (0, _lib.stripIndent)(props.code)
         };
-    },
-    shouldComponentUpdate: function shouldComponentUpdate(nextProps, nextState) {
+        return _this;
+    }
+
+    Editor.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
         return this.props.code !== nextProps.code;
-    },
-    componentDidMount: function componentDidMount() {
-        var _this = this;
+    };
+
+    Editor.prototype.componentDidMount = function componentDidMount() {
+        var _this2 = this;
 
         var editor = ace.edit('editor');
         editor.setTheme('ace/theme/monokai');
@@ -28374,8 +28423,8 @@ var Editor = exports.Editor = _react2.default.createClass({
 
         editor.getSession().on('change', (0, _lib.debounce)(function () {
             var value = editor.getValue();
-            if (_this.props.onChange && value && value !== (0, _lib.stripIndent)(_this.props.code)) {
-                _this.props.onChange(value);
+            if (_this2.props.onChange && value && value !== (0, _lib.stripIndent)(_this2.props.code)) {
+                _this2.props.onChange(value);
             }
         }, 300));
 
@@ -28383,14 +28432,15 @@ var Editor = exports.Editor = _react2.default.createClass({
         this.props.onChange(this.props.code);
 
         this.setState({ editor: editor });
-    },
+    };
 
-
-    componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+    Editor.prototype.componentWillUpdate = function componentWillUpdate(nextProps, nextState) {
         nextState.editor.setValue((0, _lib.stripIndent)(nextProps.code), -1);
         this.props.onChange(nextProps.code);
-    }
-});
+    };
+
+    return Editor;
+}(_react2.default.Component);
 
 /***/ }),
 /* 243 */
@@ -28410,9 +28460,22 @@ var _toggle = __webpack_require__(244);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = exports.Header = _react2.default.createClass({
-    displayName: 'Header',
-    render: function render() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = exports.Header = function (_React$Component) {
+    _inherits(Header, _React$Component);
+
+    function Header() {
+        _classCallCheck(this, Header);
+
+        return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+    }
+
+    Header.prototype.render = function render() {
         return _react2.default.createElement(
             'header',
             null,
@@ -28428,8 +28491,10 @@ var Header = exports.Header = _react2.default.createClass({
             ),
             _react2.default.createElement(_toggle.Toggle, { left: 'sandbox', right: 'production', 'default': 'left', onChange: this.props.onChangeEnv })
         );
-    }
-});
+    };
+
+    return Header;
+}(_react2.default.Component);
 
 /***/ }),
 /* 244 */
@@ -28447,17 +28512,31 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Toggle = exports.Toggle = _react2.default.createClass({
-    displayName: 'Toggle',
-    getInitialState: function getInitialState() {
-        return {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Toggle = exports.Toggle = function (_React$Component) {
+    _inherits(Toggle, _React$Component);
+
+    function Toggle() {
+        _classCallCheck(this, Toggle);
+
+        var _this = _possibleConstructorReturn(this, _React$Component.call(this));
+
+        _this.state = {
             toggle: 'left'
         };
-    },
-    didRecieveProps: function didRecieveProps() {
+        return _this;
+    }
+
+    Toggle.prototype.didRecieveProps = function didRecieveProps() {
         this.setState({ toggle: this.props.default || 'left' });
-    },
-    onToggle: function onToggle(event) {
+    };
+
+    Toggle.prototype.onToggle = function onToggle(event) {
 
         var toggle = {
             left: 'right',
@@ -28469,9 +28548,10 @@ var Toggle = exports.Toggle = _react2.default.createClass({
         if (this.props.onChange) {
             this.props.onChange(this.props[toggle]);
         }
-    },
-    render: function render() {
-        var _this = this;
+    };
+
+    Toggle.prototype.render = function render() {
+        var _this2 = this;
 
         return _react2.default.createElement(
             'div',
@@ -28484,7 +28564,7 @@ var Toggle = exports.Toggle = _react2.default.createClass({
             _react2.default.createElement(
                 'span',
                 { className: 'toggle', onClick: function onClick(event) {
-                        return _this.onToggle(event);
+                        return _this2.onToggle(event);
                     } },
                 _react2.default.createElement('span', { className: 'switch' })
             ),
@@ -28494,8 +28574,10 @@ var Toggle = exports.Toggle = _react2.default.createClass({
                 this.props.right
             )
         );
-    }
-});
+    };
+
+    return Toggle;
+}(_react2.default.Component);
 
 /***/ }),
 /* 245 */
@@ -28977,7 +29059,7 @@ var styles = exports.styles = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\', // checkout | credit | pay\n                    size:  \'small\',    // small | medium | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver\n                },\n\n                payment: function(actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\', // checkout | credit | pay\n                    size:  \'small\',    // small | medium | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver\n                },\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 

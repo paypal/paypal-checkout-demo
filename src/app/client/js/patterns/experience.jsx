@@ -3,20 +3,14 @@ import React from 'react';
 
 export let experience = {
 
+    slug: 'experience',
+
     name: `Experience`,
 
     fullName: `Client Side Express Checkout Experience Profiles`,
 
     intro: (
         <p>Create a PayPal button and accept payments using a purely client-side integration, with an experience profile.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, a button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>When the button is clicked, <span className="pre">payment()</span> is called. This function then calls <span className="pre">paypal.rest.payment.create()</span>, which invokes the PayPal REST API directly to create the payment and experience profile.</p>
-            <p>When the payment is authorized by the customer, <span className="pre">onAuthorize()</span> is called. This function then calls <span className="pre">actions.payment.execute()</span>, which invokes the PayPal REST API directly to execute the payment.</p>
-        </div>
     ),
 
     code: (ctx) => `
@@ -44,11 +38,11 @@ export let experience = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function() {
+                payment: function(actions) {
 
                     // Make a client-side call to the REST api to create the payment
 
-                    return paypal.rest.payment.create(this.props.env, this.props.client, {
+                    return actions.payment.create({
                         transactions: [
                             {
                                 amount: { total: '0.01', currency: 'USD' }

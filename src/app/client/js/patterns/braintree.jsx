@@ -3,88 +3,70 @@ import React from 'react';
 
 export let braintree = {
 
-    name: `Braintree`,
+    slug: 'braintree',
 
-    fullName: `Braintree Express Checkout`,
+    name: `Braintree SDK`,
+
+    fullName: `Express Checkout using Braintree SDK`,
 
     intro: (
         <p>Create a PayPal button and accept payments using a Braintree integration.</p>
     ),
 
-    description: (
-        <div>
-            <p>First, we generate a client token and initialize Braintree using <span className="pre">braintree.client.create()</span> / <span className="pre">braintree.paypal.create()</span>.</p>
-            <p>Then, a button is created using <span className="pre">paypal.Button.render()</span> to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>When the button is clicked, <span className="pre">payment()</span> is called. This function then uses <span className="pre">paypalClient.createPayment()</span> to invoke Braintree and create the payment.</p>
-            <p>When the payment is authorized by the customer, <span className="pre">onAuthorize()</span> is called. This function then uses <span className="pre">paypalClient.tokenizePayment()</span> to invoke Braintree to tokenize the payment, then <span className="pre">paypal.request.post()</span> to invoke the merchant server and finalize the payment using the Braintree SDK.</p>
-        </div>
-    ),
-
     code: (ctx) => `
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-        <script src="https://js.braintreegateway.com/web/3.9.0/js/client.min.js"></script>
-        <script src="https://js.braintreegateway.com/web/3.9.0/js/paypal-checkout.min.js"></script>
+        <script src="https://js.braintreegateway.com/web/3.11.0/js/client.min.js"></script>
+        <script src="https://js.braintreegateway.com/web/3.11.0/js/paypal-checkout.min.js"></script>
 
         <div id="paypal-button-container"></div>
 
         <script>
 
-            // Set up the Braintree client
+            var BRAINTREE_SANDBOX_AUTH = 'eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJjMDFhZmRkM2Y1OTJmNWVhNTNlMzE5MWQwYmIyMWVjYjM5NzNlZGM1MzkwNDZiMjJmNTA2ODEyNzIzZmRlMTJifGNsaWVudF9pZD1jbGllbnRfaWQkc2FuZGJveCQ0ZHByYmZjNnBoNTk1Y2NqXHUwMDI2Y3JlYXRlZF9hdD0yMDE3LTA0LTI2VDIzOjI2OjU5Ljg3OTA3ODYwNiswMDAwXHUwMDI2bWVyY2hhbnRfaWQ9M3cydHR2d2QyNDY1NDhoZCIsImNvbmZpZ1VybCI6Imh0dHBzOi8vYXBpLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy8zdzJ0dHZ3ZDI0NjU0OGhkL2NsaWVudF9hcGkvdjEvY29uZmlndXJhdGlvbiIsImNoYWxsZW5nZXMiOltdLCJlbnZpcm9ubWVudCI6InNhbmRib3giLCJjbGllbnRBcGlVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvM3cydHR2d2QyNDY1NDhoZC9jbGllbnRfYXBpIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhdXRoVXJsIjoiaHR0cHM6Ly9hdXRoLnZlbm1vLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhbmFseXRpY3MiOnsidXJsIjoiaHR0cHM6Ly9jbGllbnQtYW5hbHl0aWNzLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20vM3cydHR2d2QyNDY1NDhoZCJ9LCJ0aHJlZURTZWN1cmVFbmFibGVkIjpmYWxzZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiYmFyY28uMDMtZmFjaWxpdGF0b3JAZ21haWwuY29tIiwiY2xpZW50SWQiOiJBV3VZdnFnMGtaN2Y5S0V4TVpqZU53T3RjQV8yZVhnOWpMZy1QSnBGX0pnYk44M0YyVml5aEdnV2JCNDg4RGU3MFpucGRBZEI2TUNqekNqSyIsInByaXZhY3lVcmwiOiJodHRwczovL2V4YW1wbGUuY29tIiwidXNlckFncmVlbWVudFVybCI6Imh0dHBzOi8vZXhhbXBsZS5jb20iLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwiZW52aXJvbm1lbnQiOiJvZmZsaW5lIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoibWFzdGVyY2xpZW50MyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJVU0QiLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifSwiY29pbmJhc2VFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRJZCI6IjN3MnR0dndkMjQ2NTQ4aGQiLCJ2ZW5tbyI6Im9mZiJ9';
 
-            paypal.request.get('${ctx.baseURL}/api/braintree/client-token/').then(function(res) {
-                braintree.client.create({ authorization: res.clientToken }, function (err, client) {
-                    braintree.paypalCheckout.create({ client: client }, function (err, paypalClient) {
+            // Render the PayPal button
 
-                        // Render the PayPal button
+            paypal.Button.render({
 
-                        paypal.Button.render({
+                // Pass in the Braintree SDK
 
-                            // Set your environment
+                braintree: braintree,
 
-                            env: '${ctx.env}', // sandbox | production
+                // Pass in your Braintree authorization key
 
-                            // Wait for the PayPal button to be clicked
+                client: {
+                    sandbox: BRAINTREE_SANDBOX_AUTH,
+                    production: '<insert production auth key>'
+                },
 
-                            payment: function() {
+                // Set your environment
 
-                                // Call Braintree to create the payment
+                env: '${ctx.env}', // sandbox | production
 
-                                return paypalClient.createPayment({
-                                    flow:     'checkout',
-                                    amount:   '0.01',
-                                    currency: 'USD',
-                                    intent:   'sale'
-                                });
-                            },
+                // Wait for the PayPal button to be clicked
 
-                            // Wait for the payment to be authorized by the customer
+                payment: function(actions) {
 
-                            onAuthorize: function(data, actions) {
+                    // Call Braintree to create the payment
 
-                                // Call Braintree to tokenize the payment
-
-                                return paypalClient.tokenizePayment(data).then(function(result) {
-
-                                    // Call your server to finalize the payment
-
-                                    return paypal.request.post('${ctx.baseURL}/api/braintree/pay/', {
-                                        nonce: result.nonce,
-                                        amount: transaction.amount,
-                                        currency: transaction.currency
-
-                                    });
-
-                                }).then(function (res) {
-
-                                    window.alert('Payment Complete!');
-                                });
-                            }
-
-                        }, '#paypal-button-container');
-
+                    return actions.braintree.create({
+                        flow:     'checkout',
+                        amount:   '0.01',
+                        currency: 'USD',
+                        intent:   'sale'
                     });
-                });
-            });
+                },
+
+                // Wait for the payment to be authorized by the customer
+
+                onAuthorize: function(data, actions) {
+
+                    // Call your server with data.nonce to finalize the payment
+
+                    window.alert('Payment Complete! Braintree nonce: ' + data.nonce);
+                }
+
+            }, '#paypal-button-container');
 
         </script>
     `

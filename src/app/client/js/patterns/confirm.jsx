@@ -3,21 +3,14 @@ import React from 'react';
 
 export let confirm = {
 
+    slug: 'confirm',
+
     name: `Confirmation`,
 
     fullName: `Express Checkout with Confirmation`,
 
     intro: (
         <p>Create a PayPal button and accept payments, with a confirmation page.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, a button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>When the button is clicked, <span className="pre">payment()</span> is called. This function then calls <span className="pre">paypal.rest.payment.create()</span>, which invokes the PayPal REST API directly to create the payment.</p>
-            <p>When the payment is authorized by the customer, <span className="pre">onAuthorize()</span> is called. At this point we call <span className="pre">actions.payment.get()</span> to retrieve the customer details, and show them on the page. We render a button and allow the customer to confirm the payment.</p>
-            <p>When the customer clicks on the button, we then call <span className="pre">actions.payment.execute()</span>, which invokes the PayPal REST API directly to execute the payment.</p>
-        </div>
     ),
 
     code: (ctx) => `
@@ -57,11 +50,11 @@ export let confirm = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function() {
+                payment: function(actions) {
 
                     // Make a client-side call to the REST api to create the payment
 
-                    return paypal.rest.payment.create(this.props.env, this.props.client, {
+                    return actions.payment.create({
                         transactions: [
                             {
                                 amount: { total: '0.01', currency: 'USD' }

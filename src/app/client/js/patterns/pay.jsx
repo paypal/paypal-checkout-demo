@@ -1,46 +1,24 @@
 
 import React from 'react';
 
-export let validation = {
+export let pay = {
 
-    slug: 'validation',
+    slug: 'pay',
 
-    name: `Validation`,
+    name: `Pay Button`,
 
-    fullName: `Express Checkout with validation`,
+    fullName: `Express Checkout Custom Credit Button`,
 
     intro: (
-        <p>Create a PayPal button and only trigger checkout when the form validates</p>
+        <p>Create a <b>Pay with PayPal</b> button.</p>
     ),
 
     code: (ctx) => `
         <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
-        <p id="msg" class="hidden error">Please check the checkbox</p>
-
-        <p>
-            <label><input id="check" type="checkbox"> Check here to continue</label>
-        </p>
-
         <div id="paypal-button-container"></div>
 
         <script>
-
-            function isValid() {
-                return document.querySelector('#check').checked;
-            }
-
-            function onChangeCheckbox(handler) {
-                document.querySelector('#check').addEventListener('change', handler);
-            }
-
-            function toggleValidationMessage() {
-                document.querySelector('#msg').style.display = (isValid() ? 'none' : 'block');
-            }
-
-            function toggleButton(actions) {
-                return isValid() ? actions.enable() : actions.disable();
-            }
 
             // Render the PayPal button
 
@@ -50,6 +28,12 @@ export let validation = {
 
                 env: '${ctx.env}', // sandbox | production
 
+                // Specify the style of the button
+
+                style: {
+                    label: 'pay'
+                },
+
                 // PayPal Client IDs - replace with your own
                 // Create a PayPal app: https://developer.paypal.com/developer/applications/create
 
@@ -58,24 +42,9 @@ export let validation = {
                     production: '<insert production client id>'
                 },
 
-                validate: function(actions) {
-                    toggleButton(actions);
-
-                    onChangeCheckbox(function() {
-                        toggleButton(actions);
-                    });
-                },
-
-                onClick: function() {
-                    toggleValidationMessage();
-                },
-
                 // Wait for the PayPal button to be clicked
 
                 payment: function(actions) {
-
-                    // Make a client-side call to the REST api to create the payment
-
                     return actions.payment.create({
                         transactions: [
                             {
@@ -88,9 +57,6 @@ export let validation = {
                 // Wait for the payment to be authorized by the customer
 
                 onAuthorize: function(data, actions) {
-
-                    // Execute the payment
-
                     return actions.payment.execute().then(function() {
                         window.alert('Payment Complete!');
                     });

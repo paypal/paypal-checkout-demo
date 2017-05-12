@@ -3,19 +3,14 @@ import React from 'react';
 
 export let credit = {
 
+    slug: 'credit',
+
     name: `Credit Button`,
 
     fullName: `Express Checkout Custom Credit Button`,
 
     intro: (
-        <p>Create a PayPal credit button and initialize the credit flow.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, a button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>Along with the other required options, we pass a <span className="pre">style</span> block with various options to customize the button. In order to render the credit button, set the <span className="pre">label</span> parameter as credit. Various options for <span className="pre">size</span> and <span className="pre">shape</span> of the button can be specified to customize the button.</p>
-        </div>
+        <p>Create a <b>PayPal CREDIT</b> button and initialize the credit flow.</p>
     ),
 
     code: (ctx) => `
@@ -51,19 +46,19 @@ export let credit = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function() {
+                payment: function(actions) {
 
-                    return paypal.rest.payment.create(this.props.env, this.props.client, {
+                    return actions.payment.create({
                         transactions: [
                             {
                                 amount: { total: '0.01', currency: 'USD' }
                             }
                         ],
-                        
+
                         payer: {
                             payment_method: 'paypal',
                             external_selected_funding_instrument_type: 'CREDIT'
-                        }               
+                        }
                     });
                 },
 

@@ -46,24 +46,24 @@ span.pre {
 
 .app header {
     margin: 0;
-    background: linear-gradient(#4289C2, #316E9F);
-    border-bottom: 2px solid #285A82;
-    height: 80px;
+    background: white;
+    border-bottom: 1px solid #ccc;
+    height: 60px;
 }
 
 .app header h1 {
     font-weight: normal;
-    padding: 20px 40px;
+    padding: 10px 40px;
     margin: 0;
-    color: #fff;
-    font-size: 25px;
+    color: #999;
+    font-size: 20px;
     letter-spacing: 1px;
     display: inline-block;
     white-space: nowrap;
 }
 
 .app header h1 img {
-    height: 40px;
+    height: 20px;
     vertical-align: middle;
     margin-right: 10px;
 }
@@ -71,18 +71,18 @@ span.pre {
 .app header h1 span {
     line-height: 40px;
     vertical-align: middle;
-    text-shadow: 1px 1px #444;
+    margin-left: 20px;
 }
 
 .app header .toggle-component {
     float: right;
     margin-right: 20px;
-    color: #eee;
+    color: #666;
 }
 
 .app header .toggle-component * {
     vertical-align: middle;
-    line-height: 80px;
+    line-height: 60px;
     margin: 0 3px;
 }
 
@@ -90,7 +90,7 @@ span.pre {
     display: inline-block;
     height: 30px;
     width: 55px;
-    border: 1px solid #eee;
+    border: 1px solid #aaa;
     border-radius: 15px;
     position: relative;
     cursor: pointer;
@@ -100,7 +100,7 @@ span.pre {
     display: inline-block;
     height: 24px;
     width: 24px;
-    background: #eee;
+    background: #ccc;
     border-radius: 13px;
     position: absolute;
     top: 2px;
@@ -129,18 +129,28 @@ span.pre {
 .app .main {
     box-sizing: border-box;
     display: table;
-    min-height: calc(100% - 80px);
-    height: calc(100% - 80px);
+    min-height: calc(100% - 60px);
+    height: calc(100% - 60px);
+    width: 100%;
 }
 
 .app .main .column-left {
     width: 15%;
-    background-color: #222;
+    background-color: #f5f7fa;
+    border-right: 1px solid #ccc;
     display: table-cell;
     box-sizing: border-box;
     vertical-align: top;
     min-width: 220px;
     height: 100%;
+}
+
+.app .main .column-left h3 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: 40px;
+    margin-left: 20px;
 }
 
 .app .main .column-left ul {
@@ -151,15 +161,14 @@ span.pre {
 }
 
 .app .main .column-left ul li {
-    color: #ddd;
-    font-size: 20px;
+    color: #333;
+    font-size: 15px;
     padding: 20px 20px;
-    border-bottom: 1px solid #444;
     cursor: pointer;
 }
 
 .app .main .column-left ul li:hover {
-    background-color: #555;
+    background-color: #999;
     color: white;
 }
 
@@ -175,7 +184,7 @@ span.pre {
 
 .bullet {
     display: inline-block;
-    background-color: #eee;
+    background-color: #ccc;
     width: 15px;
     height: 15px;
     border-radius: 4px;
@@ -184,7 +193,7 @@ span.pre {
 }
 
 a.active .bullet {
-    background-color: lightgreen;
+    background-color: #666;
 }
 
 .app .main .column-middle {
@@ -199,14 +208,27 @@ a.active .bullet {
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
     position: relative;
-    box-shadow: 0px 0px 10px #fff;
+}
+
+.app .main .column-middle .intro {
+    padding: 20px 40px;
+}
+
+.app .main .column-middle .intro h3 {
+    color: #333;
+}
+
+.app .main .column-middle .intro p {
+    color: #666;
 }
 
 .app .main .column-middle .demo {
-    background-color: rgba(255, 255, 255, 0.7);
     box-sizing: border-box;
-    padding: 20px 40px;
-    height: 100%;
+    padding: 0px 40px;
+}
+
+.app .main .column-middle .demo .steps {
+
 }
 
 .app .main .column-middle .demo h3 {
@@ -289,4 +311,42 @@ a.active .bullet {
 .app .main .column-middle .demo .code.mark #card-button-container {
     margin-top: 20px;
     min-height: 52px;
+}
+
+
+
+.demo .step {
+    font-size: 18px;
+    padding: 10px;
+    margin: 40px 60px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    color: #444;
+    border-radius: 10px;
+    user-select: none;
+    position: relative;
+}
+
+.demo .step::after {
+    width: 0;
+    height: 0;
+    display: block;
+    border: 10px solid transparent;
+    position: absolute;
+    content: '';
+}
+
+.demo .step.right::after {
+    border-left-color: #aaa;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.demo .step.bottom::after {
+    border-top-color: #aaa;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
 }

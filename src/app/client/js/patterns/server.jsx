@@ -3,20 +3,14 @@ import React from 'react';
 
 export let server = {
 
-    name: `Server Side`,
+    slug: 'server',
 
-    fullName: `Server Side Express Checkout`,
+    name: `Server Side REST`,
+
+    fullName: `Server Side Express Checkout using REST`,
 
     intro: (
-        <p>Create a PayPal button and accept payments using a server-side integration.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, a button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>When the button is clicked, <span className="pre">payment()</span> is called. This function then uses <span className="pre">paypal.request.post()</span> to call the merchant server, which invokes the PayPal REST API to create the payment.</p>
-            <p>When the payment is authorized by the customer, <span className="pre">onAuthorize()</span> is called. This function then uses <span className="pre">paypal.request.post()</span> to call the merchant server, which invokes the PayPal REST API to execute the payment.</p>
-        </div>
+        <p>Create a <b>PayPal Checkout</b> button and accept payments, by calling the PayPal REST API from your server.</p>
     ),
 
     code: (ctx) => `
@@ -40,7 +34,9 @@ export let server = {
 
                     // Make a call to the merchant server to set up the payment
 
-                    return paypal.request.post('${ctx.baseURL}/api/paypal/payment/create/').then(function(res) {
+                    var CREATE_URL = '${ctx.baseURL}/api/paypal/payment/create/';
+
+                    return paypal.request.post(CREATE_URL).then(function(res) {
                         return res.payToken;
                     });
                 },
@@ -51,10 +47,14 @@ export let server = {
 
                     // Make a call to the merchant server to execute the payment
 
-                    return paypal.request.post('${ctx.baseURL}/api/paypal/payment/execute/', {
+                    var EXECUTE_URL = '${ctx.baseURL}/api/paypal/payment/execute/';
+
+                    var data = {
                         payToken: data.paymentID,
                         payerId: data.payerID
-                    }).then(function (res) {
+                    };
+
+                    return paypal.request.post(EXECUTE_URL, data).then(function (res) {
 
                         window.alert('Payment Complete!');
                     });

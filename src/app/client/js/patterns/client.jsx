@@ -3,20 +3,14 @@ import React from 'react';
 
 export let client = {
 
-    name: `Client Side`,
+    slug: 'client',
 
-    fullName: `Client Side Express Checkout`,
+    name: `Client Side REST`,
+
+    fullName: `Client Side Express Checkout using REST`,
 
     intro: (
-        <p>Create a PayPal button and accept payments using a purely client-side integration.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, a button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-            <p>When the button is clicked, <span className="pre">payment()</span> is called. This function then calls <span className="pre">paypal.rest.payment.create()</span>, which invokes the PayPal REST API directly to create the payment.</p>
-            <p>When the payment is authorized by the customer, <span className="pre">onAuthorize()</span> is called. This function then calls <span className="pre">actions.payment.execute()</span>, which invokes the PayPal REST API directly to execute the payment.</p>
-        </div>
+        <p>Create a <b>PayPal Checkout</b> button and accept payments from the client-side using the PayPal REST API, with no server required.</p>
     ),
 
     code: (ctx) => `
@@ -48,11 +42,11 @@ export let client = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function() {
+                payment: function(actions) {
 
                     // Make a client-side call to the REST api to create the payment
 
-                    return paypal.rest.payment.create(this.props.env, this.props.client, {
+                    return actions.payment.create({
                         transactions: [
                             {
                                 amount: { total: '0.01', currency: 'USD' }

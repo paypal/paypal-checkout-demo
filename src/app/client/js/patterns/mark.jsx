@@ -3,20 +3,14 @@ import React from 'react';
 
 export let mark = {
 
+    slug: 'mark',
+
     name: `Mark`,
 
     fullName: `Express Checkout Mark Integration`,
 
     intro: (
-        <p>Create a PayPal button and accept payments using a mark integration.</p>
-    ),
-
-    description: (
-        <div>
-            <p>First, we create html <span className="pre">radio</span> fields with images for our different marks, and containers for the different buttons. We show the PayPal button container by default and hide the other.</p>
-            <p>Then, we listen for changes on the radio fields in javascript, and based on <span className="pre">event.target.value</span>, we show the appropriate button</p>
-            <p>Then, a PayPal button is created using <span className="pre">paypal.Button.render()</span>, and rendered to the <span className="pre">#paypal-button-container</span> element.</p>
-        </div>
+        <p>Create a <b>PayPal</b> button and accept payments using a mark integration.</p>
     ),
 
     code: (ctx) => `
@@ -89,8 +83,8 @@ export let mark = {
                     production: '<insert production client id>'
                 },
 
-                payment: function() {
-                    return paypal.rest.payment.create(this.props.env, this.props.client, {
+                payment: function(actions) {
+                    return actions.payment.create({
                         transactions: [
                             {
                                 amount: { total: '0.01', currency: 'USD' }

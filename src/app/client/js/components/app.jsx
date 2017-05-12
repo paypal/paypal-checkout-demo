@@ -6,7 +6,17 @@ import { Header } from './header';
 import { Editor } from './editor';
 import { Code } from './code';
 
-import * as patterns from '../patterns';
+import { patterns } from '../patterns';
+
+function nameToPattern(name) {
+    for (let group of patterns) {
+        for (let pattern of group.patterns) {
+            if (pattern.slug === name) {
+                return pattern;
+            }
+        }
+    }
+}
 
 export let App = React.createClass({
 
@@ -46,7 +56,7 @@ export let App = React.createClass({
     render() {
 
         let patternName = this.props.params.pattern || 'client';
-        let activePattern = patterns[patternName];
+        let activePattern = nameToPattern(patternName);
 
         let env = this.state.env;
         let baseURL = document.body.getAttribute('data-base-url');
@@ -57,43 +67,58 @@ export let App = React.createClass({
 
                 <div className="main">
                     <div className="column-left">
-                        <ul>
-                            {
-                                Object.keys(patterns).map(pattern =>
-                                    <Link to={`/pattern/${pattern}`} key={pattern} activeClassName="active">
-                                        <li>
-                                            <span className="bullet"></span>
-                                            <span>{ patterns[pattern].name }</span>
-                                        </li>
-                                    </Link>
-                                )
-                            }
-                        </ul>
+                        {
+                            patterns.map(group =>
+                                <div>
+                                <h3>{group.name}</h3>
+                                    <ul>
+                                        {
+                                            group.patterns.map(pattern =>
+                                                <Link to={`/pattern/${pattern.slug}`} key={pattern.slug} activeClassName="active">
+                                                    <li>
+                                                        <span className="bullet"></span>
+                                                        <span>{ pattern.name }</span>
+                                                    </li>
+                                                </Link>
+                                            )
+                                        }
+                                    </ul>
+                                </div>
+                            )
+                        }
                     </div>
 
                     <div className="column-middle">
-                        <div className="demo">
+
+                        <div className="intro">
                             <h3>{activePattern.fullName}</h3>
-                            {activePattern.intro}
-                            <hr />
+                            <p>{activePattern.intro}</p>
+                        </div>
 
-                            { this.state.errors.length
-                                ? <div className="errors">
-                                    {
-                                        this.state.errors.map(err =>
-                                            <p key={err}>{err}</p>
-                                        )
-                                    }
-                                </div>
+                        <div className="demo">
+                            <div className="steps">
 
-                                : <Code
-                                    pattern={patternName}
-                                    code={this.state.code}
-                                    onError={ err => this.onCodeError(err) } />
-                            }
+                                <div className="step right">1. Edit the code</div>
 
-                            <hr />
-                            {activePattern.description}
+                                <div className="step bottom">2. Try the button</div>
+
+                                { this.state.errors.length
+                                    ? <div className="errors">
+                                        {
+                                            this.state.errors.map(err =>
+                                                <p key={err}>{err}</p>
+                                            )
+                                        }
+                                    </div>
+
+                                    : <Code
+                                        pattern={patternName}
+                                        code={this.state.code}
+                                        onError={ err => this.onCodeError(err) } />
+                                }
+
+                                <div className="step right">3. Copy code to your site!</div>
+                            </div>
                         </div>
                     </div>
 

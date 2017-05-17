@@ -362,7 +362,8 @@ a.active .bullet {
     }
 
     .app .main {
-
+        display:table;
+        height: 100%;
     }
 
     .app .main .column-left {
@@ -372,10 +373,17 @@ a.active .bullet {
     .app .main .column-middle {
         min-height: 0px;
         height: auto;
+        display: table-row;
+    }
+
+    .app .main .column-middle .errors {
+        max-height: 450px;
+        overflow: scroll;
     }
 
     .app .main .column-right {
         height: 100%;
+        display: table-row;
     }
 
     .app .main .column-middle .intro {
@@ -386,9 +394,17 @@ a.active .bullet {
         display: none;
     }
 
+    .app .main .column-right {
+        height: 100%;
+        min-height: 600px;
+    }
+
+    .app .main .column-right .editor {
+        height: 100%;
+    }
+
     .app .main .column-middle, .app .main .column-right {
         width: 100%;
-        display: block;
         min-width: 100%;
     }
 }

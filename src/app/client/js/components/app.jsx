@@ -38,7 +38,7 @@ export class App extends React.Component {
         }
 
         paypal.onPossiblyUnhandledException(err => {
-            // this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
+            this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
         });
     }
 

@@ -12931,12 +12931,14 @@ var App = exports.App = function (_React$Component) {
     };
 
     App.prototype.componentWillMount = function componentWillMount() {
+        var _this2 = this;
+
         if (window.location.hash === '#/') {
             window.location.hash = '#/pattern/client';
         }
 
         paypal.onPossiblyUnhandledException(function (err) {
-            // this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
+            _this2.setState({ errors: _this2.state.errors.concat(err.stack || err.toString()) });
         });
     };
 
@@ -12953,7 +12955,7 @@ var App = exports.App = function (_React$Component) {
     };
 
     App.prototype.render = function render() {
-        var _this2 = this;
+        var _this3 = this;
 
         var patternName = this.props.params.pattern || 'client';
         var activePattern = nameToPattern(patternName);
@@ -12965,7 +12967,7 @@ var App = exports.App = function (_React$Component) {
             'div',
             null,
             _react2.default.createElement(_header.Header, { onChangeEnv: function onChangeEnv(env) {
-                    return _this2.onChangeEnv(env);
+                    return _this3.onChangeEnv(env);
                 } }),
             _react2.default.createElement(
                 'div',
@@ -13052,7 +13054,7 @@ var App = exports.App = function (_React$Component) {
                                 pattern: patternName,
                                 code: this.state.code,
                                 onError: function onError(err) {
-                                    return _this2.onCodeError(err);
+                                    return _this3.onCodeError(err);
                                 } }),
                             _react2.default.createElement(
                                 'div',
@@ -13066,7 +13068,7 @@ var App = exports.App = function (_React$Component) {
                     'div',
                     { className: 'column-right' },
                     _react2.default.createElement(_editor.Editor, { code: activePattern.code({ env: env, baseURL: baseURL }), onChange: function onChange(val) {
-                            return _this2.onChangeCode(val);
+                            return _this3.onChangeCode(val);
                         } })
                 )
             )

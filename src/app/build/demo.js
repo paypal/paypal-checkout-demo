@@ -437,6 +437,15 @@ module.exports = reactProdInvariant;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(30);
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /*
 object-assign
 (c) Sindre Sorhus
@@ -527,15 +536,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(30);
 
 /***/ }),
 /* 6 */
@@ -1303,7 +1303,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(83);
 var PooledClass = __webpack_require__(21);
@@ -1596,7 +1596,7 @@ module.exports = ReactCurrentOwner;
 
 
 
-var React = __webpack_require__(5);
+var React = __webpack_require__(4);
 var factory = __webpack_require__(116);
 
 // Hack to grab NoopUpdateQueue from isomorphic React
@@ -1621,7 +1621,7 @@ module.exports = factory(React.Component, React.isValidElement, ReactNoopUpdateQ
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(21);
 
@@ -2212,7 +2212,7 @@ exports.createRouteFromReactElement = createRouteFromReactElement;
 exports.createRoutesFromReactChildren = createRoutesFromReactChildren;
 exports.createRoutes = createRoutes;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2502,7 +2502,7 @@ module.exports = PooledClass;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactCurrentOwner = __webpack_require__(14);
 
@@ -3624,7 +3624,7 @@ function _resetWarned() {
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactChildren = __webpack_require__(229);
 var ReactComponent = __webpack_require__(69);
@@ -4652,7 +4652,7 @@ module.exports = EventPluginRegistry;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var EventPluginRegistry = __webpack_require__(38);
 var ReactEventEmitterMixin = __webpack_require__(173);
@@ -7328,7 +7328,7 @@ module.exports = shouldUpdateReactComponent;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var emptyFunction = __webpack_require__(10);
 var warning = __webpack_require__(2);
@@ -7964,7 +7964,7 @@ var _invariant = __webpack_require__(8);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -10069,7 +10069,7 @@ module.exports = ReactDOMComponentFlags;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var LinkedValueUtils = __webpack_require__(54);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -11360,7 +11360,7 @@ module.exports = getTextContentAccessor;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var ReactCompositeComponent = __webpack_require__(153);
 var ReactEmptyComponent = __webpack_require__(87);
@@ -11783,7 +11783,7 @@ module.exports = traverseAllChildren;
 
 exports.__esModule = true;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -12853,7 +12853,7 @@ module.exports = getIteratorFn;
 exports.__esModule = true;
 exports.App = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -12865,7 +12865,11 @@ var _editor = __webpack_require__(242);
 
 var _code = __webpack_require__(241);
 
-var _patterns = __webpack_require__(252);
+var _patterns = __webpack_require__(253);
+
+var patterns = _interopRequireWildcard(_patterns);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12875,41 +12879,16 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function nameToPattern(name) {
-    for (var _iterator = _patterns.patterns, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref;
-
-        if (_isArray) {
-            if (_i >= _iterator.length) break;
-            _ref = _iterator[_i++];
-        } else {
-            _i = _iterator.next();
-            if (_i.done) break;
-            _ref = _i.value;
-        }
-
-        var group = _ref;
-
-        for (var _iterator2 = group.patterns, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-            var _ref2;
-
-            if (_isArray2) {
-                if (_i2 >= _iterator2.length) break;
-                _ref2 = _iterator2[_i2++];
-            } else {
-                _i2 = _iterator2.next();
-                if (_i2.done) break;
-                _ref2 = _i2.value;
-            }
-
-            var pattern = _ref2;
-
-            if (pattern.slug === name) {
-                return pattern;
-            }
-        }
-    }
-}
+var layout = [{
+    name: 'Integration Types',
+    patterns: [patterns.client, patterns.server, patterns.braintree]
+}, {
+    name: 'Button Styles',
+    patterns: [patterns.styles, patterns.credit, patterns.pay]
+}, {
+    name: 'Checkout Customizations',
+    patterns: [patterns.mark, patterns.confirm, patterns.validation]
+}];
 
 var App = exports.App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -12958,7 +12937,11 @@ var App = exports.App = function (_React$Component) {
         var _this3 = this;
 
         var patternName = this.props.params.pattern || 'client';
-        var activePattern = nameToPattern(patternName);
+        var activePattern = patterns[patternName];
+
+        if (!activePattern) {
+            activePattern = patterns.client;
+        }
 
         var env = this.state.env;
         var baseURL = document.body.getAttribute('data-base-url');
@@ -12975,7 +12958,7 @@ var App = exports.App = function (_React$Component) {
                 _react2.default.createElement(
                     'div',
                     { className: 'column-left' },
-                    _patterns.patterns.map(function (group, i) {
+                    layout.map(function (group, i) {
                         return _react2.default.createElement(
                             'div',
                             { key: i },
@@ -12988,7 +12971,7 @@ var App = exports.App = function (_React$Component) {
                                 'ul',
                                 null,
                                 group.patterns.map(function (pattern) {
-                                    return _react2.default.createElement(
+                                    return !pattern.nosidebar && _react2.default.createElement(
                                         _reactRouter.Link,
                                         { to: '/pattern/' + pattern.slug, key: pattern.slug, activeClassName: 'active' },
                                         _react2.default.createElement(
@@ -13051,6 +13034,7 @@ var App = exports.App = function (_React$Component) {
                                     );
                                 })
                             ) : _react2.default.createElement(_code.Code, {
+                                setup: activePattern.setup,
                                 pattern: patternName,
                                 code: this.state.code,
                                 onError: function onError(err) {
@@ -13097,7 +13081,7 @@ var App = exports.App = function (_React$Component) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var emptyObject = __webpack_require__(24);
 var _invariant = __webpack_require__(1);
@@ -15440,7 +15424,7 @@ module.exports = function () {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var strictUriEncode = __webpack_require__(240);
-var objectAssign = __webpack_require__(4);
+var objectAssign = __webpack_require__(5);
 
 function encoderForArrayFormat(opts) {
 	switch (opts.arrayFormat) {
@@ -16898,7 +16882,7 @@ module.exports = EnterLeaveEventPlugin;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(21);
 
@@ -17437,7 +17421,7 @@ module.exports = ReactComponentBrowserEnvironment;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var React = __webpack_require__(30);
 var ReactComponentEnvironment = __webpack_require__(55);
@@ -18466,7 +18450,7 @@ module.exports = ReactDOM;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var AutoFocusUtils = __webpack_require__(142);
 var CSSPropertyOperations = __webpack_require__(144);
@@ -19509,7 +19493,7 @@ module.exports = ReactDOMContainerInfo;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var DOMLazyTree = __webpack_require__(26);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -19638,7 +19622,7 @@ module.exports = ReactDOMIDOperations;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var DOMPropertyOperations = __webpack_require__(84);
 var LinkedValueUtils = __webpack_require__(54);
@@ -20076,7 +20060,7 @@ module.exports = ReactDOMNullInputValuePropHook;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var React = __webpack_require__(30);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -20423,7 +20407,7 @@ module.exports = ReactDOMSelection;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var DOMChildrenOperations = __webpack_require__(50);
 var DOMLazyTree = __webpack_require__(26);
@@ -20593,7 +20577,7 @@ module.exports = ReactDOMTextComponent;
 
 
 var _prodInvariant = __webpack_require__(3),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var LinkedValueUtils = __webpack_require__(54);
 var ReactDOMComponentTree = __webpack_require__(6);
@@ -21385,7 +21369,7 @@ module.exports = ReactDebugTool;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactUpdates = __webpack_require__(13);
 var Transaction = __webpack_require__(41);
@@ -21612,7 +21596,7 @@ module.exports = ReactEventEmitterMixin;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var EventListener = __webpack_require__(73);
 var ExecutionEnvironment = __webpack_require__(7);
@@ -22535,7 +22519,7 @@ module.exports = ReactPropTypeLocationNames;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var CallbackQueue = __webpack_require__(83);
 var PooledClass = __webpack_require__(21);
@@ -22815,7 +22799,7 @@ module.exports = ReactRef;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var PooledClass = __webpack_require__(21);
 var Transaction = __webpack_require__(41);
@@ -25066,7 +25050,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 exports.__esModule = true;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25307,7 +25291,7 @@ var _invariant = __webpack_require__(8);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -25667,7 +25651,7 @@ function getTransitionUtils() {
 
 exports.__esModule = true;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26461,7 +26445,7 @@ var _invariant = __webpack_require__(8);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -26937,7 +26921,7 @@ module.exports = ReactChildren;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var _prodInvariant = __webpack_require__(23),
-    _assign = __webpack_require__(4);
+    _assign = __webpack_require__(5);
 
 var ReactComponent = __webpack_require__(69);
 var ReactElement = __webpack_require__(22);
@@ -27886,7 +27870,7 @@ module.exports = ReactPropTypesSecret;
 
 
 
-var _assign = __webpack_require__(4);
+var _assign = __webpack_require__(5);
 
 var ReactComponent = __webpack_require__(69);
 var ReactNoopUpdateQueue = __webpack_require__(70);
@@ -28307,7 +28291,7 @@ module.exports = function (str) {
 exports.__esModule = true;
 exports.Code = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28340,6 +28324,10 @@ var Code = exports.Code = function (_React$Component) {
 
     Code.prototype.runScripts = function runScripts() {
         var _this2 = this;
+
+        if (this.props.setup) {
+            this.props.setup();
+        }
 
         Array.prototype.slice.call((0, _reactDom.findDOMNode)(this).querySelectorAll('script')).forEach(function (script) {
             try {
@@ -28378,7 +28366,7 @@ var Code = exports.Code = function (_React$Component) {
 exports.__esModule = true;
 exports.Editor = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28454,7 +28442,7 @@ var Editor = exports.Editor = function (_React$Component) {
 exports.__esModule = true;
 exports.Header = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28508,7 +28496,7 @@ var Header = exports.Header = function (_React$Component) {
 exports.__esModule = true;
 exports.Toggle = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28588,7 +28576,7 @@ var Toggle = exports.Toggle = function (_React$Component) {
 "use strict";
 
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28720,7 +28708,7 @@ function debounce(method) {
 exports.__esModule = true;
 exports.braintree = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28741,7 +28729,7 @@ var braintree = exports.braintree = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n        <script src="https://js.braintreegateway.com/web/3.11.0/js/client.min.js"></script>\n        <script src="https://js.braintreegateway.com/web/3.11.0/js/paypal-checkout.min.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            var BRAINTREE_SANDBOX_AUTH = \'eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJjMDFhZmRkM2Y1OTJmNWVhNTNlMzE5MWQwYmIyMWVjYjM5NzNlZGM1MzkwNDZiMjJmNTA2ODEyNzIzZmRlMTJifGNsaWVudF9pZD1jbGllbnRfaWQkc2FuZGJveCQ0ZHByYmZjNnBoNTk1Y2NqXHUwMDI2Y3JlYXRlZF9hdD0yMDE3LTA0LTI2VDIzOjI2OjU5Ljg3OTA3ODYwNiswMDAwXHUwMDI2bWVyY2hhbnRfaWQ9M3cydHR2d2QyNDY1NDhoZCIsImNvbmZpZ1VybCI6Imh0dHBzOi8vYXBpLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy8zdzJ0dHZ3ZDI0NjU0OGhkL2NsaWVudF9hcGkvdjEvY29uZmlndXJhdGlvbiIsImNoYWxsZW5nZXMiOltdLCJlbnZpcm9ubWVudCI6InNhbmRib3giLCJjbGllbnRBcGlVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvM3cydHR2d2QyNDY1NDhoZC9jbGllbnRfYXBpIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhdXRoVXJsIjoiaHR0cHM6Ly9hdXRoLnZlbm1vLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhbmFseXRpY3MiOnsidXJsIjoiaHR0cHM6Ly9jbGllbnQtYW5hbHl0aWNzLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20vM3cydHR2d2QyNDY1NDhoZCJ9LCJ0aHJlZURTZWN1cmVFbmFibGVkIjpmYWxzZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiYmFyY28uMDMtZmFjaWxpdGF0b3JAZ21haWwuY29tIiwiY2xpZW50SWQiOiJBV3VZdnFnMGtaN2Y5S0V4TVpqZU53T3RjQV8yZVhnOWpMZy1QSnBGX0pnYk44M0YyVml5aEdnV2JCNDg4RGU3MFpucGRBZEI2TUNqekNqSyIsInByaXZhY3lVcmwiOiJodHRwczovL2V4YW1wbGUuY29tIiwidXNlckFncmVlbWVudFVybCI6Imh0dHBzOi8vZXhhbXBsZS5jb20iLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwiZW52aXJvbm1lbnQiOiJvZmZsaW5lIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoibWFzdGVyY2xpZW50MyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJVU0QiLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifSwiY29pbmJhc2VFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRJZCI6IjN3MnR0dndkMjQ2NTQ4aGQiLCJ2ZW5tbyI6Im9mZiJ9\';\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Pass in the Braintree SDK\n\n                braintree: braintree,\n\n                // Pass in your Braintree authorization key\n\n                client: {\n                    sandbox: BRAINTREE_SANDBOX_AUTH,\n                    production: \'<insert production auth key>\'\n                },\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n\n                    // Call Braintree to create the payment\n\n                    return actions.braintree.create({\n                        flow:     \'checkout\',\n                        amount:   \'0.01\',\n                        currency: \'USD\',\n                        intent:   \'sale\'\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Call your server with data.nonce to finalize the payment\n\n                    window.alert(\'Payment Complete! Braintree nonce: \' + data.nonce);\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n        <script src="https://js.braintreegateway.com/web/3.11.0/js/client.min.js"></script>\n        <script src="https://js.braintreegateway.com/web/3.11.0/js/paypal-checkout.min.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            var BRAINTREE_SANDBOX_AUTH = \'eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiJjMDFhZmRkM2Y1OTJmNWVhNTNlMzE5MWQwYmIyMWVjYjM5NzNlZGM1MzkwNDZiMjJmNTA2ODEyNzIzZmRlMTJifGNsaWVudF9pZD1jbGllbnRfaWQkc2FuZGJveCQ0ZHByYmZjNnBoNTk1Y2NqXHUwMDI2Y3JlYXRlZF9hdD0yMDE3LTA0LTI2VDIzOjI2OjU5Ljg3OTA3ODYwNiswMDAwXHUwMDI2bWVyY2hhbnRfaWQ9M3cydHR2d2QyNDY1NDhoZCIsImNvbmZpZ1VybCI6Imh0dHBzOi8vYXBpLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb206NDQzL21lcmNoYW50cy8zdzJ0dHZ3ZDI0NjU0OGhkL2NsaWVudF9hcGkvdjEvY29uZmlndXJhdGlvbiIsImNoYWxsZW5nZXMiOltdLCJlbnZpcm9ubWVudCI6InNhbmRib3giLCJjbGllbnRBcGlVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvM3cydHR2d2QyNDY1NDhoZC9jbGllbnRfYXBpIiwiYXNzZXRzVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhdXRoVXJsIjoiaHR0cHM6Ly9hdXRoLnZlbm1vLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhbmFseXRpY3MiOnsidXJsIjoiaHR0cHM6Ly9jbGllbnQtYW5hbHl0aWNzLnNhbmRib3guYnJhaW50cmVlZ2F0ZXdheS5jb20vM3cydHR2d2QyNDY1NDhoZCJ9LCJ0aHJlZURTZWN1cmVFbmFibGVkIjpmYWxzZSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiYmFyY28uMDMtZmFjaWxpdGF0b3JAZ21haWwuY29tIiwiY2xpZW50SWQiOiJBV3VZdnFnMGtaN2Y5S0V4TVpqZU53T3RjQV8yZVhnOWpMZy1QSnBGX0pnYk44M0YyVml5aEdnV2JCNDg4RGU3MFpucGRBZEI2TUNqekNqSyIsInByaXZhY3lVcmwiOiJodHRwczovL2V4YW1wbGUuY29tIiwidXNlckFncmVlbWVudFVybCI6Imh0dHBzOi8vZXhhbXBsZS5jb20iLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjpmYWxzZSwiZW52aXJvbm1lbnQiOiJvZmZsaW5lIiwidW52ZXR0ZWRNZXJjaGFudCI6ZmFsc2UsImJyYWludHJlZUNsaWVudElkIjoibWFzdGVyY2xpZW50MyIsImJpbGxpbmdBZ3JlZW1lbnRzRW5hYmxlZCI6dHJ1ZSwibWVyY2hhbnRBY2NvdW50SWQiOiJVU0QiLCJjdXJyZW5jeUlzb0NvZGUiOiJVU0QifSwiY29pbmJhc2VFbmFibGVkIjpmYWxzZSwibWVyY2hhbnRJZCI6IjN3MnR0dndkMjQ2NTQ4aGQiLCJ2ZW5tbyI6Im9mZiJ9\';\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Pass in the Braintree SDK\n\n                braintree: braintree,\n\n                // Pass in your Braintree authorization key\n\n                client: {\n                    sandbox: BRAINTREE_SANDBOX_AUTH,\n                    production: \'<insert production auth key>\'\n                },\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Call Braintree to create the payment\n\n                    return actions.braintree.create({\n                        flow:     \'checkout\',\n                        amount:   \'0.01\',\n                        currency: \'USD\',\n                        intent:   \'sale\'\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Call your server with data.nonce to finalize the payment\n\n                    window.alert(\'Payment Complete! Braintree nonce: \' + data.nonce);\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
@@ -28753,9 +28741,72 @@ var braintree = exports.braintree = {
 
 
 exports.__esModule = true;
+exports.button = undefined;
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var button = exports.button = {
+
+    slug: 'button',
+
+    name: 'Button',
+
+    fullName: 'PayPal Checkout Button',
+
+    nosidebar: true,
+
+    setup: function setup() {
+
+        var render = paypal.Button.render;
+
+        paypal.Button.render = function (options, container) {
+            options = options || {};
+
+            options.validate = function (actions) {
+                actions.disable();
+            };
+
+            return render.call(this, options, container);
+        };
+
+        setTimeout(function () {
+            paypal.Button.render = render;
+        }, 1);
+    },
+
+
+    intro: _react2.default.createElement(
+        'p',
+        null,
+        'Create a ',
+        _react2.default.createElement(
+            'b',
+            null,
+            'PayPal Checkout'
+        ),
+        ' button'
+    ),
+
+    code: function code(ctx) {
+        return '\n        <!DOCTYPE html>\n\n        <head>\n\n            <!-- Add meta header for IE Compatibility -->\n            <meta http-equiv="X-UA-Compatible" content="IE=edge" />\n\n            <!-- Include the checkout.js script -->\n            <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        </head>\n\n        <body>\n\n            <!-- Set up a container element for the button -->\n\n            <div id="paypal-button-container"></div>\n\n            <script>\n\n                // Render the PayPal button into #paypal-button-container\n\n                paypal.Button.render({\n\n                    env: \'' + ctx.env + '\', // sandbox | production\n\n                    payment: function(data, actions) {\n\n                        // payment() will be called when a customer clicks on the\n                        // PayPal button. We will set up a payment here.\n                    },\n\n                    onAuthorize: function(data, actions) {\n\n                        // onAuthorize() will be called when a customer authorizes a payment.\n                        // We will finalize the payment here.\n                    }\n\n                }, \'#paypal-button-container\');\n\n            </script>\n\n        </body>\n    ';
+    }
+};
+
+/***/ }),
+/* 250 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
 exports.client = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28782,12 +28833,12 @@ var client = exports.client = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Set to \'Pay Now\'\n\n                commit: true,\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Execute the payment\n\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Set to \'Pay Now\'\n\n                commit: true,\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Execute the payment\n\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28796,7 +28847,7 @@ var client = exports.client = {
 exports.__esModule = true;
 exports.confirm = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28817,12 +28868,12 @@ var confirm = exports.confirm = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <div id="confirm" class="hidden">\n            <div>Ship to:</div>\n            <div><span id="recipient"></span>, <span id="line1"></span>, <span id="city"></span></div>\n            <div><span id="state"></span>, <span id="zip"></span>, <span id="country"></span></div>\n\n            <button id="confirmButton">Complete Payment</button>\n        </div>\n\n        <div id="thanks" class="hidden">\n            Thanks, <span id="thanksname"></span>!\n        </div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Get the payment details\n\n                    return actions.payment.get().then(function(data) {\n\n                        // Display the payment details and a confirmation button\n\n                        var shipping = data.payer.payer_info.shipping_address;\n\n                        document.querySelector(\'#recipient\').innerText = shipping.recipient_name;\n                        document.querySelector(\'#line1\').innerText     = shipping.line1;\n                        document.querySelector(\'#city\').innerText      = shipping.city;\n                        document.querySelector(\'#state\').innerText     = shipping.state;\n                        document.querySelector(\'#zip\').innerText       = shipping.postal_code;\n                        document.querySelector(\'#country\').innerText   = shipping.country_code;\n\n                        document.querySelector(\'#paypal-button-container\').style.display = \'none\';\n                        document.querySelector(\'#confirm\').style.display = \'block\';\n\n                        // Listen for click on confirm button\n\n                        document.querySelector(\'#confirmButton\').addEventListener(\'click\', function() {\n\n                            // Disable the button and show a loading message\n\n                            document.querySelector(\'#confirm\').innerText = \'Loading...\';\n                            document.querySelector(\'#confirm\').disabled = true;\n\n                            // Execute the payment\n\n                            return actions.payment.execute().then(function() {\n\n                                // Show a thank-you note\n\n                                document.querySelector(\'#thanksname\').innerText = shipping.recipient_name;\n\n                                document.querySelector(\'#confirm\').style.display = \'none\';\n                                document.querySelector(\'#thanks\').style.display = \'block\';\n                            });\n                        });\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <div id="confirm" class="hidden">\n            <div>Ship to:</div>\n            <div><span id="recipient"></span>, <span id="line1"></span>, <span id="city"></span></div>\n            <div><span id="state"></span>, <span id="zip"></span>, <span id="country"></span></div>\n\n            <button id="confirmButton">Complete Payment</button>\n        </div>\n\n        <div id="thanks" class="hidden">\n            Thanks, <span id="thanksname"></span>!\n        </div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Get the payment details\n\n                    return actions.payment.get().then(function(data) {\n\n                        // Display the payment details and a confirmation button\n\n                        var shipping = data.payer.payer_info.shipping_address;\n\n                        document.querySelector(\'#recipient\').innerText = shipping.recipient_name;\n                        document.querySelector(\'#line1\').innerText     = shipping.line1;\n                        document.querySelector(\'#city\').innerText      = shipping.city;\n                        document.querySelector(\'#state\').innerText     = shipping.state;\n                        document.querySelector(\'#zip\').innerText       = shipping.postal_code;\n                        document.querySelector(\'#country\').innerText   = shipping.country_code;\n\n                        document.querySelector(\'#paypal-button-container\').style.display = \'none\';\n                        document.querySelector(\'#confirm\').style.display = \'block\';\n\n                        // Listen for click on confirm button\n\n                        document.querySelector(\'#confirmButton\').addEventListener(\'click\', function() {\n\n                            // Disable the button and show a loading message\n\n                            document.querySelector(\'#confirm\').innerText = \'Loading...\';\n                            document.querySelector(\'#confirm\').disabled = true;\n\n                            // Execute the payment\n\n                            return actions.payment.execute().then(function() {\n\n                                // Show a thank-you note\n\n                                document.querySelector(\'#thanksname\').innerText = shipping.recipient_name;\n\n                                document.querySelector(\'#confirm\').style.display = \'none\';\n                                document.querySelector(\'#thanks\').style.display = \'block\';\n                            });\n                        });\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28831,7 +28882,7 @@ var confirm = exports.confirm = {
 exports.__esModule = true;
 exports.credit = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28858,48 +28909,9 @@ var credit = exports.credit = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'credit\',\n                    size:  \'small\', // small | medium\n                    shape: \'rect\'   // pill | rect\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ],\n\n                        payer: {\n                            payment_method: \'paypal\',\n                            external_selected_funding_instrument_type: \'CREDIT\'\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'credit\',\n                    size:  \'small\', // small | medium\n                    shape: \'rect\'   // pill | rect\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ],\n\n                        payer: {\n                            payment_method: \'paypal\',\n                            external_selected_funding_instrument_type: \'CREDIT\'\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
-
-/***/ }),
-/* 252 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.patterns = undefined;
-
-var _client = __webpack_require__(249);
-
-var _server = __webpack_require__(255);
-
-var _braintree = __webpack_require__(248);
-
-var _styles = __webpack_require__(256);
-
-var _credit = __webpack_require__(251);
-
-var _pay = __webpack_require__(254);
-
-var _mark = __webpack_require__(253);
-
-var _confirm = __webpack_require__(250);
-
-var _validation = __webpack_require__(257);
-
-var patterns = exports.patterns = [{
-    name: 'Integration Types',
-    patterns: [_client.client, _server.server, _braintree.braintree]
-}, {
-    name: 'Button Styles',
-    patterns: [_styles.styles, _credit.credit, _pay.pay]
-}, {
-    name: 'Checkout Customizations',
-    patterns: [_mark.mark, _confirm.confirm, _validation.validation]
-}];
 
 /***/ }),
 /* 253 */
@@ -28909,9 +28921,138 @@ var patterns = exports.patterns = [{
 
 
 exports.__esModule = true;
+
+var _client = __webpack_require__(250);
+
+Object.keys(_client).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _client[key];
+    }
+  });
+});
+
+var _server = __webpack_require__(256);
+
+Object.keys(_server).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _server[key];
+    }
+  });
+});
+
+var _braintree = __webpack_require__(248);
+
+Object.keys(_braintree).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _braintree[key];
+    }
+  });
+});
+
+var _styles = __webpack_require__(257);
+
+Object.keys(_styles).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _styles[key];
+    }
+  });
+});
+
+var _credit = __webpack_require__(252);
+
+Object.keys(_credit).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _credit[key];
+    }
+  });
+});
+
+var _pay = __webpack_require__(255);
+
+Object.keys(_pay).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _pay[key];
+    }
+  });
+});
+
+var _mark = __webpack_require__(254);
+
+Object.keys(_mark).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _mark[key];
+    }
+  });
+});
+
+var _confirm = __webpack_require__(251);
+
+Object.keys(_confirm).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _confirm[key];
+    }
+  });
+});
+
+var _validation = __webpack_require__(258);
+
+Object.keys(_validation).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _validation[key];
+    }
+  });
+});
+
+var _button = __webpack_require__(249);
+
+Object.keys(_button).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _button[key];
+    }
+  });
+});
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
 exports.mark = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28938,12 +29079,12 @@ var mark = exports.mark = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <!-- Render the radio fields and button containers -->\n\n        <label>\n            <input type="radio" name="payment-option" value="paypal" checked>\n            <img src="' + ctx.baseURL + '/static/img/paypal-mark.jpg" alt="Pay with Paypal">\n        </label>\n\n        <label>\n            <input type="radio" name="payment-option" value="card">\n            <img src="' + ctx.baseURL + '/static/img/card-mark.png" alt="Accepting Visa, Mastercard, Discover and American Express">\n        </label>\n\n        <div id="paypal-button-container"></div>\n        <div id="card-button-container" class="hidden"><button>Continue</button></div>\n\n        <script>\n\n            // Helper functions\n\n            function getElements(el) {\n                return Array.prototype.slice.call(document.querySelectorAll(el));\n            }\n\n            function hideElement(el) {\n                document.body.querySelector(el).style.display = \'none\';\n            }\n\n            function showElement(el) {\n                document.body.querySelector(el).style.display = \'block\';\n            }\n\n            // Listen for changes to the radio fields\n\n            getElements(\'input[name=payment-option]\').forEach(function(el) {\n                el.addEventListener(\'change\', function(event) {\n\n                    // If PayPal is selected, show the PayPal button\n\n                    if (event.target.value === \'paypal\') {\n                        hideElement(\'#card-button-container\');\n                        showElement(\'#paypal-button-container\');\n                    }\n\n                    // If Card is selected, show the standard continue button\n\n                    if (event.target.value === \'card\') {\n                        showElement(\'#card-button-container\');\n                        hideElement(\'#paypal-button-container\');\n                    }\n                });\n            });\n\n            // Hide Non-PayPal button by default\n\n            hideElement(\'#card-button-container\');\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                env: \'' + ctx.env + '\',\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <!-- Render the radio fields and button containers -->\n\n        <label>\n            <input type="radio" name="payment-option" value="paypal" checked>\n            <img src="' + ctx.baseURL + '/static/img/paypal-mark.jpg" alt="Pay with Paypal">\n        </label>\n\n        <label>\n            <input type="radio" name="payment-option" value="card">\n            <img src="' + ctx.baseURL + '/static/img/card-mark.png" alt="Accepting Visa, Mastercard, Discover and American Express">\n        </label>\n\n        <div id="paypal-button-container"></div>\n        <div id="card-button-container" class="hidden"><button>Continue</button></div>\n\n        <script>\n\n            // Helper functions\n\n            function getElements(el) {\n                return Array.prototype.slice.call(document.querySelectorAll(el));\n            }\n\n            function hideElement(el) {\n                document.body.querySelector(el).style.display = \'none\';\n            }\n\n            function showElement(el) {\n                document.body.querySelector(el).style.display = \'block\';\n            }\n\n            // Listen for changes to the radio fields\n\n            getElements(\'input[name=payment-option]\').forEach(function(el) {\n                el.addEventListener(\'change\', function(event) {\n\n                    // If PayPal is selected, show the PayPal button\n\n                    if (event.target.value === \'paypal\') {\n                        hideElement(\'#card-button-container\');\n                        showElement(\'#paypal-button-container\');\n                    }\n\n                    // If Card is selected, show the standard continue button\n\n                    if (event.target.value === \'card\') {\n                        showElement(\'#card-button-container\');\n                        hideElement(\'#paypal-button-container\');\n                    }\n                });\n            });\n\n            // Hide Non-PayPal button by default\n\n            hideElement(\'#card-button-container\');\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                env: \'' + ctx.env + '\',\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28952,7 +29093,7 @@ var mark = exports.mark = {
 exports.__esModule = true;
 exports.pay = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -28979,12 +29120,12 @@ var pay = exports.pay = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'pay\'\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'pay\'\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28993,7 +29134,7 @@ var pay = exports.pay = {
 exports.__esModule = true;
 exports.server = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -29025,7 +29166,7 @@ var server = exports.server = {
 };
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29034,7 +29175,7 @@ var server = exports.server = {
 exports.__esModule = true;
 exports.styles = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -29061,12 +29202,12 @@ var styles = exports.styles = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\', // checkout | credit | pay\n                    size:  \'small\',    // small | medium | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver\n                },\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\', // checkout | credit | pay\n                    size:  \'small\',    // small | medium | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver\n                },\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29075,7 +29216,7 @@ var styles = exports.styles = {
 exports.__esModule = true;
 exports.validation = undefined;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(4);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -29096,7 +29237,7 @@ var validation = exports.validation = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <p id="msg" class="hidden error">Please check the checkbox</p>\n\n        <p>\n            <label><input id="check" type="checkbox"> Check here to continue</label>\n        </p>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            function isValid() {\n                return document.querySelector(\'#check\').checked;\n            }\n\n            function onChangeCheckbox(handler) {\n                document.querySelector(\'#check\').addEventListener(\'change\', handler);\n            }\n\n            function toggleValidationMessage() {\n                document.querySelector(\'#msg\').style.display = (isValid() ? \'none\' : \'block\');\n            }\n\n            function toggleButton(actions) {\n                return isValid() ? actions.enable() : actions.disable();\n            }\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                validate: function(actions) {\n                    toggleButton(actions);\n\n                    onChangeCheckbox(function() {\n                        toggleButton(actions);\n                    });\n                },\n\n                onClick: function() {\n                    toggleValidationMessage();\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Execute the payment\n\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <p id="msg" class="hidden error">Please check the checkbox</p>\n\n        <p>\n            <label><input id="check" type="checkbox"> Check here to continue</label>\n        </p>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            function isValid() {\n                return document.querySelector(\'#check\').checked;\n            }\n\n            function onChangeCheckbox(handler) {\n                document.querySelector(\'#check\').addEventListener(\'change\', handler);\n            }\n\n            function toggleValidationMessage() {\n                document.querySelector(\'#msg\').style.display = (isValid() ? \'none\' : \'block\');\n            }\n\n            function toggleButton(actions) {\n                return isValid() ? actions.enable() : actions.disable();\n            }\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                validate: function(actions) {\n                    toggleButton(actions);\n\n                    onChangeCheckbox(function() {\n                        toggleButton(actions);\n                    });\n                },\n\n                onClick: function() {\n                    toggleValidationMessage();\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Make a client-side call to the REST api to create the payment\n\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n\n                    // Execute the payment\n\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 

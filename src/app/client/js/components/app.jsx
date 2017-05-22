@@ -6,17 +6,31 @@ import { Header } from './header';
 import { Editor } from './editor';
 import { Code } from './code';
 
-import { patterns } from '../patterns';
+import * as patterns from '../patterns';
 
-function nameToPattern(name) {
-    for (let group of patterns) {
-        for (let pattern of group.patterns) {
-            if (pattern.slug === name) {
-                return pattern;
-            }
-        }
+let layout = [
+
+    {
+        name: 'Integration Types',
+        patterns: [
+            patterns.client, patterns.server, patterns.braintree
+        ]
+    },
+
+    {
+        name: 'Button Styles',
+        patterns: [
+            patterns.styles, patterns.credit, patterns.pay
+        ]
+    },
+
+    {
+        name: 'Checkout Customizations',
+        patterns: [
+            patterns.mark, patterns.confirm, patterns.validation
+        ]
     }
-}
+];
 
 export class App extends React.Component {
 
@@ -57,7 +71,11 @@ export class App extends React.Component {
     render() {
 
         let patternName = this.props.params.pattern || 'client';
-        let activePattern = nameToPattern(patternName);
+        let activePattern = patterns[patternName];
+
+        if (!activePattern) {
+            activePattern = patterns.client;
+        }
 
         let env = this.state.env;
         let baseURL = document.body.getAttribute('data-base-url');
@@ -69,13 +87,13 @@ export class App extends React.Component {
                 <div className="main">
                     <div className="column-left">
                         {
-                            patterns.map((group, i) =>
+                            layout.map((group, i) =>
                                 <div key={i}>
                                     <h3>{group.name}</h3>
                                     <ul>
                                         {
                                             group.patterns.map(pattern =>
-                                                <Link to={`/pattern/${pattern.slug}`} key={pattern.slug} activeClassName="active">
+                                                (!pattern.nosidebar) && <Link to={`/pattern/${pattern.slug}`} key={pattern.slug} activeClassName="active">
                                                     <li>
                                                         <span className="bullet"></span>
                                                         <span>{ pattern.name }</span>
@@ -113,6 +131,7 @@ export class App extends React.Component {
                                     </div>
 
                                     : <Code
+                                        setup={activePattern.setup}
                                         pattern={patternName}
                                         code={this.state.code}
                                         onError={ err => this.onCodeError(err) } />

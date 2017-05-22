@@ -42,7 +42,7 @@ export let styles = {
                     production: '<insert production client id>'
                 },
 
-                payment: function(actions) {
+                payment: function(data, actions) {
                     return actions.payment.create({
                         transactions: [
                             {

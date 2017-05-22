@@ -46,7 +46,7 @@ export let credit = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function(actions) {
+                payment: function(data, actions) {
 
                     return actions.payment.create({
                         transactions: [

@@ -42,7 +42,7 @@ export let client = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function(actions) {
+                payment: function(data, actions) {
 
                     // Make a client-side call to the REST api to create the payment
 

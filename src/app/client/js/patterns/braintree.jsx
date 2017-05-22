@@ -45,7 +45,7 @@ export let braintree = {
 
                 // Wait for the PayPal button to be clicked
 
-                payment: function(actions) {
+                payment: function(data, actions) {
 
                     // Call Braintree to create the payment
 

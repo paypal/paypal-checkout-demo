@@ -15,6 +15,10 @@ export class Code extends React.Component {
     }
 
     runScripts() {
+        if (this.props.setup) {
+            this.props.setup();
+        }
+
         Array.prototype.slice.call(findDOMNode(this).querySelectorAll('script')).forEach(script => {
             try {
                 eval(script.innerHTML);

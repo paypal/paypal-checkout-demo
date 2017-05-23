@@ -38,45 +38,43 @@ export let button = {
         <!DOCTYPE html>
 
         <head>
-
             <!-- Add meta header for IE Compatibility -->
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
             <!-- Include the checkout.js script -->
             <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-
         </head>
 
         <body>
-
             <!-- Set up a container element for the button -->
-
             <div id="paypal-button-container"></div>
 
             <script>
-
                 // Render the PayPal button into #paypal-button-container
-
                 paypal.Button.render({
 
+                    // Set your environment
                     env: '${ctx.env}', // sandbox | production
 
+                    // Show the buyer a 'Pay Now' button in the checkout flow
+                    commit: true,
+
+                    // payment() is called when the button is clicked
                     payment: function(data, actions) {
 
-                        // payment() will be called when a customer clicks on the
-                        // PayPal button. We will set up a payment here.
+                        // We will set up the payment here, and configure the
+                        // amount, currency, and other payment options.
                     },
 
+                    // onAuthorize() is called when the buyer approves the payment
                     onAuthorize: function(data, actions) {
 
-                        // onAuthorize() will be called when a customer authorizes a payment.
-                        // We will finalize the payment here.
+                        // We will finalize the payment here, and show a
+                        // confirmation message to the buyer
                     }
 
                 }, '#paypal-button-container');
-
             </script>
-
         </body>
     `
 };

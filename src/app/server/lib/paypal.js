@@ -15,7 +15,7 @@ module.exports = {
                json: Object.assign({}, config.payment.createReq)
 
            }, (error, res, body) => {
-               
+
                if (error || res.statusCode >= 400) {
                    error ? reject(error) : reject(res.statusMessage);
                } else {
@@ -26,24 +26,24 @@ module.exports = {
         });
     },
 
-    executePayment: (accessToken, payToken, payerId) => {
+    executePayment: (accessToken, paymentID, payerID) => {
         var paymentEndpoint = config.urls['sandbox'] + config.apis.payment;
         return new Promise((resolve, reject) => {
             request.post({
-                url: `${paymentEndpoint}/${payToken}/execute/`,
+                url: `${paymentEndpoint}/${paymentID}/execute/`,
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
                 },
                 json: {
-                    payer_id: payerId
+                    payer_id: payerID
                 }
             }, (error, res, body) => {
 
                 if (error || res.statusCode >= 400) {
                     error ? reject(error) : reject(res.statusMessage);
                 } else if (body.state === 'approved') {
-                    
+
                     var payerInfo = body.payer.payer_info;
                     var transactionState = body.state;
                     var txnDetails = body.transactions[0].amount;
@@ -61,7 +61,7 @@ module.exports = {
             });
         });
     },
-    
+
     createBillingAgreement: (accessToken, planId) => {
         var billingEndpoint = config.urls['sandbox'] + config.apis.billing;
         var req = Object.assign({
@@ -113,18 +113,18 @@ module.exports = {
         });
     },
 
-    executeBillingAgreement: (accessToken, payToken) => {
+    executeBillingAgreement: (accessToken, paymentID) => {
         var billingEndpoint = config.urls['sandbox'] + config.apis.billing;
 
         return new Promise((resolve, reject) => {
             request.post({
-                url: `${billingEndpoint}/${payToken}/agreement-execute/`,
+                url: `${billingEndpoint}/${paymentID}/agreement-execute/`,
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
                 }
             }, (error, res, body) => {
-                
+
                 if (error || res.statusCode >= 400) {
                     error ? reject(error) : reject(res.statusMessage);
                 } else if (body) {
@@ -139,7 +139,7 @@ module.exports = {
     getAccessToken: () => {
         var encodedClientId = new Buffer(`${config.client['sandbox']}:`).toString('base64');
         var authEndpoint = config.urls['sandbox'] + config.apis.auth;
-        
+
         return new Promise((resolve, reject) => {
             request.post({
                 url: authEndpoint,

@@ -14,54 +14,58 @@ export let server = {
     ),
 
     code: (ctx) => `
-        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <!DOCTYPE html>
 
-        <div id="paypal-button-container"></div>
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        </head>
 
-        <script>
+        <body>
+            <div id="paypal-button-container"></div>
 
-            // Render the PayPal button
+            <script>
+                paypal.Button.render({
 
-            paypal.Button.render({
+                    env: '${ctx.env}', // sandbox | production
 
-                // Set your environment
+                    // Show the buyer a 'Pay Now' button in the checkout flow
+                    commit: true,
 
-                env: '${ctx.env}', // sandbox | production
+                    // payment() is called when the button is clicked
+                    payment: function() {
 
-                // Wait for the PayPal button to be clicked
+                        // Set up a url on your server to create the payment
+                        var CREATE_URL = '${ctx.baseURL}/api/paypal/payment/create/';
 
-                payment: function() {
+                        // Make a call to your server to set up the payment
+                        return paypal.request.post(CREATE_URL)
+                            .then(function(res) {
+                                return res.paymentID;
+                            });
+                    },
 
-                    // Make a call to the merchant server to set up the payment
+                    // onAuthorize() is called when the buyer approves the payment
+                    onAuthorize: function(data, actions) {
 
-                    var CREATE_URL = '${ctx.baseURL}/api/paypal/payment/create/';
+                        // Set up a url on your server to execute the payment
+                        var EXECUTE_URL = '${ctx.baseURL}/api/paypal/payment/execute/';
 
-                    return paypal.request.post(CREATE_URL).then(function(res) {
-                        return res.payToken;
-                    });
-                },
+                        // Set up the data you need to pass to your server
+                        var data = {
+                            paymentID: data.paymentID,
+                            payerID: data.payerID
+                        };
 
-                // Wait for the payment to be authorized by the customer
+                        // Make a call to your server to execute the payment
+                        return paypal.request.post(EXECUTE_URL, data)
+                            .then(function (res) {
+                                window.alert('Payment Complete!');
+                            });
+                    }
 
-                onAuthorize: function(data, actions) {
-
-                    // Make a call to the merchant server to execute the payment
-
-                    var EXECUTE_URL = '${ctx.baseURL}/api/paypal/payment/execute/';
-
-                    var data = {
-                        payToken: data.paymentID,
-                        payerId: data.payerID
-                    };
-
-                    return paypal.request.post(EXECUTE_URL, data).then(function (res) {
-
-                        window.alert('Payment Complete!');
-                    });
-                }
-
-            }, '#paypal-button-container');
-
-        </script>
+                }, '#paypal-button-container');
+            </script>
+        </body>
     `
 };

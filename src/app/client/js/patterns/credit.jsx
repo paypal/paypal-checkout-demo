@@ -48,6 +48,8 @@ export let credit = {
 
                 payment: function(data, actions) {
 
+                    // Set up a payment and make credit the landing page
+
                     return actions.payment.create({
                         transactions: [
                             {

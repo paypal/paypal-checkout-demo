@@ -44,7 +44,7 @@ module.exports = function (app) {
        return paypal.getAccessToken()
            .then(paypal.createPayment)
            .then(response => {
-               res.send({payToken: response});
+               res.send({ paymentID: response });
            }, err => {
                var error = err || err.message;
                console.error(err);
@@ -54,13 +54,13 @@ module.exports = function (app) {
 
     app.post('/api/paypal/payment/execute/', (req, res) => {
 
-        var payToken = req.body.payToken;
-        var payerId = req.body.payerId;
+        var paymentID = req.body.paymentID;
+        var payerID = req.body.payerID;
 
-        if (payToken && payerId) {
+        if (paymentID && payerID) {
             return paypal.getAccessToken()
                 .then(accessToken => {
-                    return paypal.executePayment(accessToken, payToken, payerId);
+                    return paypal.executePayment(accessToken, paymentID, payerID);
                 })
                 .then(response => {
                     res.send(response);
@@ -69,7 +69,7 @@ module.exports = function (app) {
                     res.status(500).send('Could not complete payment, ' + error);
                 });
         } else {
-            res.status(500).send('Bad request, need both payToken and payerId');
+            res.status(500).send('Bad request, need both paymentID and payerID');
         }
     });
 
@@ -96,7 +96,7 @@ module.exports = function (app) {
                                         var url = response.links[0].href;
                                         var params = parseQuery(url);
 
-                                        res.send({payToken: params['token']});
+                                        res.send({paymentID: params['token']});
                                     }
                                 });
                         } else {
@@ -108,12 +108,12 @@ module.exports = function (app) {
     });
 
     app.post('/api/paypal/agreement/execute/', (req, res) => {
-        var payToken = req.body.payToken;
+        var paymentID = req.body.paymentID;
 
-        if (payToken) {
+        if (paymentID) {
             return paypal.getAccessToken()
                 .then(accessToken => {
-                    return paypal.executeBillingAgreement(accessToken, payToken);
+                    return paypal.executeBillingAgreement(accessToken, paymentID);
                 })
                 .then(response => {
                     res.send(response);

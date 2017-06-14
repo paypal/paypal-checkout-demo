@@ -1,16 +1,16 @@
 
 import React from 'react';
 
-export let pay = {
+export let buynow = {
 
-    slug: 'pay',
+    slug: 'buynow',
 
-    name: `Pay Button`,
+    name: `Buy Now Button`,
 
-    fullName: `Express Checkout Custom Pay Button`,
+    fullName: `Express Checkout Custom Buy Now Button`,
 
     intro: (
-        <p>Create a <b>Pay with PayPal</b> button.</p>
+        <p>Create a <b>Buy Now</b> button.</p>
     ),
 
     code: (ctx) => `
@@ -31,7 +31,9 @@ export let pay = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'pay'
+                    label: 'buynow',
+                    fundingicons: true, // optional
+                    branding: true // optional
                 },
 
                 // PayPal Client IDs - replace with your own

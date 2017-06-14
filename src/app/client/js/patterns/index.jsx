@@ -5,6 +5,7 @@ export * from './braintree';
 export * from './styles';
 export * from './credit';
 export * from './pay';
+export * from './buynow';
 export * from './mark';
 export * from './confirm';
 export * from './validation';

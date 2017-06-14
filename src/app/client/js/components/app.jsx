@@ -20,7 +20,7 @@ let layout = [
     {
         name: 'Button Styles',
         patterns: [
-            patterns.styles, patterns.credit, patterns.pay
+            patterns.styles, patterns.credit, patterns.pay, patterns.buynow
         ]
     },
 

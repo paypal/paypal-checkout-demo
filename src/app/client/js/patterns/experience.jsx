@@ -43,14 +43,18 @@ export let experience = {
                     // Make a client-side call to the REST api to create the payment
 
                     return actions.payment.create({
-                        transactions: [
-                            {
-                                amount: { total: '0.01', currency: 'USD' }
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: '0.01', currency: 'USD' }
+                                }
+                            ]
+                        },
+
+                        experience: {
+                            input_fields: {
+                                no_shipping: 1
                             }
-                        ]
-                    }, {
-                        input_fields: {
-                            no_shipping: 1
                         }
                     });
                 },

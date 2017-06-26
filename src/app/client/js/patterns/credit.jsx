@@ -51,15 +51,17 @@ export let credit = {
                     // Set up a payment and make credit the landing page
 
                     return actions.payment.create({
-                        transactions: [
-                            {
-                                amount: { total: '0.01', currency: 'USD' }
-                            }
-                        ],
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: '0.01', currency: 'USD' }
+                                }
+                            ],
 
-                        payer: {
-                            payment_method: 'paypal',
-                            external_selected_funding_instrument_type: 'CREDIT'
+                            payer: {
+                                payment_method: 'paypal',
+                                external_selected_funding_instrument_type: 'CREDIT'
+                            }
                         }
                     });
                 },

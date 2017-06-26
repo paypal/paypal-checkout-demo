@@ -27,7 +27,7 @@ let layout = [
     {
         name: 'Checkout Customizations',
         patterns: [
-            patterns.mark, patterns.confirm, patterns.validation
+            patterns.experience, patterns.mark, patterns.confirm, patterns.validation
         ]
     }
 ];

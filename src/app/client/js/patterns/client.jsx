@@ -44,11 +44,13 @@ export let client = {
 
                         // Make a call to the REST api to create the payment
                         return actions.payment.create({
-                            transactions: [
-                                {
-                                    amount: { total: '0.01', currency: 'USD' }
-                                }
-                            ]
+                            payment: {
+                                transactions: [
+                                    {
+                                        amount: { total: '0.01', currency: 'USD' }
+                                    }
+                                ]
+                            }
                         });
                     },
 

@@ -7,7 +7,7 @@ module.exports = function(ctx) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-            <title>Paypal Checkout Integration Patterns</title>
+            <title>PayPal Checkout Integration Patterns</title>
 
             <link rel="stylesheet" href="${ctx.baseURL}/static/css/style.css">
 

@@ -31,7 +31,10 @@ export let pay = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'pay'
+                    label: 'pay',
+                    size:  'small', // small | medium | large | responsive
+                    shape: 'rect',   // pill | rect
+                    color: 'gold'   // gold | blue | silver | black
                 },
 
                 // PayPal Client IDs - replace with your own

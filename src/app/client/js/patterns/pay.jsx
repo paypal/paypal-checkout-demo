@@ -34,7 +34,7 @@ export let pay = {
                     label: 'pay',
                     size:  'small', // small | medium | large | responsive
                     shape: 'rect',   // pill | rect
-                    color: 'gold'   // gold | blue | silve | black
+                    color: 'gold'   // gold | blue | silver | black
                 },
 
                 // PayPal Client IDs - replace with your own

@@ -32,8 +32,9 @@ export let credit = {
 
                 style: {
                     label: 'credit',
-                    size:  'small', // small | medium
-                    shape: 'rect'   // pill | rect
+                    size:  'small', // small | medium | large | responsive
+                    shape: 'rect',   // pill | rect
+                    color: 'creditblue'   // creditblue | black
                 },
 
                 // PayPal Client IDs - replace with your own

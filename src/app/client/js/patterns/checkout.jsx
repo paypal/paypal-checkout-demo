@@ -1,16 +1,16 @@
 
 import React from 'react';
 
-export let styles = {
+export let checkout = {
 
-    slug: 'styles',
+    slug: 'checkout',
 
-    name: `Button Styles`,
+    name: `Checkout Button`,
 
-    fullName: `Express Checkout Custom Button Styles`,
+    fullName: `Express Checkout Custom Button`,
 
     intro: (
-        <p>Customize your <b>PayPal</b> button with colors, sizes and shapes.</p>
+        <p>Customize your <b>PayPal Checkout</b> button with colors, sizes and shapes.</p>
     ),
 
     code: (ctx) => `
@@ -31,11 +31,14 @@ export let styles = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'checkout', // checkout | credit | pay
-                    size:  'small',    // small | medium | responsive
+                    label: 'checkout'
+                    size:  'small',    // small | medium | large | responsive
                     shape: 'pill',     // pill | rect
-                    color: 'blue'      // gold | blue | silver
+                    color: 'blue'      // gold | blue | silver | black
                 },
+
+                // PayPal Client IDs - replace with your own
+                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
 
                 client: {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',

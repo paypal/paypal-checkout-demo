@@ -33,7 +33,7 @@ export let buynow = {
                 style: {
                     label: 'buynow',
                     fundingicons: true, // optional
-                    branding: true // optional
+                    branding: true, // optional
                     size:  'small', // small | medium | large | responsive
                     shape: 'rect',   // pill | rect
                     color: 'gold'   // gold | blue | silve | black

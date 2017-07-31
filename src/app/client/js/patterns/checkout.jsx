@@ -31,7 +31,7 @@ export let checkout = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'checkout'
+                    label: 'checkout',
                     size:  'small',    // small | medium | large | responsive
                     shape: 'pill',     // pill | rect
                     color: 'blue'      // gold | blue | silver | black

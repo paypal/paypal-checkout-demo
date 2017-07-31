@@ -1,16 +1,16 @@
 
 import React from 'react';
 
-export let buynow = {
+export let generic = {
 
-    slug: 'buynow',
+    slug: 'generic',
 
-    name: `Buy Now Button`,
+    name: `Generic Button`,
 
-    fullName: `Express Checkout Custom Buy Now Button`,
+    fullName: `Express Generic Custom Button`,
 
     intro: (
-        <p>Create a <b>Buy Now</b> button.</p>
+        <p>Customize your <b>PayPal Generic</b> button with colors, sizes and shapes.</p>
     ),
 
     code: (ctx) => `
@@ -31,12 +31,10 @@ export let buynow = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'buynow',
-                    fundingicons: true, // optional
-                    branding: true, // optional
-                    size:  'small', // small | medium | large | responsive
-                    shape: 'rect',   // pill | rect
-                    color: 'gold'   // gold | blue | silve | black
+                    label: 'generic',
+                    size:  'medium',    // small | medium | large | responsive
+                    shape: 'rect',     // pill | rect
+                    color: 'black'      // gold | blue | silver | black
                 },
 
                 // PayPal Client IDs - replace with your own
@@ -47,19 +45,17 @@ export let buynow = {
                     production: '<insert production client id>'
                 },
 
-                // Wait for the PayPal button to be clicked
-
                 payment: function(data, actions) {
                     return actions.payment.create({
-                        transactions: [
-                            {
-                                amount: { total: '0.01', currency: 'USD' }
-                            }
-                        ]
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: '0.01', currency: 'USD' }
+                                }
+                            ]
+                        }
                     });
                 },
-
-                // Wait for the payment to be authorized by the customer
 
                 onAuthorize: function(data, actions) {
                     return actions.payment.execute().then(function() {

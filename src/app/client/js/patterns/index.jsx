@@ -6,6 +6,7 @@ export * from './checkout';
 export * from './credit';
 export * from './pay';
 export * from './buynow';
+export * from './generic';
 export * from './mark';
 export * from './confirm';
 export * from './validation';

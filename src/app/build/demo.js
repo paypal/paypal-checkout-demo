@@ -13885,7 +13885,7 @@ var _editor = __webpack_require__(243);
 
 var _code = __webpack_require__(242);
 
-var _patterns = __webpack_require__(256);
+var _patterns = __webpack_require__(258);
 
 var patterns = _interopRequireWildcard(_patterns);
 
@@ -13904,7 +13904,7 @@ var layout = [{
     patterns: [patterns.client, patterns.server, patterns.braintree]
 }, {
     name: 'Button Styles',
-    patterns: [patterns.styles, patterns.credit, patterns.pay, patterns.buynow]
+    patterns: [patterns.checkout, patterns.credit, patterns.pay, patterns.buynow]
 }, {
     name: 'Checkout Customizations',
     patterns: [patterns.experience, patterns.mark, patterns.confirm, patterns.validation]
@@ -28374,12 +28374,53 @@ var buynow = exports.buynow = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'buynow\',\n                    fundingicons: true, // optional\n                    branding: true // optional\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'buynow\',\n                    fundingicons: true, // optional\n                    branding: true, // optional\n                    size:  \'small\', // small | medium | large | responsive\n                    shape: \'rect\',   // pill | rect\n                    color: \'gold\'   // gold | blue | silve | black\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        transactions: [\n                            {\n                                amount: { total: \'0.01\', currency: \'USD\' }\n                            }\n                        ]\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
 /* 252 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.checkout = undefined;
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var checkout = exports.checkout = {
+
+    slug: 'checkout',
+
+    name: 'Checkout Button',
+
+    fullName: 'Express Checkout Custom Button',
+
+    intro: _react2.default.createElement(
+        'p',
+        null,
+        'Customize your ',
+        _react2.default.createElement(
+            'b',
+            null,
+            'PayPal Checkout'
+        ),
+        ' button with colors, sizes and shapes.'
+    ),
+
+    code: function code(ctx) {
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\',\n                    size:  \'small\',    // small | medium | large | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver | black\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ]\n                        }\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+    }
+};
+
+/***/ }),
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28420,7 +28461,7 @@ var client = exports.client = {
 };
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28455,7 +28496,7 @@ var confirm = exports.confirm = {
 };
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28491,12 +28532,12 @@ var credit = exports.credit = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'credit\',\n                    size:  \'small\', // small | medium\n                    shape: \'rect\'   // pill | rect\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Set up a payment and make credit the landing page\n\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ],\n\n                            payer: {\n                                payment_method: \'paypal\',\n                                external_selected_funding_instrument_type: \'CREDIT\'\n                            }\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'credit\',\n                    size:  \'small\', // small | medium | large | responsive\n                    shape: \'rect\',   // pill | rect\n                    color: \'creditblue\'   // creditblue | black\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n\n                    // Set up a payment and make credit the landing page\n\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ],\n\n                            payer: {\n                                payment_method: \'paypal\',\n                                external_selected_funding_instrument_type: \'CREDIT\'\n                            }\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28531,7 +28572,48 @@ var experience = exports.experience = {
 };
 
 /***/ }),
-/* 256 */
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.generic = undefined;
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var generic = exports.generic = {
+
+    slug: 'generic',
+
+    name: 'Generic Button',
+
+    fullName: 'Express Generic Custom Button',
+
+    intro: _react2.default.createElement(
+        'p',
+        null,
+        'Customize your ',
+        _react2.default.createElement(
+            'b',
+            null,
+            'PayPal Generic'
+        ),
+        ' button with colors, sizes and shapes.'
+    ),
+
+    code: function code(ctx) {
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'generic\',\n                    size:  \'medium\',    // small | medium | large | responsive\n                    shape: \'rect\',     // pill | rect\n                    color: \'black\'      // gold | blue | silver | black\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ]\n                        }\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+    }
+};
+
+/***/ }),
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28539,7 +28621,7 @@ var experience = exports.experience = {
 
 exports.__esModule = true;
 
-var _client = __webpack_require__(252);
+var _client = __webpack_require__(253);
 
 Object.keys(_client).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28551,7 +28633,7 @@ Object.keys(_client).forEach(function (key) {
   });
 });
 
-var _server = __webpack_require__(259);
+var _server = __webpack_require__(261);
 
 Object.keys(_server).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28575,19 +28657,19 @@ Object.keys(_braintree).forEach(function (key) {
   });
 });
 
-var _styles = __webpack_require__(260);
+var _checkout = __webpack_require__(252);
 
-Object.keys(_styles).forEach(function (key) {
+Object.keys(_checkout).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _styles[key];
+      return _checkout[key];
     }
   });
 });
 
-var _credit = __webpack_require__(254);
+var _credit = __webpack_require__(255);
 
 Object.keys(_credit).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28599,7 +28681,7 @@ Object.keys(_credit).forEach(function (key) {
   });
 });
 
-var _pay = __webpack_require__(258);
+var _pay = __webpack_require__(260);
 
 Object.keys(_pay).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28623,7 +28705,19 @@ Object.keys(_buynow).forEach(function (key) {
   });
 });
 
-var _mark = __webpack_require__(257);
+var _generic = __webpack_require__(257);
+
+Object.keys(_generic).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _generic[key];
+    }
+  });
+});
+
+var _mark = __webpack_require__(259);
 
 Object.keys(_mark).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28635,7 +28729,7 @@ Object.keys(_mark).forEach(function (key) {
   });
 });
 
-var _confirm = __webpack_require__(253);
+var _confirm = __webpack_require__(254);
 
 Object.keys(_confirm).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28647,7 +28741,7 @@ Object.keys(_confirm).forEach(function (key) {
   });
 });
 
-var _validation = __webpack_require__(261);
+var _validation = __webpack_require__(262);
 
 Object.keys(_validation).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28671,7 +28765,7 @@ Object.keys(_button).forEach(function (key) {
   });
 });
 
-var _experience = __webpack_require__(255);
+var _experience = __webpack_require__(256);
 
 Object.keys(_experience).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -28684,7 +28778,7 @@ Object.keys(_experience).forEach(function (key) {
 });
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28725,7 +28819,7 @@ var mark = exports.mark = {
 };
 
 /***/ }),
-/* 258 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28761,12 +28855,12 @@ var pay = exports.pay = {
     ),
 
     code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'pay\'\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ]\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
+        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'pay\',\n                    size:  \'small\', // small | medium | large | responsive\n                    shape: \'rect\',   // pill | rect\n                    color: \'gold\'   // gold | blue | silver | black\n                },\n\n                // PayPal Client IDs - replace with your own\n                // Create a PayPal app: https://developer.paypal.com/developer/applications/create\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                // Wait for the PayPal button to be clicked\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ]\n                        }\n                    });\n                },\n\n                // Wait for the payment to be authorized by the customer\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
     }
 };
 
 /***/ }),
-/* 259 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28807,48 +28901,7 @@ var server = exports.server = {
 };
 
 /***/ }),
-/* 260 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.styles = undefined;
-
-var _react = __webpack_require__(4);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var styles = exports.styles = {
-
-    slug: 'styles',
-
-    name: 'Button Styles',
-
-    fullName: 'Express Checkout Custom Button Styles',
-
-    intro: _react2.default.createElement(
-        'p',
-        null,
-        'Customize your ',
-        _react2.default.createElement(
-            'b',
-            null,
-            'PayPal'
-        ),
-        ' button with colors, sizes and shapes.'
-    ),
-
-    code: function code(ctx) {
-        return '\n        <script src="https://www.paypalobjects.com/api/checkout.js"></script>\n\n        <div id="paypal-button-container"></div>\n\n        <script>\n\n            // Render the PayPal button\n\n            paypal.Button.render({\n\n                // Set your environment\n\n                env: \'' + ctx.env + '\', // sandbox | production\n\n                // Specify the style of the button\n\n                style: {\n                    label: \'checkout\', // checkout | credit | pay\n                    size:  \'small\',    // small | medium | responsive\n                    shape: \'pill\',     // pill | rect\n                    color: \'blue\'      // gold | blue | silver\n                },\n\n                client: {\n                    sandbox:    \'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R\',\n                    production: \'<insert production client id>\'\n                },\n\n                payment: function(data, actions) {\n                    return actions.payment.create({\n                        payment: {\n                            transactions: [\n                                {\n                                    amount: { total: \'0.01\', currency: \'USD\' }\n                                }\n                            ]\n                        }\n                    });\n                },\n\n                onAuthorize: function(data, actions) {\n                    return actions.payment.execute().then(function() {\n                        window.alert(\'Payment Complete!\');\n                    });\n                }\n\n            }, \'#paypal-button-container\');\n\n        </script>\n    ';
-    }
-};
-
-/***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

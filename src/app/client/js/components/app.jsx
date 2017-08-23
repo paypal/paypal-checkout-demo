@@ -20,7 +20,7 @@ let layout = [
     {
         name: 'Button Styles',
         patterns: [
-            patterns.checkout, patterns.credit, patterns.pay, patterns.buynow, patterns.generic
+            patterns.checkout, patterns.credit, patterns.pay, patterns.buynow, patterns.generic, patterns.responsive
         ]
     },
 

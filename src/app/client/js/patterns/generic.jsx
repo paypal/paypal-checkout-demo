@@ -34,7 +34,8 @@ export let generic = {
                     label: 'generic',
                     size:  'medium',    // small | medium | large | responsive
                     shape: 'rect',     // pill | rect
-                    color: 'black'      // gold | blue | silver | black
+                    color: 'black',     // gold | blue | silver | black
+                    tagline: false    
                 },
 
                 // PayPal Client IDs - replace with your own

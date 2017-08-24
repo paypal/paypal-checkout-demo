@@ -18,6 +18,7 @@ export let braintree = {
 
         <head>
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <script src="https://www.paypalobjects.com/api/checkout.js"></script>
             <script src="https://js.braintreegateway.com/web/3.11.0/js/client.min.js"></script>
             <script src="https://js.braintreegateway.com/web/3.11.0/js/paypal-checkout.min.js"></script>

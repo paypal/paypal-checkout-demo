@@ -54,13 +54,16 @@ export let braintree = {
 
                     payment: function(data, actions) {
 
-                        // Call Braintree to create the payment
+                        // Make a call to create the payment
 
-                        return actions.braintree.create({
-                            flow:     'checkout',
-                            amount:   '0.01',
-                            currency: 'USD',
-                            intent:   'sale'
+                        return actions.payment.create({
+                            payment: {
+                                transactions: [
+                                    {
+                                        amount: { total: '0.01', currency: 'USD' }
+                                    }
+                                ]
+                            }
                         });
                     },
 
@@ -70,7 +73,13 @@ export let braintree = {
 
                         // Call your server with data.nonce to finalize the payment
 
-                        window.alert('Payment Complete! Braintree nonce: ' + data.nonce);
+                        console.log('Braintree nonce:', data.nonce);
+
+                        // Get the payment and buyer details
+
+                        return actions.payment.get().then(function(payment) {
+                            console.log('Payment details:', payment);
+                        });
                     }
 
                 }, '#paypal-button-container');

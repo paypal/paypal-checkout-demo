@@ -13,3 +13,4 @@ export * from './confirm';
 export * from './validation';
 export * from './button';
 export * from './experience';
+export * from './vertical'

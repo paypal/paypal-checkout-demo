@@ -34,7 +34,7 @@ export let checkout = {
                     label: 'checkout',
                     size:  'small',    // small | medium | large | responsive
                     shape: 'pill',     // pill | rect
-                    color: 'blue'      // gold | blue | silver | black
+                    color: 'gold'      // gold | blue | silver | black
                 },
 
                 // PayPal Client IDs - replace with your own

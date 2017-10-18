@@ -1,16 +1,16 @@
 
 import React from 'react';
 
-export let generic = {
+export let vertical = {
 
-    slug: 'generic',
+    slug: 'vertical',
 
-    name: `PayPal Button`,
+    name: `Vertical Buttons`,
 
-    fullName: `Express Checkout PayPal Custom Button`,
+    fullName: `Express Checkout Vertical Button Layout`,
 
     intro: (
-        <p>Customize your <b>PayPal</b> button with colors, sizes and shapes.</p>
+        <p>Customize your <b>PayPal Checkout</b> button with a vertical layout.</p>
     ),
 
     code: (ctx) => `
@@ -31,11 +31,22 @@ export let generic = {
                 // Specify the style of the button
 
                 style: {
-                    label: 'paypal',
-                    size:  'medium',    // small | medium | large | responsive
-                    shape: 'rect',     // pill | rect
-                    color: 'blue',     // gold | blue | silver | black
-                    tagline: false    
+                    layout: 'vertical',  // horizontal | vertical
+                    size:   'medium',    // medium | large | responsive
+                    shape:  'rect',      // pill | rect
+                    color:  'gold'       // gold | blue | silver | black
+                },
+
+                // Specify allowed and disallowed funding sources
+                //
+                // Options:
+                // - paypal.FUNDING.CARD
+                // - paypal.FUNDING.CREDIT
+                // - paypal.FUNDING.ELV
+
+                funding: {
+                    allowed: [ paypal.FUNDING.CARD, paypal.FUNDING.CREDIT ],
+                    disallowed: [ ]
                 },
 
                 // PayPal Client IDs - replace with your own

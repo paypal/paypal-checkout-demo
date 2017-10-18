@@ -33,6 +33,7 @@ export let credit = {
                 style: {
                     size:  'small', // small | medium | large | responsive
                     shape: 'rect',  // pill | rect
+                    tagline: false
                 },
 
                 funding: {

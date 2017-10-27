@@ -31,7 +31,7 @@ export let credit = {
                 // Specify the style of the button
 
                 style: {
-                    size:  'small', // small | medium | large | responsive
+                    size:  'medium', // small | medium | large | responsive
                     shape: 'rect',  // pill | rect
                     tagline: false
                 },

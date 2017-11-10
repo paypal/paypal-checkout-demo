@@ -60,12 +60,7 @@ export let credit = {
                                 {
                                     amount: { total: '0.01', currency: 'USD' }
                                 }
-                            ],
-
-                            payer: {
-                                payment_method: 'paypal',
-                                external_selected_funding_instrument_type: 'CREDIT'
-                            }
+                            ]
                         }
                     });
                 },

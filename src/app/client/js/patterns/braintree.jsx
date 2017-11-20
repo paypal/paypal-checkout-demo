@@ -68,15 +68,8 @@ export let braintree = {
                     // Wait for the payment to be authorized by the customer
 
                     onAuthorize: function(data, actions) {
-
-                        // Call your server with data.nonce to finalize the payment
-
-                        console.log('Braintree nonce:', data.nonce);
-
-                        // Get the payment and buyer details
-
-                        return actions.payment.get().then(function(payment) {
-                            console.log('Payment details:', payment);
+                        return actions.payment.tokenize().then(function(data) {
+                            console.log('Braintree nonce:', data.nonce);
                         });
                     }
 

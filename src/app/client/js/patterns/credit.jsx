@@ -31,13 +31,9 @@ export let credit = {
                 // Specify the style of the button
 
                 style: {
+                    label: 'credit',
                     size:  'medium', // small | medium | large | responsive
                     shape: 'rect',  // pill | rect
-                    tagline: false
-                },
-
-                funding: {
-                    allowed: [ paypal.FUNDING.CREDIT ]
                 },
 
                 // PayPal Client IDs - replace with your own

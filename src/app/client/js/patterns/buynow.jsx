@@ -36,7 +36,7 @@ export let buynow = {
                     branding: true, // optional
                     size:  'small', // small | medium | large | responsive
                     shape: 'rect',   // pill | rect
-                    color: 'gold'   // gold | blue | silve | black
+                    color: 'gold'   // gold | blue | silver | black
                 },
 
                 // PayPal Client IDs - replace with your own
@@ -46,6 +46,9 @@ export let buynow = {
                     sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
                     production: '<insert production client id>'
                 },
+
+                // Show the buyer a 'Pay Now' button in the checkout flow
+                commit: true,
 
                 // Wait for the PayPal button to be clicked
 

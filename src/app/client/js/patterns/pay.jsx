@@ -45,6 +45,9 @@ export let pay = {
                     production: '<insert production client id>'
                 },
 
+                // Show the buyer a 'Pay Now' button in the checkout flow
+                commit: true,
+                
                 // Wait for the PayPal button to be clicked
 
                 payment: function(data, actions) {

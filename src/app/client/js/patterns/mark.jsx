@@ -83,6 +83,15 @@ export let mark = {
                     production: '<insert production client id>'
                 },
 
+                style: {
+                    label: 'pay',
+                    size:  'small',
+                    shape: 'pill',
+                    color: 'gold'
+                },
+
+                commit: true,
+
                 payment: function(data, actions) {
                     return actions.payment.create({
                         payment: {

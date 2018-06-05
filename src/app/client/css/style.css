@@ -132,6 +132,8 @@ span.pre {
     min-height: calc(100% - 60px);
     height: calc(100% - 60px);
     width: 100%;
+    min-height: 750px;
+    display: flex;
 }
 
 .app .main .column-left {
@@ -143,6 +145,7 @@ span.pre {
     vertical-align: top;
     min-width: 220px;
     height: 100%;
+    overflow: scroll;
 }
 
 .app .main .column-left h3 {

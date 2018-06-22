@@ -7,7 +7,7 @@ export let server = {
 
     name: `Server Side REST`,
 
-    fullName: `Server Side Express Checkout using REST`,
+    fullName: `Server Side PayPal Checkout using REST`,
 
     intro: (
         <p>Create a <b>PayPal Checkout</b> button and accept payments, by calling the PayPal REST API from your server.</p>

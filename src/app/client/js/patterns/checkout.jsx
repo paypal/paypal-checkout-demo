@@ -7,7 +7,7 @@ export let checkout = {
 
     name: `Checkout Button`,
 
-    fullName: `Express Checkout Custom Button`,
+    fullName: `PayPal Checkout Custom Button`,
 
     intro: (
         <p>Customize your <b>PayPal Checkout</b> button with colors, sizes and shapes.</p>

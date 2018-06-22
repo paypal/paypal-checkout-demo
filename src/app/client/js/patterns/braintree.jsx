@@ -7,7 +7,7 @@ export let braintree = {
 
     name: `Braintree SDK`,
 
-    fullName: `Express Checkout using Braintree SDK`,
+    fullName: `PayPal Checkout using Braintree SDK`,
 
     intro: (
         <p>Create a PayPal button and accept payments using a Braintree integration.</p>

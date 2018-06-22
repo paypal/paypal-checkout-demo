@@ -7,7 +7,7 @@ export let vertical = {
 
     name: `Vertical Buttons`,
 
-    fullName: `Express Checkout Vertical Button Layout`,
+    fullName: `PayPal Checkout Vertical Button Layout`,
 
     intro: (
         <p>Customize your <b>PayPal Checkout</b> button with a vertical layout.</p>

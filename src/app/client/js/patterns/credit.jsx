@@ -7,7 +7,7 @@ export let credit = {
 
     name: `Credit Button`,
 
-    fullName: `Express Checkout Custom Credit Button`,
+    fullName: `PayPal Checkout Custom Credit Button`,
 
     intro: (
         <p>Create a <b>PayPal CREDIT</b> button and initialize the credit flow.</p>

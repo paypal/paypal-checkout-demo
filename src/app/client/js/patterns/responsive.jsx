@@ -7,7 +7,7 @@ export let responsive = {
 
     name: `Responsive Button`,
 
-    fullName: `Express Checkout Custom Button with size as Responsive`,
+    fullName: `PayPal Checkout Custom Button with size as Responsive`,
 
     intro: (
         <p>If you set size: 'responsive', the button will match the width of the parent element, and auto-calculate an appropriate height based on the width.</p>

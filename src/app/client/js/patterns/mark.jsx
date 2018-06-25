@@ -7,7 +7,7 @@ export let mark = {
 
     name: `Mark`,
 
-    fullName: `Express Checkout Mark Integration`,
+    fullName: `PayPal Checkout Mark Integration`,
 
     intro: (
         <p>Create a <b>PayPal</b> button and accept payments using a mark integration.</p>

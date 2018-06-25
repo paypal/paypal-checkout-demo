@@ -8,7 +8,7 @@ The demo web application is a React app that shows different styles of PayPal in
 
 The source is found in the `src/app` directory.
 
-Please feel free to follow the [Contribution Guidelines](../CONTRIBUTING.md) to contribute to this demo application. PRs are welcome, but for major changes please raise an issue first.
+Please feel free to follow the [Contribution Guidelines](../master/CONTRIBUTING.md) to contribute to this demo application. PRs are welcome, but for major changes please raise an issue first.
 
 ### Run locally in Docker
 

@@ -7,7 +7,7 @@ export let confirm = {
 
     name: `Confirmation`,
 
-    fullName: `Express Checkout with Confirmation`,
+    fullName: `PayPal Checkout with Confirmation`,
 
     intro: (
         <p>Create a PayPal button and accept payments, with a confirmation page.</p>

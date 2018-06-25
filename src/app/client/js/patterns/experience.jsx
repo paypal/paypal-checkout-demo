@@ -7,7 +7,7 @@ export let experience = {
 
     name: `Experience`,
 
-    fullName: `Client Side Express Checkout Experience Profiles`,
+    fullName: `Client Side PayPal Checkout Experience Profiles`,
 
     intro: (
         <p>Create a PayPal button and accept payments using a purely client-side integration, with an experience profile.</p>

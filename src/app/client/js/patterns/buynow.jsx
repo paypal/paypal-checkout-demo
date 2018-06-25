@@ -7,7 +7,7 @@ export let buynow = {
 
     name: `Buy Now Button`,
 
-    fullName: `Express Checkout Custom Buy Now Button`,
+    fullName: `PayPal Checkout Custom Buy Now Button`,
 
     intro: (
         <p>Create a <b>Buy Now</b> button.</p>

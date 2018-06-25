@@ -7,7 +7,7 @@ export let validation = {
 
     name: `Validation`,
 
-    fullName: `Express Checkout with validation`,
+    fullName: `PayPal Checkout with validation`,
 
     intro: (
         <p>Create a PayPal button and only trigger checkout when the form validates</p>

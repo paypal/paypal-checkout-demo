@@ -7,7 +7,7 @@ export let generic = {
 
     name: `PayPal Button`,
 
-    fullName: `Express Checkout PayPal Custom Button`,
+    fullName: `PayPal Checkout PayPal Custom Button`,
 
     intro: (
         <p>Customize your <b>PayPal</b> button with colors, sizes and shapes.</p>

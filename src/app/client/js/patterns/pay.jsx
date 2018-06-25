@@ -7,7 +7,7 @@ export let pay = {
 
     name: `Pay Button`,
 
-    fullName: `Express Checkout Custom Pay Button`,
+    fullName: `PayPal Checkout Custom Pay Button`,
 
     intro: (
         <p>Create a <b>Pay with PayPal</b> button.</p>

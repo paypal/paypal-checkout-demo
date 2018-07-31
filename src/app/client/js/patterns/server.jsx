@@ -10,7 +10,8 @@ export let server = {
     fullName: `Server Side PayPal Checkout using REST`,
 
     intro: (
-        <p>Create a <b>PayPal Checkout</b> button and accept payments, by calling the PayPal REST API from your server.</p>
+        <p>Create a <b>PayPal Checkout</b> button and accept payments by calling the PayPal REST API from your server. Learn how to implement a <b>PayPal Checkout Server Integration </b> <a href="https://developer.paypal.com/docs/checkout/how-to/server-integration/">here</a>.
+        </p>
     ),
 
     code: (ctx) => `

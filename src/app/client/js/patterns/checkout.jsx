@@ -10,7 +10,8 @@ export let checkout = {
     fullName: `PayPal Checkout Custom Button`,
 
     intro: (
-        <p>Customize your <b>PayPal Checkout</b> button with colors, sizes and shapes.</p>
+        <p>Customize your <b>PayPal Checkout</b> button with colors, sizes and shapes. Look for customization docs <a href="https://developer.paypal.com/docs/checkout/how-to/customize-button/#">here</a>.
+        </p>
     ),
 
     code: (ctx) => `

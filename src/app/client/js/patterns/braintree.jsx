@@ -10,7 +10,10 @@ export let braintree = {
     fullName: `PayPal Checkout using Braintree SDK`,
 
     intro: (
-        <p>Create a PayPal button and accept payments using a Braintree integration.</p>
+        <p>The Braintree SDK is an end-to-end, secure payment solution that easily integrates across platforms.
+           Use this configuration if you want easier integration using the Braintree SDK. Learn how to Integrate PayPal
+            Checkout Using the Braintree SDK <a href="https://developer.paypal.com/docs/checkout/how-to/braintree-integration/">here</a>.
+        </p>
     ),
 
     code: (ctx) => `

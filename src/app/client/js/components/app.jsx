@@ -9,18 +9,17 @@ import { Code } from './code';
 import * as patterns from '../patterns';
 
 let layout = [
+    {
+        name: 'Button Styles',
+        patterns: [
+            patterns.vertical, patterns.responsive, patterns.checkout, patterns.credit, patterns.pay, patterns.buynow, patterns.generic
+        ]
+    },
 
     {
         name: 'Integration Types',
         patterns: [
             patterns.client, patterns.server, patterns.braintree
-        ]
-    },
-
-    {
-        name: 'Button Styles',
-        patterns: [
-            patterns.checkout, patterns.credit, patterns.pay, patterns.buynow, patterns.generic, patterns.responsive, patterns.vertical
         ]
     },
 

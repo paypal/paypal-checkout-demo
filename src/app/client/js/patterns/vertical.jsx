@@ -10,7 +10,7 @@ export let vertical = {
     fullName: `PayPal Checkout Vertical Button Layout`,
 
     intro: (
-        <p>Customize your <b>PayPal Checkout</b> button with a vertical layout.</p>
+        <p>Leaverage <b>PayPal checkout</b> as a comprehensive payments platform by customizing your <b>PayPal Checkout</b> button with a vertical layout.</p>
     ),
 
     code: (ctx) => `

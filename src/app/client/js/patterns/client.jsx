@@ -10,7 +10,9 @@ export let client = {
     fullName: `Client Side PayPal Checkout using REST`,
 
     intro: (
-        <p>Create a <b>PayPal Checkout</b> button and accept payments from the client-side using the PayPal REST API, with no server required.</p>
+        <p>A client integration is the quickest way to integrate PayPal Checkout. It doesn't require a web server to set
+            up and execute payments. Instead, the PayPal Checkout button sets up and executes payments directly from your browser. <a href="https://developer.paypal.com/docs/checkout/integrate/#how-a-client-integration-works">Learn more.</a>
+        </p>
     ),
 
     code: (ctx) => `

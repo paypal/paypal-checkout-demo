@@ -9,7 +9,8 @@
   "scripts": {
     "test": "npm test",
     "build": "webpack --display-error-details --config webpack.conf.js",
-    "start:dev": "webpack-dev-server --config webpack.conf.js"
+    "start:dev": "webpack-dev-server --config webpack.conf.js",
+    "server": "node src/app/server"
   },
   "repository": {
     "type": "git",

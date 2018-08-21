@@ -1,6 +1,6 @@
 {
   "name": "paypal-checkout-demo",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",
   "files": [

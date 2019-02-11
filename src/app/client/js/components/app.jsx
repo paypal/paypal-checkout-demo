@@ -10,23 +10,16 @@ import * as patterns from '../patterns';
 
 let layout = [
     {
-        name: 'Button Styles',
+        name: 'Integration',
         patterns: [
-            patterns.vertical, patterns.responsive, patterns.checkout, patterns.credit, patterns.pay, patterns.buynow, patterns.generic
+            patterns.client, patterns.server
         ]
     },
 
     {
-        name: 'Integration Types',
+        name: 'Features',
         patterns: [
-            patterns.client, patterns.server, patterns.braintree
-        ]
-    },
-
-    {
-        name: 'Checkout Customizations',
-        patterns: [
-            patterns.experience, patterns.mark, patterns.confirm, patterns.validation
+            patterns.horizontal, patterns.style, patterns.responsive, patterns.radio
         ]
     }
 ];
@@ -49,10 +42,6 @@ export class App extends React.Component {
         if (window.location.hash === '#/') {
             window.location.hash = '#/pattern/client';
         }
-
-        paypal.onPossiblyUnhandledException(err => {
-            this.setState({ errors: this.state.errors.concat(err.stack || err.toString()) });
-        });
     }
 
     onChangeEnv(env) {

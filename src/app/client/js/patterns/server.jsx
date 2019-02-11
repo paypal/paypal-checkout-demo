@@ -5,68 +5,59 @@ export let server = {
 
     slug: 'server',
 
-    name: `Server Side REST`,
+    name: `Server`,
 
-    fullName: `Server Side PayPal Checkout using REST`,
+    fullName: `Server integration`,
 
     intro: (
-        <p>Create a <b>PayPal Checkout</b> button and accept payments by calling the PayPal REST API from your server. Learn how to implement a <b>PayPal Checkout Server Integration </b> <a href="https://developer.paypal.com/docs/checkout/how-to/server-integration/">here</a>.
-        </p>
+        <p>Create horizontal <b>Smart Payment Buttons which call your server</b></p>
     ),
 
     code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         </head>
 
         <body>
+            <!-- Set up a container element for the button -->
             <div id="paypal-button-container"></div>
 
+            <!-- Include the PayPal JavaScript SDK -->
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
             <script>
-                paypal.Button.render({
+                // Render the PayPal button into #paypal-button-container
+                paypal.Buttons({
 
-                    env: '${ctx.env}', // sandbox | production
-
-                    // Show the buyer a 'Pay Now' button in the checkout flow
-                    commit: true,
-
-                    // payment() is called when the button is clicked
-                    payment: function() {
-
-                        // Set up a url on your server to create the payment
-                        var CREATE_URL = '${ctx.baseURL}/api/paypal/payment/create/';
-
-                        // Make a call to your server to set up the payment
-                        return paypal.request.post(CREATE_URL)
-                            .then(function(res) {
-                                return res.paymentID;
-                            });
+                    // Set up the transaction
+                    createOrder: function(data, actions) {
+                        return fetch('/demo/checkout/api/paypal/order/create/', {
+                            method: 'post'
+                        }).then(function(res) {
+                            return res.json();
+                        }).then(function(data) {
+                            return data.orderID;
+                        });
                     },
 
-                    // onAuthorize() is called when the buyer approves the payment
-                    onAuthorize: function(data, actions) {
-
-                        // Set up a url on your server to execute the payment
-                        var EXECUTE_URL = '${ctx.baseURL}/api/paypal/payment/execute/';
-
-                        // Set up the data you need to pass to your server
-                        var data = {
-                            paymentID: data.paymentID,
-                            payerID: data.payerID
-                        };
-
-                        // Make a call to your server to execute the payment
-                        return paypal.request.post(EXECUTE_URL, data)
-                            .then(function (res) {
-                                window.alert('Payment Complete!');
-                            });
+                    // Finalize the transaction
+                    onApprove: function(data, actions) {
+                        return fetch('/demo/checkout/api/paypal/order/' + data.orderID + '/capture/', {
+                            method: 'post'
+                        }).then(function(res) {
+                            return res.json();
+                        }).then(function(details) {
+                            // Show a success message to the buyer
+                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                        });
                     }
 
-                }, '#paypal-button-container');
+
+                }).render('#paypal-button-container');
             </script>
         </body>
     `

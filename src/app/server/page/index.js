@@ -7,15 +7,13 @@ module.exports = function(ctx) {
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-            <title>PayPal Checkout Integration Patterns</title>
+            <title>Smart Payment Buttons Integration</title>
 
             <link rel="stylesheet" href="${ctx.baseURL}/static/css/style.css">
 
-            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
 
-            <script src="https://js.braintreegateway.com/web/3.9.0/js/client.min.js"></script>
-            <script src="https://js.braintreegateway.com/web/3.9.0/js/paypal-checkout.min.js"></script>
-
+            <script src="${ctx.baseURL}/static/js/fetch.min.js" type="text/javascript" charset="utf-8"></script>
             <script src="${ctx.baseURL}/static/js/ace.js" type="text/javascript" charset="utf-8"></script>
         </head>
 

@@ -2,132 +2,52 @@ var request = require('request');
 var config = require('../config');
 
 module.exports = {
-    createPayment: (accessToken) => {
-        var paymentEndpoint = config.urls['sandbox'] + config.apis.payment;
+    createOrder: (accessToken) => {
+        var ordersEndpoint = config.urls['sandbox'] + config.apis.orders;
 
         return new Promise((resolve, reject) => {
            request.post({
-               url: paymentEndpoint,
+               url: ordersEndpoint,
                headers: {
                    'Authorization': `Bearer ${accessToken}`,
                    'Content-Type': 'application/json'
                },
-               json: Object.assign({}, config.payment.createReq)
+               json: {
+                   intent: 'CAPTURE',
+                   purchase_units: [{
+                       amount: {
+                           currency_code: 'USD',
+                           value: '0.01'
+                       }
+                   }]
+               }
 
            }, (error, res, body) => {
 
                if (error || res.statusCode >= 400) {
                    error ? reject(error) : reject(res.statusMessage);
                } else {
-
                    resolve(body && body.id);
                }
            });
         });
     },
 
-    executePayment: (accessToken, paymentID, payerID) => {
-        var paymentEndpoint = config.urls['sandbox'] + config.apis.payment;
+    captureOrder: (accessToken, orderID) => {
+        var ordersEndpoint = config.urls['sandbox'] + config.apis.orders;
         return new Promise((resolve, reject) => {
             request.post({
-                url: `${paymentEndpoint}/${paymentID}/execute/`,
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                    'Content-Type': 'application/json'
-                },
-                json: {
-                    payer_id: payerID
-                }
-            }, (error, res, body) => {
-
-                if (error || res.statusCode >= 400) {
-                    error ? reject(error) : reject(res.statusMessage);
-                } else if (body.state === 'approved') {
-
-                    var payerInfo = body.payer.payer_info;
-                    var transactionState = body.state;
-                    var txnDetails = body.transactions[0].amount;
-
-                    var approval = {
-                        payerInfo: payerInfo,
-                        state: transactionState,
-                        transactionDetails: txnDetails
-                    };
-
-                    resolve(approval);
-                } else {
-                    reject(body);
-                }
-            });
-        });
-    },
-
-    createBillingAgreement: (accessToken, planId) => {
-        var billingEndpoint = config.urls['sandbox'] + config.apis.billing;
-        var req = Object.assign({
-            plan: {
-                id: planId
-            }
-        }, config.billing.createReq);
-        return new Promise((resolve, reject) => {
-            request.post({
-                url: `${billingEndpoint}`,
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                    'Content-Type': 'application/json'
-                },
-                json: req
-            }, (error, res, body) => {
-                if (error || res.statusCode >= 400) {
-                    error ? reject(error) : reject(res.statusMessage);
-                } else if (body) {
-                    resolve(body);
-                } else {
-                    reject(body);
-                }
-            });
-        });
-    },
-
-    getActiveBillingPlans: (accessToken) => {
-        var billingEndpoint = config.urls['sandbox'] + config.apis.billingPlans;
-        return new Promise((resolve, reject) => {
-            request.get({
-                url: `${billingEndpoint}/?status=ACTIVE&total_items=yes`,
+                url: `${ordersEndpoint}/${orderID}/capture/`,
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
                 }
             }, (error, res, body) => {
                 body = JSON.parse(body);
-                var plans = body && body.plans;
-                if (error || res.statusCode >= 400) {
-                    error ? reject(error) : reject(res.statusMessage);
-                } else if (plans && plans.length > 0 && plans[0]) {
-                    resolve(plans);
-                } else {
-                    reject(body);
-                }
-            });
-
-        });
-    },
-
-    executeBillingAgreement: (accessToken, paymentID) => {
-        var billingEndpoint = config.urls['sandbox'] + config.apis.billing;
-
-        return new Promise((resolve, reject) => {
-            request.post({
-                url: `${billingEndpoint}/${paymentID}/agreement-execute/`,
-                headers: {
-                    'Authorization': `Bearer ${accessToken}`,
-                    'Content-Type': 'application/json'
-                }
-            }, (error, res, body) => {
 
                 if (error || res.statusCode >= 400) {
                     error ? reject(error) : reject(res.statusMessage);
-                } else if (body) {
+                } else if (body.status === 'COMPLETED') {
                     resolve(body);
                 } else {
                     reject(body);

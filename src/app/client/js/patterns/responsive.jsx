@@ -5,88 +5,50 @@ export let responsive = {
 
     slug: 'responsive',
 
-    name: `Responsive Button`,
+    name: `Responsive`,
 
-    fullName: `PayPal Checkout Custom Button with size as Responsive`,
+    fullName: `Responsive Buttons`,
 
     intro: (
-        <p>If you set size: 'responsive', the button will match the width of the parent element, and auto-calculate an appropriate height based on the width.</p>
+        <p>Create responsive <b>Smart Payment Buttons</b></p>
     ),
 
     code: (ctx) => `
-        <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+        <!DOCTYPE html>
 
-        <style>
-            
-            /* Media query for mobile viewport */
-            @media screen and (max-width: 400px) {
-                #paypal-button-container {
-                    width: 100%;
+        <head>
+            <!-- Add meta tags for mobile and IE -->
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+            <style>
+                /* Media query for mobile viewport */
+                @media screen and (max-width: 400px) {
+                    #paypal-button-container {
+                        width: 100%;
+                    }
                 }
-            }
-            
-            /* Media query for desktop viewport */
-            @media screen and (min-width: 400px) {
-                #paypal-button-container {
-                    width: 250px;
-                    display: inline-block;
-                }
-            }
-            
-        </style>
-        
-        <div id="paypal-button-container"></div>
-        
-        <script>
-        
-            paypal.Button.render({
                 
-                // Set your environment
-        
-                env: '${ctx.env}', // sandbox | production
-        
-                // Specify the style of the button
-        
-                style: {
-                    label: 'checkout',  // checkout | credit | pay | buynow | generic
-                    size:  'responsive', // small | medium | large | responsive
-                    shape: 'pill',   // pill | rect
-                    color: 'gold'   // gold | blue | silver | black
-                },
-        
-                // PayPal Client IDs - replace with your own
-                // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-        
-                client: {
-                    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                    production: '<insert production client id>'
-                },
-        
-                // Wait for the PayPal button to be clicked
-        
-                payment: function(data, actions) {
-                    return actions.payment.create({
-                        payment: {
-                            transactions: [
-                                {
-                                    amount: { total: '0.01', currency: 'USD' }
-                                }
-                            ]
-                        }
-                    });
-                },
-        
-                // Wait for the payment to be authorized by the customer
-        
-                onAuthorize: function(data, actions) {
-                    return actions.payment.execute().then(function() {
-                        window.alert('Payment Complete!');
-                    });
+                /* Media query for desktop viewport */
+                @media screen and (min-width: 400px) {
+                    #paypal-button-container {
+                        width: 250px;
+                    }
                 }
-            
-            }, '#paypal-button-container');
-        
-        </script>
+            </style>
+        </head>
 
+        <body>
+            <!-- Set up a container element for the button -->
+            <div id="paypal-button-container"></div>
+
+            <!-- Include the PayPal JavaScript SDK -->
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
+            <script>
+                // Render the PayPal button into #paypal-button-container
+                paypal.Buttons().render('#paypal-button-container');
+            </script>
+        </body>
     `
 };

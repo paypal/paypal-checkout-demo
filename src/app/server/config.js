@@ -12,6 +12,7 @@ module.exports = {
     apis: {
         auth: '/v1/oauth2/token',
         payment: '/v1/payments/payment',
+        orders: '/v2/checkout/orders',
         billing: '/v1/payments/billing-agreements',
         billingPlans: '/v1/payments/billing-plans'
     },

@@ -19,28 +19,9 @@ render((
   </Router>
 ), document.getElementById('app'));
 
-
-let buttonRender = paypal.Button.render;
-paypal.Button.render = function(props = {}) {
-
-    if (props.env && props.env !== 'production') {
-        return buttonRender.apply(this, arguments);
-    }
-
-    if (props.client && props.client.production === '<insert production client id>') {
-        props.client.production = 'Aco85QiB9jk8Q3GdsidqKVCXuPAAVbnqm0agscHCL2-K2Lu2L6MxDU2AwTZa-ALMn_N0z-s2MXKJBxqJ';
-    }
-
-    let onAuthorize = props.onAuthorize;
-    props.onAuthorize = function(data, actions) {
-
-        actions.payment.execute = function() {
-            console.warn(`Execute inhibited in production mode; returning payment details without executing`);
-            return actions.payment.get();
-        };
-
-        return onAuthorize.apply(this, arguments);
-    };
-
-    return buttonRender.apply(this, arguments);
-};
+const alert = window.alert;
+window.alert = (...args) => {
+    setTimeout(() => {
+        alert.call(window, ...args);
+    }, 500);
+}

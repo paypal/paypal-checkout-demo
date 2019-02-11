@@ -5,69 +5,55 @@ export let client = {
 
     slug: 'client',
 
-    name: `Client Side REST`,
+    name: `Client`,
 
-    fullName: `Client Side PayPal Checkout using REST`,
+    fullName: `Client integration`,
 
     intro: (
-        <p>A client integration is the quickest way to integrate PayPal Checkout. It doesn't require a web server to set
-            up and execute payments. Instead, the PayPal Checkout button sets up and executes payments directly from your browser. <a href="https://developer.paypal.com/docs/checkout/integrate/#how-a-client-integration-works">Learn more.</a>
-        </p>
+        <p>Create <b>Smart Payment Buttons</b></p>
     ),
 
     code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         </head>
 
         <body>
+            <!-- Set up a container element for the button -->
             <div id="paypal-button-container"></div>
 
+            <!-- Include the PayPal JavaScript SDK -->
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+
             <script>
-                paypal.Button.render({
+                // Render the PayPal button into #paypal-button-container
+                paypal.Buttons({
 
-                    env: '${ctx.env}', // sandbox | production
-
-                    // PayPal Client IDs - replace with your own
-                    // Create a PayPal app: https://developer.paypal.com/developer/applications/create
-                    client: {
-                        sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-                        production: '<insert production client id>'
-                    },
-
-                    // Show the buyer a 'Pay Now' button in the checkout flow
-                    commit: true,
-
-                    // payment() is called when the button is clicked
-                    payment: function(data, actions) {
-
-                        // Make a call to the REST api to create the payment
-                        return actions.payment.create({
-                            payment: {
-                                transactions: [
-                                    {
-                                        amount: { total: '0.01', currency: 'USD' }
-                                    }
-                                ]
-                            }
+                    // Set up the transaction
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: '0.01'
+                                }
+                            }]
                         });
                     },
 
-                    // onAuthorize() is called when the buyer approves the payment
-                    onAuthorize: function(data, actions) {
-
-                        // Make a call to the REST api to execute the payment
-                        return actions.payment.execute().then(function() {
-                            window.alert('Payment Complete!');
+                    // Finalize the transaction
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                            // Show a success message to the buyer
+                            alert('Transaction completed by ' + details.payer.name.given_name + '!');
                         });
                     }
 
-                }, '#paypal-button-container');
 
+                }).render('#paypal-button-container');
             </script>
         </body>
     `

@@ -28119,32 +28119,22 @@ var _reactRouter = __webpack_require__(72);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var csrf = document.body.getAttribute('data-csrf');
-
-if (csrf) {
-    paypal.request.addHeaderBuilder(function () {
-        return {
-            'x-csrf-token': csrf
-        };
-    });
-}
-
 (0, _reactDom.render)(_react2.default.createElement(
-    _reactRouter.Router,
-    { history: _reactRouter.hashHistory },
-    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app.App }),
-    _react2.default.createElement(_reactRouter.Route, { path: '/pattern/:pattern', component: _app.App })
+  _reactRouter.Router,
+  { history: _reactRouter.hashHistory },
+  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app.App }),
+  _react2.default.createElement(_reactRouter.Route, { path: '/pattern/:pattern', component: _app.App })
 ), document.getElementById('app'));
 
 var alert = window.alert;
 window.alert = function () {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-    }
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
 
-    setTimeout(function () {
-        alert.call.apply(alert, [window].concat(args));
-    }, 500);
+  setTimeout(function () {
+    alert.call.apply(alert, [window].concat(args));
+  }, 500);
 };
 
 /***/ }),

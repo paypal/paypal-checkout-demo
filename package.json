@@ -1,6 +1,6 @@
 {
   "name": "paypal-checkout-demo-legacy",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",
   "files": [

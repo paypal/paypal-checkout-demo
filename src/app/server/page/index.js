@@ -11,7 +11,7 @@ module.exports = function(ctx) {
 
             <link rel="stylesheet" href="${ctx.baseURL}/static/css/style.css">
 
-            <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
             <script src="${ctx.baseURL}/static/js/fetch.min.js" type="text/javascript" charset="utf-8"></script>
             <script src="${ctx.baseURL}/static/js/ace.js" type="text/javascript" charset="utf-8"></script>

@@ -1,45 +1,81 @@
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { findDOMNode } from 'react-dom';
+import { ZalgoPromise } from 'zalgo-promise';
+
+function runScripts(el) {
+    let promise = ZalgoPromise.resolve();
+
+    Array.prototype.slice.call(el.querySelectorAll('script')).forEach(script => {
+        promise = promise.then(() => {
+            return new ZalgoPromise((resolve, reject) => {
+                let parentNode = script.parentNode;
+
+                if (!parentNode) {
+                    return;
+                }
+
+                let newScript = document.createElement('script');
+
+                newScript.onload = resolve;
+                newScript.onerror = reject;
+
+                parentNode.replaceChild(newScript, script);
+
+                if (script.textContent) {
+                    newScript.text = script.textContent;
+                    resolve();
+                } else if (script.src) {
+                    newScript.src = script.src;
+                }
+            });
+        });
+    });
+
+    return promise;
+}
 
 export class Code extends React.Component {
 
-    render() {
-        return (
-            <div id="code" className={ [ 'code', this.props.pattern ].join(' ') } dangerouslySetInnerHTML={ { __html: this.props.code } }></div>
-        );
+    constructor(props) {
+        super();
+        this.state = {
+            loading: true
+        };
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        return this.props.code !== nextProps.code;
-    }
+    runScripts(el, code) {
+        if (!el || !code || el.code === code) {
+            return;
+        }
 
-    runScripts() {
+        el.code = code;
+        el.innerHTML = code;
+    
         if (this.props.setup) {
             this.props.setup();
         }
 
-        Array.prototype.slice.call(findDOMNode(this).querySelectorAll('script')).forEach(script => {
-            try {
-                eval(script.innerHTML);
-            } catch (err) {
-
-                if (this.props.onError) {
-                    this.props.onError(err);
-                }
-
-                setTimeout(() => {
-                    throw err;
-                });
-            }
+        this.setState({ loading: true });
+        return runScripts(el).then(() => {
+            this.setState({ loading: false });
         });
     }
 
-    componentDidMount() {
-        this.runScripts();
+    render() {
+        if (!this.props.code) {
+            return null;
+        }
+
+        return (
+            <div style={{ textAlign: 'center' } }>
+                <div className='spinner' style={ { display: this.state.loading ? 'inline-block' : 'none' } }></div>
+                <div id='code' ref={ el => this.runScripts(el, this.props.code) } style={ { display: this.state.loading ? 'none' : 'block' } } className={ [ 'code', this.props.pattern ].join(' ') }></div>
+            </div>
+        );
     }
 
-    componentDidUpdate() {
-        this.runScripts();
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.code !== nextProps.code || this.state.loading !== nextState.loading;
     }
 }

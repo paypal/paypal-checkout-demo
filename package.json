@@ -37,11 +37,13 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "belter": "^1.0.92",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^16",
+    "react-dom": "^16",
     "react-router": "^3.0.2",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "zalgo-promise": "^1.0.38"
   }
 }

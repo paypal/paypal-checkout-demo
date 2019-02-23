@@ -411,3 +411,23 @@ a.active .bullet {
         min-width: 100%;
     }
 }
+
+.spinner {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, .2);
+    border-top-color: rgba(33, 128, 192, 0.8);
+    border-radius: 100%;
+    animation: rotation .7s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}

@@ -4,6 +4,17 @@ import { App } from './components/app';
 import { render } from 'react-dom';
 import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 
+const fetchMonkeyPatch = window.fetch;
+function newFetch (url, options, ...args) {
+    options = options || {};
+    options.headers = options.headers || {};
+    options.headers['x-csrf-token'] = document.body.getAttribute('data-csrf');
+
+    return fetchMonkeyPatch(url, options, ...args);
+}
+
+window.fetch = newFetch;
+
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}/>

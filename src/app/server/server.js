@@ -27,4 +27,4 @@ module.exports = function(options) {
     routes(app);
 
     return app;
-}
+};

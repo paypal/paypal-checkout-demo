@@ -18444,22 +18444,37 @@ var _reactRouter = __webpack_require__(26);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var fetchMonkeyPatch = window.fetch;
+function newFetch(url, options) {
+    options = options || {};
+    options.headers = options.headers || {};
+    options.headers['x-csrf-token'] = document.body.getAttribute('data-csrf');
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+        args[_key - 2] = arguments[_key];
+    }
+
+    return fetchMonkeyPatch.apply(undefined, [url, options].concat(args));
+}
+
+window.fetch = newFetch;
+
 (0, _reactDom.render)(_react2.default.createElement(
-  _reactRouter.Router,
-  { history: _reactRouter.hashHistory },
-  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app.App }),
-  _react2.default.createElement(_reactRouter.Route, { path: '/pattern/:pattern', component: _app.App })
+    _reactRouter.Router,
+    { history: _reactRouter.hashHistory },
+    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app.App }),
+    _react2.default.createElement(_reactRouter.Route, { path: '/pattern/:pattern', component: _app.App })
 ), document.getElementById('app'));
 
 var alert = window.alert;
 window.alert = function () {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+    }
 
-  setTimeout(function () {
-    alert.call.apply(alert, [window].concat(args));
-  }, 500);
+    setTimeout(function () {
+        alert.call.apply(alert, [window].concat(args));
+    }, 500);
 };
 
 /***/ }),

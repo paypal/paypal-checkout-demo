@@ -51,10 +51,11 @@ export let server = {
                         }).then(function(res) {
                             return res.json();
                         }).then(function(details) {
-                            // Handle funding failures when calling the Orders API from your server
+                            // Handle "INSTRUMENT_DECLINED" errors with a restart
+                            // when calling the Orders API from your server
                             // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
                             if (details.error === 'INSTRUMENT_DECLINED') {
-                              return actions.restart();
+                                return actions.restart();
                             }
 
                             // Show a success message to the buyer

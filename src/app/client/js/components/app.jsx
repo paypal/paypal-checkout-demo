@@ -38,7 +38,7 @@ export class App extends React.Component {
         this.setState({ code, errors: [] });
     }
 
-    componentWillMount() {
+    componentDidMount() {
         if (window.location.hash === '#/') {
             window.location.hash = '#/pattern/client';
         }

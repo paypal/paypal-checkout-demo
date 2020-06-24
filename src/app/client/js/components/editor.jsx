@@ -43,8 +43,7 @@ export class Editor extends React.Component {
         this.setState({ editor: editor });
     }
 
-    componentWillUpdate(nextProps, nextState){
-        nextState.editor.setValue(stripIndent(nextProps.code), -1);
-        this.props.onChange(nextProps.code);
+    componentDidUpdate() {
+        this.state.editor.setValue(stripIndent(this.props.code), -1);
     }
 }

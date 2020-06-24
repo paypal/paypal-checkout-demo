@@ -3478,7 +3478,7 @@ var App = exports.App = function (_React$Component) {
         this.setState({ code: code, errors: [] });
     };
 
-    App.prototype.componentWillMount = function componentWillMount() {
+    App.prototype.componentDidMount = function componentDidMount() {
         if (window.location.hash === '#/') {
             window.location.hash = '#/pattern/client';
         }
@@ -18943,9 +18943,8 @@ var Editor = exports.Editor = function (_React$Component) {
         this.setState({ editor: editor });
     };
 
-    Editor.prototype.componentWillUpdate = function componentWillUpdate(nextProps, nextState) {
-        nextState.editor.setValue((0, _lib.stripIndent)(nextProps.code), -1);
-        this.props.onChange(nextProps.code);
+    Editor.prototype.componentDidUpdate = function componentDidUpdate() {
+        this.state.editor.setValue((0, _lib.stripIndent)(this.props.code), -1);
     };
 
     return Editor;

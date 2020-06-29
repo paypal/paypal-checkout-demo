@@ -22,7 +22,7 @@ module.exports = function (app) {
        return paypal.getAccessToken()
            .then(paypal.createOrder)
            .then(response => {
-               res.send({ orderID: response });
+               res.send({ id: response });
            }, err => {
                var error = err || err.message;
                console.error(err);

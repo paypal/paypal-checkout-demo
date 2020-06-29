@@ -40,7 +40,7 @@ export let server = {
                         }).then(function(res) {
                             return res.json();
                         }).then(function(data) {
-                            return data.orderID;
+                            return data.id;
                         });
                     },
 

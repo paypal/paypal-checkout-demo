@@ -15,7 +15,9 @@ module.exports = function (app) {
     });
 
     app.post('/api/paypal/order/create/', (req, res) => {
-        return paypal.getAccessToken()
+        const { clientID, secret } = req.sandboxCredentials;
+
+        return paypal.getAccessToken(clientID, secret)
             .then(paypal.createOrder)
             .then(response => {
                 res.json({ id: response });
@@ -32,8 +34,9 @@ module.exports = function (app) {
 
     app.post('/api/paypal/order/:id/capture/', (req, res) => {
         const orderID = req.params.id;
+        const { clientID, secret } = req.sandboxCredentials;
 
-        return paypal.getAccessToken()
+        return paypal.getAccessToken(clientID, secret)
             .then(accessToken => {
                 return paypal.captureOrder(accessToken, orderID);
             })

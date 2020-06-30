@@ -53,15 +53,15 @@ module.exports = {
         });
     },
 
-    getAccessToken: () => {
-        const encodedClientId = Buffer.from(`${config.client.sandbox}:`).toString('base64');
+    getAccessToken: (clientID, secret) => {
+        const encodedClientCredentials = Buffer.from(`${clientID}:${secret}`).toString('base64');
         const authEndpoint = config.urls.sandbox + config.apis.auth;
 
         return new Promise((resolve, reject) => {
             request.post({
                 url: authEndpoint,
                 headers: {
-                    'Authorization': `Basic ${encodedClientId}`,
+                    'Authorization': `Basic ${encodedClientCredentials}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: 'grant_type=client_credentials',

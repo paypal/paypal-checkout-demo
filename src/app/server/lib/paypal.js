@@ -1,85 +1,77 @@
-var request = require('request');
-var config = require('../config');
+const request = require('request');
+const config = require('../config');
 
 module.exports = {
     createOrder: (accessToken) => {
-        var ordersEndpoint = config.urls['sandbox'] + config.apis.orders;
+        const ordersEndpoint = config.urls.sandbox + config.apis.orders;
 
         return new Promise((resolve, reject) => {
-           request.post({
-               url: ordersEndpoint,
-               headers: {
-                   'Authorization': `Bearer ${accessToken}`,
-                   'Content-Type': 'application/json'
-               },
-               json: {
-                   intent: 'CAPTURE',
-                   purchase_units: [{
-                       amount: {
-                           currency_code: 'USD',
-                           value: '0.01'
-                       }
-                   }]
-               }
+            request.post({
+                url: ordersEndpoint,
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                },
+                json: {
+                    intent: 'CAPTURE',
+                    purchase_units: [{
+                        amount: {
+                            currency_code: 'USD',
+                            value: '0.01'
+                        }
+                    }]
+                }
+            }, (error, res, body) => {
+                if (error) return reject(error);
+                if (res.statusCode >= 400) return reject(body);
 
-           }, (error, res, body) => {
-
-               if (error || res.statusCode >= 400) {
-                   error ? reject(error) : reject(res.statusMessage);
-               } else {
-                   resolve(body && body.id);
-               }
-           });
+                return resolve(body && body.id);
+            });
         });
     },
 
     captureOrder: (accessToken, orderID) => {
-        var ordersEndpoint = config.urls['sandbox'] + config.apis.orders;
+        const ordersEndpoint = config.urls.sandbox + config.apis.orders;
         return new Promise((resolve, reject) => {
             request.post({
                 url: `${ordersEndpoint}/${orderID}/capture/`,
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
-                }
+                },
+                json: true
             }, (error, res, body) => {
-                body = JSON.parse(body);
+                if (error) return reject(error);
+                if (res.statusCode >= 400) return reject(body);
 
-                if (error || res.statusCode >= 400) {
-                    error ? reject(error) : reject(res.statusMessage);
-                } else if (body.status === 'COMPLETED') {
-                    resolve(body);
+                if (body.status === 'COMPLETED') {
+                    return resolve(body);
                 } else {
-                    reject(body);
+                    return reject(body);
                 }
             });
         });
     },
 
-    getAccessToken: () => {
-        var encodedClientId = new Buffer(`${config.client['sandbox']}:`).toString('base64');
-        var authEndpoint = config.urls['sandbox'] + config.apis.auth;
+    getAccessToken: (clientID, secret) => {
+        const encodedClientCredentials = Buffer.from(`${clientID}:${secret}`).toString('base64');
+        const authEndpoint = config.urls.sandbox + config.apis.auth;
 
         return new Promise((resolve, reject) => {
             request.post({
                 url: authEndpoint,
                 headers: {
-                    'Authorization': `Basic ${encodedClientId}`,
+                    'Authorization': `Basic ${encodedClientCredentials}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: 'grant_type=client_credentials'
+                body: 'grant_type=client_credentials',
+                json: true
             }, (error, res, body) => {
-                if (error || res.statusCode >= 400) {
-                    error ? reject(error) : reject(res.statusMessage);
-                } else {
+                if (error) return reject(error);
+                if (res.statusCode >= 400) return reject(body);
 
-                    body = body && JSON.parse(body);
-
-                    var accessToken = body && body.access_token;
-                    resolve(accessToken);
-                }
+                resolve(body && body.access_token);
             });
-
         });
     }
 };

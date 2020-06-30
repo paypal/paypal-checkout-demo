@@ -1,11 +1,7 @@
+const paypal = require('./lib/paypal');
+const config = require('./config');
 
-var fs = require('fs');
-var path = require('path');
-
-var paypal = require('./lib/paypal');
-var config = require('./config');
-
-var index = require('./page/index');
+const index = require('./page/index');
 
 module.exports = function (app) {
 
@@ -19,29 +15,41 @@ module.exports = function (app) {
     });
 
     app.post('/api/paypal/order/create/', (req, res) => {
-       return paypal.getAccessToken()
-           .then(paypal.createOrder)
-           .then(response => {
-               res.send({ orderID: response });
-           }, err => {
-               var error = err || err.message;
-               console.error(err);
-               res.status(500).send('Internal Service Error, ' + error);
-           });
+        const { clientID, secret } = req.sandboxCredentials;
+
+        return paypal.getAccessToken(clientID, secret)
+            .then(paypal.createOrder)
+            .then(response => {
+                res.json({ id: response });
+            })
+            .catch(err => {
+                if (typeof err === 'object') {
+                    res.status(500).json(err);
+                } else {
+                    const error = err || err.message;
+                    res.status(500).send(`Internal Service Error, ${error}`);
+                }
+            });
     });
 
     app.post('/api/paypal/order/:id/capture/', (req, res) => {
-        var orderID = req.params.id;
+        const orderID = req.params.id;
+        const { clientID, secret } = req.sandboxCredentials;
 
-        return paypal.getAccessToken()
+        return paypal.getAccessToken(clientID, secret)
             .then(accessToken => {
                 return paypal.captureOrder(accessToken, orderID);
             })
             .then(response => {
                 res.json(response);
-            }, err => {
-                var error = err || err.message;
-                res.status(500).send('Could not complete payment, ' + error);
+            })
+            .catch(err => {
+                if (typeof err === 'object') {
+                    res.status(500).json(err);
+                } else {
+                    const error = err || err.message;
+                    res.status(500).send(`Could not complete payment, ${error}`);
+                }
             });
     });
 

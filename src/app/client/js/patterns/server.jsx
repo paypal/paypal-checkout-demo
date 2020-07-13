@@ -41,8 +41,8 @@ export let server = {
                             method: 'post'
                         }).then(function(res) {
                             return res.json();
-                        }).then(function(orderData) {
-                            return orderData.id;
+                        }).then(function(serverData) {
+                            return serverData.id;
                         });
                     },
 
@@ -52,34 +52,32 @@ export let server = {
                             method: 'post'
                         }).then(function(res) {
                             return res.json();
-                        }).then(function(orderData) {
+                        }).then(function(serverData) {
                             // Three cases to handle:
                             //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
                             //   (2) Other non-recoverable errors -> Show a failure message
-                            //   (3) Successful transaction -> Show a success / thank you message
+                            //   (3) Successful transaction -> Show confirmation or thank you
 
-                            // Your server defines the structure of 'orderData', which may differ
-                            var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                            // This example reads a v2/checkout/orders capture response, propagated from the server
+                            // You could use a different API or structure for your 'serverData'
+                            var errorDetail = Array.isArray(serverData.details) && serverData.details[0];
 
                             if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
-                                // Recoverable state, see: "Handle Funding Failures"
+                                return actions.restart(); // Recoverable state, per:
                                 // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
-                                return actions.restart();
                             }
 
                             if (errorDetail) {
                                 var msg = 'Sorry, your transaction could not be processed.';
                                 if (errorDetail.description) msg += '\\n\\n' + errorDetail.description;
-                                if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-                                // Show a failure message
-                                return alert(msg);
+                                if (serverData.debug_id) msg += ' (' + serverData.debug_id + ')';
+                                return alert(msg); // Show a failure message
                             }
 
-                            // Show a success message to the buyer
-                            alert('Transaction completed by ' + orderData.payer.name.given_name);
+                            // Show a success message
+                            alert('Transaction completed by ' + serverData.payer.name.given_name);
                         });
                     }
-
 
                 }).render('#paypal-button-container');
             </script>

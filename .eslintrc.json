@@ -1,5 +1,11 @@
 {
-  "extends": "eslint:recommended",
+  "extends": [
+    "eslint:recommended",
+    "prettier/babel",
+    "prettier/flowtype",
+    "prettier/unicorn"
+  ],
+  "plugins": ["prettier"],
   "env": {
     "browser": true,
     "es2020": true,
@@ -15,7 +21,7 @@
   },
   "ignorePatterns": ["dist/*.js", "**/build/*"],
   "rules": {
-    "indent": ["error", 4],
+    "prettier/prettier": "error",
     "semi": ["error", "always"]
   }
 }

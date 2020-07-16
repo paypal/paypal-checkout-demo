@@ -1,5 +1,14 @@
 {
-    "presets": [
-        [ "es2015", { "loose": true }], "react"
-    ]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "corejs": 3,
+        "modules": false,
+        "useBuiltIns": "entry",
+        "loose": true
+      }
+    ],
+    "@babel/preset-react"
+  ]
 }

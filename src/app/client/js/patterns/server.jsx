@@ -15,11 +15,13 @@ export let server = {
 
   code: (ctx) => `
         <!DOCTYPE html>
+        <html lang="en">
 
         <head>
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <title> PayPal Smart Payment Buttons Integration | Server Demo </title>
         </head>
 
         <body>
@@ -82,5 +84,7 @@ export let server = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `,
+
+        </html>
+    `
 };

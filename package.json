@@ -7,10 +7,12 @@
     "src/"
   ],
   "scripts": {
-    "test": "npm test",
     "build": "webpack --display-error-details --config webpack.conf.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "node src/app/server",
     "start:dev": "webpack-dev-server --config webpack.conf.js",
-    "server": "node src/app/server"
+    "test": "npm test"
   },
   "repository": {
     "type": "git",
@@ -32,6 +34,7 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "eslint": "^7.4.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

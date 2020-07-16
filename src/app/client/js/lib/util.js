@@ -1,15 +1,15 @@
 
 export function stripIndent(str) {
-	const match = str.match(/^[ \t]*(?=\S)/gm);
+    const match = str.match(/^[ \t]*(?=\S)/gm);
 
-	if (!match) {
-		return str;
-	}
+    if (!match) {
+        return str;
+    }
 
 	const indent = Math.min.apply(Math, match.map(x => x.length)); // eslint-disable-line
-	const re = new RegExp(`^[ \\t]{${indent}}`, 'gm');
+    const re = new RegExp(`^[ \\t]{${indent}}`, 'gm');
 
-	return indent > 0 ? str.replace(re, '') : str;
+    return indent > 0 ? str.replace(re, '') : str;
 }
 
 export function debounce(method, time = 500) {

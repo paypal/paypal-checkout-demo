@@ -10,7 +10,7 @@ const serverConfig = {
         clientID: process.env.PAYPAL_CHECKOUT_DEMO_CLIENT_ID || config.client.sandbox,
         secret: process.env.PAYPAL_CHECKOUT_DEMO_CLIENT_SECRET || ''
     }
-}
+};
 
 express().use('/demo/checkout', server(serverConfig)).listen(PORT, function() {
     console.log(`Server started at http://localhost:${PORT}/demo/checkout`);

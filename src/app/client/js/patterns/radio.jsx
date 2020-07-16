@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let radio = {
+  slug: 'radio',
 
-    slug: 'radio',
+  name: `Radio Fields`,
 
-    name: `Radio Fields`,
+  fullName: `Radio Fields`,
 
-    fullName: `Radio Fields`,
+  intro: (
+    <p>
+      Create <b>Smart Payment Buttons</b> with radio fields
+    </p>
+  ),
 
-    intro: (
-        <p>Create <b>Smart Payment Buttons</b> with radio fields</p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -71,5 +71,5 @@ export let radio = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let style = {
+  slug: 'style',
 
-    slug: 'style',
+  name: `Style`,
 
-    name: `Style`,
+  fullName: `Button Styles`,
 
-    fullName: `Button Styles`,
+  intro: (
+    <p>
+      Create <b>Smart Payment Buttons</b> with different styles
+    </p>
+  ),
 
-    intro: (
-        <p>Create <b>Smart Payment Buttons</b> with different styles</p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -43,5 +43,5 @@ export let style = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

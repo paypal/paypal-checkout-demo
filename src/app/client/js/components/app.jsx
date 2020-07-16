@@ -1,35 +1,35 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { Header } from "./header";
-import { Editor } from "./editor";
-import { Code } from "./code";
+import { Header } from './header';
+import { Editor } from './editor';
+import { Code } from './code';
 
-import * as patterns from "../patterns";
+import * as patterns from '../patterns';
 
 let layout = [
   {
-    name: "Integration",
-    patterns: [patterns.client, patterns.server]
+    name: 'Integration',
+    patterns: [patterns.client, patterns.server],
   },
 
   {
-    name: "Features",
+    name: 'Features',
     patterns: [
       patterns.horizontal,
       patterns.style,
       patterns.responsive,
-      patterns.radio
-    ]
-  }
+      patterns.radio,
+    ],
+  },
 ];
 
 export class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      env: "sandbox",
-      errors: []
+      env: 'sandbox',
+      errors: [],
     };
   }
 
@@ -38,8 +38,8 @@ export class App extends React.Component {
   }
 
   componentWillMount() {
-    if (window.location.hash === "#/") {
-      window.location.hash = "#/pattern/client";
+    if (window.location.hash === '#/') {
+      window.location.hash = '#/pattern/client';
     }
   }
 
@@ -53,12 +53,12 @@ export class App extends React.Component {
 
   onCodeError(err) {
     this.setState({
-      errors: this.state.errors.concat(err.stack || err.toString())
+      errors: this.state.errors.concat(err.stack || err.toString()),
     });
   }
 
   render() {
-    let patternName = this.props.params.pattern || "client";
+    let patternName = this.props.params.pattern || 'client';
     let activePattern = patterns[patternName];
 
     if (!activePattern) {
@@ -66,11 +66,11 @@ export class App extends React.Component {
     }
 
     let env = this.state.env;
-    let baseURL = document.body.getAttribute("data-base-url");
+    let baseURL = document.body.getAttribute('data-base-url');
 
     return (
       <div>
-        <Header onChangeEnv={env => this.onChangeEnv(env)} />
+        <Header onChangeEnv={(env) => this.onChangeEnv(env)} />
 
         <div className="main">
           <div className="column-left">
@@ -79,7 +79,7 @@ export class App extends React.Component {
                 <h3>{group.name}</h3>
                 <ul>
                   {group.patterns.map(
-                    pattern =>
+                    (pattern) =>
                       !pattern.nosidebar && (
                         <Link
                           to={`/pattern/${pattern.slug}`}
@@ -112,7 +112,7 @@ export class App extends React.Component {
 
                 {this.state.errors.length ? (
                   <div className="errors">
-                    {this.state.errors.map(err => (
+                    {this.state.errors.map((err) => (
                       <p key={err}>{err}</p>
                     ))}
                   </div>
@@ -121,7 +121,7 @@ export class App extends React.Component {
                     setup={activePattern.setup}
                     pattern={patternName}
                     code={this.state.code}
-                    onError={err => this.onCodeError(err)}
+                    onError={(err) => this.onCodeError(err)}
                   />
                 )}
 
@@ -133,7 +133,7 @@ export class App extends React.Component {
           <div className="column-right">
             <Editor
               code={activePattern.code({ env, baseURL })}
-              onChange={val => this.onChangeCode(val)}
+              onChange={(val) => this.onChangeCode(val)}
             />
           </div>
         </div>

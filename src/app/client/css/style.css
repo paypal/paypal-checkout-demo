@@ -1,433 +1,436 @@
 @font-face {
-    font-family: "pp-sans-big-light";
-    src: url("https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot");
-    src: url("https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot?#iefix") format("embedded-opentype"), url("https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.woff") format("woff"), url("https://www.paypalobjects.com/webstatic/mktg/2014design/font/headlinedark/festivo1.ttf") format("truetype"), url("https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.svg") format("svg");
+  font-family: 'pp-sans-big-light';
+  src: url('https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot');
+  src: url('https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.eot?#iefix')
+      format('embedded-opentype'),
+    url('https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.woff')
+      format('woff'),
+    url('https://www.paypalobjects.com/webstatic/mktg/2014design/font/headlinedark/festivo1.ttf')
+      format('truetype'),
+    url('https://www.paypalobjects.com/webstatic/mktg/2014design/font/PP-Sans/PayPalSansBig-Light.svg')
+      format('svg');
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    height: 100%;
-    min-width: 1200px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  height: 100%;
+  min-width: 1200px;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .error {
-    color: red;
+  color: red;
 }
 
 span.pre {
-    display: inline-block;
-    margin: 0;
-    padding: 3px;
-    white-space: pre-wrap;
-    font-family: monospace;
-    background-color: #ddd;
+  display: inline-block;
+  margin: 0;
+  padding: 3px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  background-color: #ddd;
 }
 
 .app {
-    margin: 0;
-    min-height: 100%;
-    height: 100%;
-    font-family: "pp-sans-big-light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+  font-family: 'pp-sans-big-light', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
 }
 
 .app > div {
-    height: 100%;
+  height: 100%;
 }
 
 .app header {
-    margin: 0;
-    background: white;
-    border-bottom: 1px solid #ccc;
-    height: 60px;
+  margin: 0;
+  background: white;
+  border-bottom: 1px solid #ccc;
+  height: 60px;
 }
 
 .app header h1 {
-    font-weight: normal;
-    padding: 10px 40px;
-    margin: 0;
-    color: #999;
-    font-size: 20px;
-    letter-spacing: 1px;
-    display: inline-block;
-    white-space: nowrap;
+  font-weight: normal;
+  padding: 10px 40px;
+  margin: 0;
+  color: #999;
+  font-size: 20px;
+  letter-spacing: 1px;
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .app header h1 img {
-    height: 20px;
-    vertical-align: middle;
-    margin-right: 10px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 10px;
 }
 
 .app header h1 span {
-    line-height: 40px;
-    vertical-align: middle;
-    margin-left: 20px;
+  line-height: 40px;
+  vertical-align: middle;
+  margin-left: 20px;
 }
 
 .app header .toggle-component {
-    float: right;
-    margin-right: 20px;
-    color: #666;
+  float: right;
+  margin-right: 20px;
+  color: #666;
 }
 
 .app header .toggle-component * {
-    vertical-align: middle;
-    line-height: 60px;
-    margin: 0 3px;
+  vertical-align: middle;
+  line-height: 60px;
+  margin: 0 3px;
 }
 
 .app header .toggle-component .toggle {
-    display: inline-block;
-    height: 30px;
-    width: 55px;
-    border: 1px solid #aaa;
-    border-radius: 15px;
-    position: relative;
-    cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  width: 55px;
+  border: 1px solid #aaa;
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
 }
 
 .app header .toggle-component .toggle .switch {
-    display: inline-block;
-    height: 24px;
-    width: 24px;
-    background: #ccc;
-    border-radius: 13px;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    margin: 0;
-    transition: left 0.1s ease;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  background: #ccc;
+  border-radius: 13px;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  margin: 0;
+  transition: left 0.1s ease;
 }
 
 .app header .toggle-component.left .toggle .switch {
-
 }
 
 .app header .toggle-component.right .toggle .switch {
-    left: auto;
-    left: 27px;
+  left: auto;
+  left: 27px;
 }
 
 .app header .toggle-component.left .right-toggle {
-    color: #aaa;
+  color: #aaa;
 }
 
 .app header .toggle-component.right .left-toggle {
-    color: #aaa;
+  color: #aaa;
 }
 
 .app .main {
-    box-sizing: border-box;
-    display: table;
-    min-height: calc(100% - 60px);
-    height: calc(100% - 60px);
-    width: 100%;
+  box-sizing: border-box;
+  display: table;
+  min-height: calc(100% - 60px);
+  height: calc(100% - 60px);
+  width: 100%;
 }
 
 .app .main .column-left {
-    width: 15%;
-    background-color: #f5f7fa;
-    border-right: 1px solid #ccc;
-    display: table-cell;
-    box-sizing: border-box;
-    vertical-align: top;
-    min-width: 220px;
-    height: 100%;
+  width: 15%;
+  background-color: #f5f7fa;
+  border-right: 1px solid #ccc;
+  display: table-cell;
+  box-sizing: border-box;
+  vertical-align: top;
+  min-width: 220px;
+  height: 100%;
 }
 
 .app .main .column-left h3 {
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #aaa;
-    margin-top: 40px;
-    margin-left: 20px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: 40px;
+  margin-left: 20px;
 }
 
 .app .main .column-left ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .app .main .column-left ul li {
-    color: #333;
-    font-size: 15px;
-    padding: 20px 20px;
-    cursor: pointer;
+  color: #333;
+  font-size: 15px;
+  padding: 20px 20px;
+  cursor: pointer;
 }
 
 .app .main .column-left ul li:hover {
-    background-color: #999;
-    color: white;
+  background-color: #999;
+  color: white;
 }
 
 .app .main .column-left ul a {
-    text-decoration: none;
-    color: #ddd;
+  text-decoration: none;
+  color: #ddd;
 }
 
 .app .main .column-left ul li span {
-    vertical-align: middle;
-    letter-spacing: 1px;
+  vertical-align: middle;
+  letter-spacing: 1px;
 }
 
 .bullet {
-    display: inline-block;
-    background-color: #ccc;
-    width: 15px;
-    height: 15px;
-    border-radius: 4px;
-    vertical-align: middle;
-    margin-right: 15px;
+  display: inline-block;
+  background-color: #ccc;
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 15px;
 }
 
 a.active .bullet {
-    background-color: #666;
+  background-color: #666;
 }
 
 .app .main .column-middle {
-    width: 30%;
-    background: white;
-    display: table-cell;
-    vertical-align: top;
-    min-width: 470px;
-    height: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    position: relative;
+  width: 30%;
+  background: white;
+  display: table-cell;
+  vertical-align: top;
+  min-width: 470px;
+  height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  position: relative;
 }
 
 .app .main .column-middle .intro {
-    padding: 20px 40px 0 40px;
-    text-align: center;
+  padding: 20px 40px 0 40px;
+  text-align: center;
 }
 
 .app .main .column-middle .intro h3 {
-    color: #333;
+  color: #333;
 }
 
 .app .main .column-middle .intro .introp {
-    color: #666;
+  color: #666;
 }
 
 .app .main .column-middle .demo {
-    box-sizing: border-box;
-    padding: 0px 40px;
+  box-sizing: border-box;
+  padding: 0px 40px;
 }
 
 .app .main .column-middle .demo .steps {
-
 }
 
 .app .main .column-middle .demo h3 {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    display: inline-block;
-    padding-right: 40px;
-    margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  display: inline-block;
+  padding-right: 40px;
+  margin-bottom: 10px;
 }
 
 .app .main .column-middle .demo hr {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    margin: 10px 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin: 10px 10px;
 }
 
 .app .main .column-middle .demo p {
-    line-height: 26px;
+  line-height: 26px;
 }
 
-
 .app .main .column-middle .demo .pre {
-    line-height: 14px;
+  line-height: 14px;
 }
 
 .app .main .column-middle .demo .code {
-    text-align: center;
-    padding: 10px 10px 0 10px;
-    min-height: 60px;
+  text-align: center;
+  padding: 10px 10px 0 10px;
+  min-height: 60px;
 }
 
 .app .main .column-middle .demo .errors {
-    font-size: 12px;
-    font-family: monospace;
-    color: red;
-    white-space: pre-line;
-    line-height: 20px;
+  font-size: 12px;
+  font-family: monospace;
+  color: red;
+  white-space: pre-line;
+  line-height: 20px;
 }
 
 .app .main .column-middle .demo .code iframe {
-    display: inline-block;
+  display: inline-block;
 }
 
 .app .main .column-right {
-    width: 55%;
-    background: linear-gradient(#444, #111);
-    display: table-cell;
-    box-sizing: border-box;
-    vertical-align: top;
-    height: 100%;
+  width: 55%;
+  background: linear-gradient(#444, #111);
+  display: table-cell;
+  box-sizing: border-box;
+  vertical-align: top;
+  height: 100%;
 }
 
 .app .main .column-right .editor {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-
-
-
 .app .main .column-middle .demo .code.radio label {
-    display: block;
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+  display: block;
+  border-bottom: 1px solid #eee;
+  padding: 10px;
 }
 
 .app .main .column-middle .demo .code.radio label input {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 .app .main .column-middle .demo .code.radio label img {
-    vertical-align: middle;
-    height: 40px;
+  vertical-align: middle;
+  height: 40px;
 }
 
 #paypal-button-container {
-    margin-top: 20px;
-    width: 300px;
-    display: inline-block;
+  margin-top: 20px;
+  width: 300px;
+  display: inline-block;
 }
 
 .app .main .column-middle .demo .code.radio #card-button-container {
-    margin-top: 20px;
-    min-height: 52px;
+  margin-top: 20px;
+  min-height: 52px;
 }
 
-
-
 .demo .step {
-    font-size: 16px;
-    padding: 10px;
-    margin: 40px 60px;
-    text-align: center;
-    font-weight: bold;
-    border: 1px solid #eee;
-    color: #333;
-    border-radius: 3px;
-    user-select: none;
-    position: relative;
+  font-size: 16px;
+  padding: 10px;
+  margin: 40px 60px;
+  text-align: center;
+  font-weight: bold;
+  border: 1px solid #eee;
+  color: #333;
+  border-radius: 3px;
+  user-select: none;
+  position: relative;
 }
 
 .demo .step::after {
-    width: 0;
-    height: 0;
-    display: block;
-    border: 10px solid transparent;
-    position: absolute;
-    content: '';
+  width: 0;
+  height: 0;
+  display: block;
+  border: 10px solid transparent;
+  position: absolute;
+  content: '';
 }
 
 .demo .step.right::after {
-    border-left-color: #eee;
-    right: -22px;
-    top: 50%;
-    transform: translateY(-50%);
+  border-left-color: #eee;
+  right: -22px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .demo .step.bottom::after {
-    border-top-color: #eee;
-    bottom: -22px;
-    left: 50%;
-    transform: translateX(-50%);
+  border-top-color: #eee;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media screen and (max-width: 650px) {
-    html, body {
-        min-width: 100%;
-        height: 100%;
-    }
+  html,
+  body {
+    min-width: 100%;
+    height: 100%;
+  }
 
-    .app header {
-        display: none;
-    }
+  .app header {
+    display: none;
+  }
 
-    .app .main {
-        display:table;
-        height: 100%;
-    }
+  .app .main {
+    display: table;
+    height: 100%;
+  }
 
-    .app .main .column-left {
-        display: none;
-    }
+  .app .main .column-left {
+    display: none;
+  }
 
-    .app .main .column-middle {
-        min-height: 0px;
-        height: auto;
-        display: table-row;
-    }
+  .app .main .column-middle {
+    min-height: 0px;
+    height: auto;
+    display: table-row;
+  }
 
-    .app .main .column-middle .errors {
-        max-height: 450px;
-        overflow: scroll;
-    }
+  .app .main .column-middle .errors {
+    max-height: 450px;
+    overflow: scroll;
+  }
 
-    .app .main .column-right {
-        height: 100%;
-        display: table-row;
-    }
+  .app .main .column-right {
+    height: 100%;
+    display: table-row;
+  }
 
-    .app .main .column-middle .intro {
-        display: none;
-    }
+  .app .main .column-middle .intro {
+    display: none;
+  }
 
-    .app .main .column-middle .steps .step {
-        display: none;
-    }
+  .app .main .column-middle .steps .step {
+    display: none;
+  }
 
-    .app .main .column-right {
-        height: 100%;
-        min-height: 600px;
-    }
+  .app .main .column-right {
+    height: 100%;
+    min-height: 600px;
+  }
 
-    .app .main .column-right .editor {
-        height: 100%;
-    }
+  .app .main .column-right .editor {
+    height: 100%;
+  }
 
-    .app .main .column-middle, .app .main .column-right {
-        width: 100%;
-        min-width: 100%;
-    }
+  .app .main .column-middle,
+  .app .main .column-right {
+    width: 100%;
+    min-width: 100%;
+  }
 }
 
 .spinner {
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    box-sizing: border-box;
-    border: 3px solid rgba(0, 0, 0, .2);
-    border-top-color: rgba(33, 128, 192, 0.8);
-    border-radius: 100%;
-    animation: rotation .7s infinite linear;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  border-top-color: rgba(33, 128, 192, 0.8);
+  border-radius: 100%;
+  animation: rotation 0.7s infinite linear;
 }
 
 @keyframes rotation {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }

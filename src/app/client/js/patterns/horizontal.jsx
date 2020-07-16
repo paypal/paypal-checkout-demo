@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let horizontal = {
+  slug: 'horizontal',
 
-    slug: 'horizontal',
+  name: `Horizontal`,
 
-    name: `Horizontal`,
+  fullName: `Horizontal Button`,
 
-    fullName: `Horizontal Button`,
+  intro: (
+    <p>
+      Create horizontal <b>Smart Payment Buttons</b>
+    </p>
+  ),
 
-    intro: (
-        <p>Create horizontal <b>Smart Payment Buttons</b></p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -38,5 +38,5 @@ export let horizontal = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

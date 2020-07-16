@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let client = {
+  slug: 'client',
 
-    slug: 'client',
+  name: `Client`,
 
-    name: `Client`,
+  fullName: `Client integration`,
 
-    fullName: `Client integration`,
+  intro: (
+    <p>
+      Create <b>Smart Payment Buttons</b>
+    </p>
+  ),
 
-    intro: (
-        <p>Create <b>Smart Payment Buttons</b></p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -56,5 +56,5 @@ export let client = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

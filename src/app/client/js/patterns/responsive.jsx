@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let responsive = {
+  slug: 'responsive',
 
-    slug: 'responsive',
+  name: `Responsive`,
 
-    name: `Responsive`,
+  fullName: `Responsive Buttons`,
 
-    fullName: `Responsive Buttons`,
+  intro: (
+    <p>
+      Create responsive <b>Smart Payment Buttons</b>
+    </p>
+  ),
 
-    intro: (
-        <p>Create responsive <b>Smart Payment Buttons</b></p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -50,5 +50,5 @@ export let responsive = {
                 paypal.Buttons().render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

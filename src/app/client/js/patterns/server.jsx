@@ -1,19 +1,19 @@
-
 import React from 'react';
 
 export let server = {
+  slug: 'server',
 
-    slug: 'server',
+  name: `Server`,
 
-    name: `Server`,
+  fullName: `Server integration`,
 
-    fullName: `Server integration`,
+  intro: (
+    <p>
+      Create horizontal <b>Smart Payment Buttons which call your server</b>
+    </p>
+  ),
 
-    intro: (
-        <p>Create horizontal <b>Smart Payment Buttons which call your server</b></p>
-    ),
-
-    code: (ctx) => `
+  code: (ctx) => `
         <!DOCTYPE html>
 
         <head>
@@ -82,5 +82,5 @@ export let server = {
                 }).render('#paypal-button-container');
             </script>
         </body>
-    `
+    `,
 };

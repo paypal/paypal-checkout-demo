@@ -4,7 +4,7 @@ services:
     build: .
     command: node src/app/server
     ports:
-      - "8002:8002"
+      - '8002:8002'
     volumes:
       - .:/paypal-checkout-demo
     environment:

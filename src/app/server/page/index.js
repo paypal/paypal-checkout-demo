@@ -1,6 +1,5 @@
-
-module.exports = function(ctx) {
-    return `
+module.exports = function (ctx) {
+  return `
         <!DOCTYPE html>
 
         <head>
@@ -13,11 +12,15 @@ module.exports = function(ctx) {
 
             <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 
-            <script src="${ctx.baseURL}/static/js/fetch.min.js" type="text/javascript" charset="utf-8"></script>
-            <script src="${ctx.baseURL}/static/js/ace.js" type="text/javascript" charset="utf-8"></script>
+            <script src="${
+              ctx.baseURL
+            }/static/js/fetch.min.js" type="text/javascript" charset="utf-8"></script>
+            <script src="${
+              ctx.baseURL
+            }/static/js/ace.js" type="text/javascript" charset="utf-8"></script>
         </head>
 
-        <body data-csrf="${ ctx.csrf || '' }" data-base-url="${ctx.baseURL}">
+        <body data-csrf="${ctx.csrf || ''}" data-base-url="${ctx.baseURL}">
             <div id="app" class="app"></div>
             <script src="${ctx.baseURL}/static/js/demo.js"></script>
         </body>

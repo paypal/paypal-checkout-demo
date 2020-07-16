@@ -2,48 +2,51 @@
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 <script>
-    angular.module('app', ['paypal-button']).controller('appController', function($scope) {
+  angular
+    .module('app', ['paypal-button'])
+    .controller('appController', function ($scope) {
+      $scope.opts = {
+        env: 'production',
 
-        $scope.opts = {
+        client: {
+          sandbox:
+            'AWi18rxt26-hrueMoPZ0tpGEOJnNT4QkiMQst9pYgaQNAfS1FLFxkxQuiaqRBj1vV5PmgHX_jA_c1ncL',
+          production:
+            'AVZhosFzrnZ5Mf3tiOxAD0M6NHv8pcB2IFNHAfp_h69mmbd-LElFYkJUSII3Y0FPbm7S7lxBuqWImLbl',
+        },
 
-            env: 'production',
+        payment: function () {
+          var env = this.props.env;
+          var client = this.props.client;
 
-            client: {
-                sandbox:    'AWi18rxt26-hrueMoPZ0tpGEOJnNT4QkiMQst9pYgaQNAfS1FLFxkxQuiaqRBj1vV5PmgHX_jA_c1ncL',
-                production: 'AVZhosFzrnZ5Mf3tiOxAD0M6NHv8pcB2IFNHAfp_h69mmbd-LElFYkJUSII3Y0FPbm7S7lxBuqWImLbl'
-            },
+          return paypal.rest.payment.create(env, client, {
+            transactions: [
+              {
+                amount: { total: '1.00', currency: 'USD' },
+              },
+            ],
+          });
+        },
 
-            payment: function() {
+        commit: true, // Optional: show a 'Pay Now' button in the checkout flow
 
-                var env    = this.props.env;
-                var client = this.props.client;
+        onAuthorize: function (data, actions) {
+          // Optional: display a confirmation page here
 
-                return paypal.rest.payment.create(env, client, {
-                    transactions: [
-                        {
-                            amount: { total: '1.00', currency: 'USD' }
-                        }
-                    ]
-                });
-            },
-
-            commit: true, // Optional: show a 'Pay Now' button in the checkout flow
-
-            onAuthorize: function(data, actions) {
-
-                // Optional: display a confirmation page here
-
-                return actions.payment.execute().then(function() {
-                    // Show a success page to the buyer
-                });
-            }
-        };
-
+          return actions.payment.execute().then(function () {
+            // Show a success page to the buyer
+          });
+        },
+      };
     });
 </script>
 
 <body ng-app="app" ng-controller="appController">
-
-    <paypal-button env="opts.env" client="opts.client" payment="opts.payment" commit="opts.commit" on-authorize="opts.onAuthorize"></paypal-button>
-
+  <paypal-button
+    env="opts.env"
+    client="opts.client"
+    payment="opts.payment"
+    commit="opts.commit"
+    on-authorize="opts.onAuthorize"
+  ></paypal-button>
 </body>

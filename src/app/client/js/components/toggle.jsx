@@ -1,43 +1,39 @@
-
 import React from 'react';
 
 export class Toggle extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      toggle: 'left',
+    };
+  }
 
-    constructor() {
-        super();
-        this.state = {
-            toggle: 'left'
-        };
+  didRecieveProps() {
+    this.setState({ toggle: this.props.default || 'left' });
+  }
+
+  onToggle(event) {
+    let toggle = {
+      left: 'right',
+      right: 'left',
+    }[this.state.toggle];
+
+    this.setState({ toggle });
+
+    if (this.props.onChange) {
+      this.props.onChange(this.props[toggle]);
     }
+  }
 
-
-    didRecieveProps() {
-        this.setState({ toggle: this.props.default || 'left' });
-    }
-
-    onToggle(event) {
-
-        let toggle = {
-            left: 'right',
-            right: 'left'
-        }[this.state.toggle];
-
-        this.setState({ toggle });
-
-        if (this.props.onChange) {
-            this.props.onChange(this.props[toggle]);
-        }
-    }
-
-    render() {
-        return (
-            <div className={ [ 'toggle-component', this.state.toggle ].join(' ') }>
-                <span className="left-toggle">{ this.props.left }</span>
-                <span className="toggle" onClick={ event => this.onToggle(event) }>
-                    <span className="switch"></span>
-                </span>
-                <span className="right-toggle">{ this.props.right }</span>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div className={['toggle-component', this.state.toggle].join(' ')}>
+        <span className="left-toggle">{this.props.left}</span>
+        <span className="toggle" onClick={(event) => this.onToggle(event)}>
+          <span className="switch"></span>
+        </span>
+        <span className="right-toggle">{this.props.right}</span>
+      </div>
+    );
+  }
 }

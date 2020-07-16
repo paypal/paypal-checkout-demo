@@ -15,7 +15,7 @@ export let horizontal = {
 
   code: (ctx) => `
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
 
         <head>
             <!-- Add meta tags for mobile and IE -->

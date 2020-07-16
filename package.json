@@ -43,6 +43,7 @@
     "react": "^16",
     "react-dom": "^16",
     "react-router": "^5.0.0",
+    "react-router-dom": "^5.2.0",
     "request": "^2.81.0",
     "zalgo-promise": "^1.0.38"
   }

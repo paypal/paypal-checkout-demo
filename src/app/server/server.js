@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const config = require('./config');
 const routes = require('./routes');
 
 module.exports = function (options) {
@@ -26,7 +27,12 @@ module.exports = function (options) {
   app.use(
     function setup(req, res, next) {
       req.v4app = this;
-      req.sandboxCredentials = options.sandboxCredentials || {};
+      req.sandboxCredentials = req.sandboxCredentials || {};
+
+      if (!req.sandboxCredentials.clientID) {
+        req.sandboxCredentials.clientID = config.client.sandbox;
+      }
+
       next();
     }.bind(this)
   );

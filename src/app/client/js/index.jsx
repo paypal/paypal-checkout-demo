@@ -1,8 +1,7 @@
 import React from 'react';
 import { App } from './components/app';
 import { render } from 'react-dom';
-import { Router, Route, IndexRedirect } from 'react-router';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 
 const fetchMonkeyPatch = window.fetch;
 function newFetch(url, options, ...args) {
@@ -17,8 +16,15 @@ window.fetch = newFetch;
 
 render(
   <HashRouter>
-    <Route path="/" component={App} />
-    <Route path="/pattern/:pattern" component={App} />
+    <Switch>
+      <Route exact path="/">
+        <Redirect to="/pattern/client" />
+      </Route>
+      <Route path="/pattern/:pattern" component={App} />
+      <Route path="*">
+        <Redirect to="/pattern/client" />
+      </Route>
+    </Switch>
   </HashRouter>,
   document.getElementById('app')
 );

@@ -37,12 +37,6 @@ export class App extends React.Component {
     this.setState({ code, errors: [] });
   }
 
-  componentWillMount() {
-    if (window.location.hash === '#/') {
-      window.location.hash = '#/pattern/client';
-    }
-  }
-
   onChangeEnv(env) {
     this.setState({ env });
   }
@@ -58,7 +52,7 @@ export class App extends React.Component {
   }
 
   render() {
-    let patternName = this.props.params.pattern || 'client';
+    let patternName = this.props.match.params.pattern || 'client';
     let activePattern = patterns[patternName];
 
     if (!activePattern) {

@@ -7,7 +7,7 @@ const fetchMonkeyPatch = window.fetch;
 function newFetch(url, options, ...args) {
   options = options || {};
   options.headers = options.headers || {};
-  options.headers['x-csrf-token'] = document.body.getAttribute('data-csrf');
+  options.headers['x-xsrf-token'] = document.body.getAttribute('data-csrf');
 
   return fetchMonkeyPatch(url, options, ...args);
 }

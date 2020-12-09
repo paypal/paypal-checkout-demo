@@ -8,7 +8,7 @@ let csrf = document.body.getAttribute('data-csrf');
 
 if (csrf) {
     paypal.request.addHeaderBuilder(() => ({
-        'x-csrf-token': csrf
+        'x-xsrf-token': csrf
     }));
 }
 

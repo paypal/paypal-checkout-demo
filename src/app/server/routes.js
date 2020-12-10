@@ -60,6 +60,9 @@ module.exports = function (app) {
 
   app.get('*', (req, res) => {
     res.status(404);
-    res.send(`${req.originalUrl} not found.`);
+    res.json({
+      statusCode: 404,
+      message: `${req.originalUrl} not found.`,
+    });
   });
 };

@@ -29,7 +29,7 @@ export let client = {
             <div id="paypal-button-container"></div>
 
             <!-- Include the PayPal JavaScript SDK -->
-            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 
             <script>
                 // Render the PayPal button into #paypal-button-container

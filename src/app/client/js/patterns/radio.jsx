@@ -41,7 +41,7 @@ export let radio = {
             <div id="card-button-container" class="hidden"><button>Continue</button></div>
 
             <!-- Include the PayPal JavaScript SDK -->
-            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 
             <script>
                 // Listen for changes to the radio fields

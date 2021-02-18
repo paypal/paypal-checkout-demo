@@ -10,7 +10,7 @@ module.exports = function (ctx) {
 
             <link rel="stylesheet" href="${ctx.baseURL}/static/css/style.css">
 
-            <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
 
             <script src="${
               ctx.baseURL

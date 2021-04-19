@@ -8,7 +8,7 @@ export class Header extends React.Component {
       <header>
         <h1>
           <img
-            src="https://developer.paypal.com/components/dx/img/logo-PayPal-Developer.svg"
+            src="https://www.paypalobjects.com/ppdevdocs/logo-PayPal-Developer.svg"
             alt="PayPal"
           />
           <span>Smart Payment Buttons Integration</span>

@@ -9,7 +9,7 @@ export let horizontal = {
 
   intro: (
     <p>
-      Create horizontal <b>Smart Payment Buttons</b>
+      Create horizontal <b>Payment Buttons</b>
     </p>
   ),
 
@@ -21,7 +21,7 @@ export let horizontal = {
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title> PayPal Smart Payment Buttons Integration | Horizontal Buttons </title>
+            <title> PayPal Checkout Integration | Horizontal Buttons </title>
         </head>
 
         <body>
@@ -42,5 +42,5 @@ export let horizontal = {
         </body>
 
         </html>
-    `
+    `,
 };

@@ -9,7 +9,7 @@ export let radio = {
 
   intro: (
     <p>
-      Create <b>Smart Payment Buttons</b> with radio fields
+      Create <b>Payment Buttons</b> with radio fields
     </p>
   ),
 
@@ -21,7 +21,7 @@ export let radio = {
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title> PayPal Smart Payment Buttons Integration | Radio Fields </title>
+            <title> PayPal Checkout Integration | Radio Fields </title>
         </head>
 
         <body>
@@ -75,5 +75,5 @@ export let radio = {
         </body>
 
         </html>
-    `
+    `,
 };

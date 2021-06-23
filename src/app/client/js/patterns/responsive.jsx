@@ -9,7 +9,7 @@ export let responsive = {
 
   intro: (
     <p>
-      Create responsive <b>Smart Payment Buttons</b>
+      Create responsive <b>Payment Buttons</b>
     </p>
   ),
 
@@ -21,7 +21,7 @@ export let responsive = {
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title> PayPal Smart Payment Buttons Integration | Responsive Buttons </title>
+            <title> PayPal Checkout Integration | Responsive Buttons </title>
 
             <style>
                 /* Media query for mobile viewport */
@@ -54,5 +54,5 @@ export let responsive = {
         </body>
 
         </html>
-    `
+    `,
 };

@@ -9,7 +9,7 @@ export let client = {
 
   intro: (
     <p>
-      Create <b>Smart Payment Buttons</b>
+      Create <b>Payment Buttons</b>
     </p>
   ),
 
@@ -21,7 +21,7 @@ export let client = {
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title> PayPal Smart Payment Buttons Integration | Client Demo </title>
+            <title> PayPal Checkout Integration | Client Demo </title>
         </head>
 
         <body>
@@ -60,5 +60,5 @@ export let client = {
         </body>
 
         </html>
-    `
+    `,
 };

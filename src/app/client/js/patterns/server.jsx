@@ -9,7 +9,7 @@ export let server = {
 
   intro: (
     <p>
-      Create horizontal <b>Smart Payment Buttons which call your server</b>
+      Create horizontal <b>Payment Buttons which call your server</b>
     </p>
   ),
 
@@ -21,7 +21,7 @@ export let server = {
             <!-- Add meta tags for mobile and IE -->
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <title> PayPal Smart Payment Buttons Integration | Server Demo </title>
+            <title> PayPal Checkout Integration | Server Demo </title>
         </head>
 
         <body>
@@ -84,5 +84,5 @@ export let server = {
         </body>
 
         </html>
-    `
+    `,
 };

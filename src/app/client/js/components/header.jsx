@@ -11,7 +11,7 @@ export class Header extends React.Component {
             src="https://www.paypalobjects.com/ppdevdocs/logo-PayPal-Developer.svg"
             alt="PayPal"
           />
-          <span>Smart Payment Buttons Integration</span>
+          <span>PayPal Buttons Integration</span>
         </h1>
 
         {/* <Toggle left="sandbox" right="production" default="left" onChange={this.props.onChangeEnv} /> */}

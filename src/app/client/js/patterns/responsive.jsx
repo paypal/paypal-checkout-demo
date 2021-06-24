@@ -9,7 +9,7 @@ export let responsive = {
 
   intro: (
     <p>
-      Create responsive <b>Payment Buttons</b>
+      Create responsive <b>payment buttons</b>
     </p>
   ),
 

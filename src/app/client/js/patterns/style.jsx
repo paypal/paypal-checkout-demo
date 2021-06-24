@@ -9,7 +9,7 @@ export let style = {
 
   intro: (
     <p>
-      Create <b>Payment Buttons</b> with different styles
+      Create <b>payment buttons</b> with different styles
     </p>
   ),
 

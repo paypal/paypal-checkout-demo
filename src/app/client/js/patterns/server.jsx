@@ -9,7 +9,7 @@ export let server = {
 
   intro: (
     <p>
-      Create horizontal <b>Payment Buttons which call your server</b>
+      Create horizontal <b>payment buttons which call your server</b>
     </p>
   ),
 

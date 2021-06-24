@@ -9,7 +9,7 @@ export let horizontal = {
 
   intro: (
     <p>
-      Create horizontal <b>Payment Buttons</b>
+      Create horizontal <b>payment buttons</b>
     </p>
   ),
 

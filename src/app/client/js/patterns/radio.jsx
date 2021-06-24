@@ -9,7 +9,7 @@ export let radio = {
 
   intro: (
     <p>
-      Create <b>Payment Buttons</b> with radio fields
+      Create <b>payment buttons</b> with radio fields
     </p>
   ),
 

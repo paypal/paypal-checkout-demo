@@ -9,7 +9,7 @@ export let client = {
 
   intro: (
     <p>
-      Create <b>Payment Buttons</b>
+      Create <b>payment buttons</b>
     </p>
   ),
 

@@ -1,6 +1,6 @@
 {
   "name": "paypal-checkout-demo",
-  "version": "2.0.11",
+  "version": "3.0.0",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",
   "files": [
@@ -38,7 +38,7 @@
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.2.5",
+    "husky": "^6.0.0",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "webpack": "^4.43.0",

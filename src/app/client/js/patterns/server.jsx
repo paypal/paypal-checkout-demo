@@ -74,8 +74,16 @@ export let server = {
                                 return alert(msg); // Show a failure message (try to avoid alerts in production environments)
                             }
 
-                            // Show a success message (try to avoid alerts in production environments)
-                            alert('Transaction completed by ' + orderData.payer.name.given_name);
+                            // Successful capture! For demo purposes
+                            console.log('Capture result', details, JSON.stringify(details, null, 2));
+                            var transaction = details.purchase_units[0].payments.captures[0];
+                            // alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+        
+                            // Replace the above to show a success message within this page, e.g.
+                            // const element = document.getElementById('paypal-button-container');
+                            // element.innerHTML = '';
+                            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                            // Or go to another URL:  actions.redirect('thank_you.html');
                         });
                     }
 

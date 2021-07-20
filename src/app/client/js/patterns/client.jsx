@@ -49,10 +49,10 @@ export let client = {
                     // Finalize the transaction
                     onApprove: function(data, actions) {
                         return actions.order.capture().then(function(orderData) {
-                            // Successful capture! For demo purposes
+                            // Successful capture! For demo purposes:
                             console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
                             var transaction = orderData.purchase_units[0].payments.captures[0];
-                            alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+                            alert('Transaction '+ transaction.status + ': ' + transaction.id + '\\n\\nSee console for all available details');
         
                             // Replace the above to show a success message within this page, e.g.
                             // const element = document.getElementById('paypal-button-container');

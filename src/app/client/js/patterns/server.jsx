@@ -71,10 +71,10 @@ export let server = {
                                 var msg = 'Sorry, your transaction could not be processed.';
                                 if (errorDetail.description) msg += '\\n\\n' + errorDetail.description;
                                 if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
-                                return alert(msg); // Show a failure message
+                                return alert(msg); // Show a failure message (try to avoid alerts in production environments)
                             }
 
-                            // Show a success message
+                            // Show a success message (try to avoid alerts in production environments)
                             alert('Transaction completed by ' + orderData.payer.name.given_name);
                         });
                     }

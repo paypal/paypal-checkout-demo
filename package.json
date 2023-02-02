@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "prettier": "prettier . --write",
     "start": "node src/app/server",
-    "start:dev": "webpack-dev-server --config webpack.conf.js",
+    "start:dev": "concurrently 'nodemon src/app/server' 'npm:build -- --watch'",
     "test": " "
   },
   "repository": {
@@ -35,11 +35,13 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "concurrently": "^7.6.0",
     "eslint": "^7.4.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.20",
     "prettier": "^2.0.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",

@@ -10,7 +10,7 @@ import * as patterns from '../patterns';
 let layout = [
   {
     name: 'Integration',
-    patterns: [patterns.client, patterns.server],
+    patterns: [patterns.server],
   },
 
   {
@@ -56,7 +56,7 @@ export class App extends React.Component {
     let activePattern = patterns[patternName];
 
     if (!activePattern) {
-      activePattern = patterns.client;
+      activePattern = patterns.server;
     }
 
     let env = this.state.env;

@@ -18,11 +18,11 @@ render(
   <HashRouter>
     <Switch>
       <Route exact path="/">
-        <Redirect to="/pattern/client" />
+        <Redirect to="/pattern/server" />
       </Route>
       <Route path="/pattern/:pattern" component={App} />
       <Route path="*">
-        <Redirect to="/pattern/client" />
+        <Redirect to="/pattern/server" />
       </Route>
     </Switch>
   </HashRouter>,

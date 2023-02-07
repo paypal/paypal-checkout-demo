@@ -1,5 +1,7 @@
 var path = require('path');
 
+// test
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/app/client/js/index.jsx'),
   mode: 'production',

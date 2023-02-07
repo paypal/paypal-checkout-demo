@@ -1,5 +1,5 @@
 {
-  "name": "paypal-checkout-demo",
+  "name": "@paypal/paypal-checkout-demo",
   "version": "2.0.15",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",

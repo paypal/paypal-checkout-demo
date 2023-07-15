@@ -1,6 +1,6 @@
 {
   "name": "@paypal/paypal-checkout-demo",
-  "version": "2.0.15",
+  "version": "3.0.0",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",
   "files": [
@@ -51,8 +51,8 @@
     "belter": "^1.0.92",
     "body-parser": "^1.17.1",
     "cookie-parser": "^1.4.3",
-    "react": "^16",
-    "react-dom": "^16",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.2.0",
     "request": "^2.81.0",

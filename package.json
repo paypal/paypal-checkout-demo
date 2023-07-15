@@ -1,6 +1,6 @@
 {
   "name": "@paypal/paypal-checkout-demo",
-  "version": "2.0.15",
+  "version": "3.0.0",
   "description": "Demo application for paypal checkout",
   "main": "src/app/server/index.js",
   "files": [
@@ -45,7 +45,7 @@
     "prettier": "^2.0.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^4.0.0"
   },
   "dependencies": {
     "belter": "^1.0.92",

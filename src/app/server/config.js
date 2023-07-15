@@ -7,7 +7,7 @@ module.exports = {
 
   urls: {
     sandbox: 'https://www.sandbox.paypal.com',
-    stage: 'https://www.msmaster.qa.paypal.com',
+    stage: 'https://www.sandbox.paypal.com',
   },
 
   apis: {
